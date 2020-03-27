@@ -103,7 +103,7 @@
 
 </td></tr><tr><td>
   
-**The (product name)**
+**The (product name)**  
 **(<Название продукта>)** 
 </td><td>
 
