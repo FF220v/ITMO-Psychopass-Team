@@ -451,7 +451,7 @@ Equilibrium inc.
 </td><td>
 
 *[Кто представляет данную группу лиц?]*     
-Государство
+Министр МВД Иванов 
 
 </td></tr><tr><td>
   
@@ -534,7 +534,7 @@ Equilibrium inc.
 </td><td>
 
 *[Кто представляет данную группу лиц?]*     
-Equilibrium inc.
+Александр Лапутько
 
 </td></tr><tr><td>
   
@@ -623,7 +623,7 @@ Equilibrium inc.
 **Representative (Представитель)** 
 </td><td>
 
-Инспектор
+Инспектор Аканэ Цунэмори
 
 </td></tr><tr><td>
   
@@ -688,7 +688,7 @@ Equilibrium inc.
 **Representative (Представитель)** 
 </td><td>
 
-Исполнитель
+Исполнитель Синъя Когами
 
 </td></tr><tr><td>
   
@@ -751,7 +751,7 @@ Equilibrium inc.
 **Representative (Представитель)** 
 </td><td>
 
-Аналитик
+Аналитик Сион Караномори
 
 </td></tr><tr><td>
   
@@ -814,7 +814,7 @@ Equilibrium inc.
 **Representative (Представитель)** 
 </td><td>
 
-Граждане
+Гражданин Евпатий
 
 </td></tr><tr><td>
   
