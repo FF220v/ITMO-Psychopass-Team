@@ -52,7 +52,8 @@
  [Use-Case Name (Оперативное реагирование на место преступление)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/use-case_1/docs/use-case_1.md)  
  
 ## 7. Use-case diagram (Диаграмма прецедента)
-*<UML диаграмма данного прецедента>*  
+*<UML диаграмма данного прецедента>* 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/use-case_2/docs/Diagram%20use-case_2.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
