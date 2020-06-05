@@ -609,6 +609,93 @@ x.0.0
 #### 4.2.4 Project Schedule (Штатное расписание)
 *[Данный раздел содержит расписание разработки проекта, с указанием трудозатрат на реализацию каждой из фаз и и итераций.]*
 
+Сформируем список позиций в команде, реализующей проект, на основе ролей RUP. Каждая позиция комбинирует в себе несколько ролей.
+
+<table>
+<tr><td>
+
+**Позиция**
+</td><td>
+
+**Роли RUP**
+</td></tr>
+<tr><td>
+
+Software developer
+</td><td>
+
+* User Interface Designer  
+* Designer  
+* Implementer  
+* Code Reviewer  
+* Test Designer  
+* Tester  
+
+</td></tr>
+<tr><td>
+
+Software developer-manager
+</td><td>
+
+* Project Manager 1 (interaction with customer, business development planning)
+* Requirements Reviewer 1 (business review)
+* User Interface Designer  
+* Designer  
+* Implementer  
+* Code Reviewer  
+* Test Designer  
+* Tester  
+</td></tr></td></tr>
+<tr><td>
+
+Software architect-manager
+</td><td>
+
+As a manager:
+* Project Manager 2 (technical development planning, routine management)
+* Deployment Manager  
+* Configuration Manager  
+* Change Control Manager  
+* Test Manager
+* Requirements Reviewer 2 (technical review)
+* Architecture Reviewer  
+* Test Analyst
+
+As a software developer:
+* Technical Writer  
+* Code Reviewer  
+* Integrator 
+
+</td></tr>
+<table>
+
+В штатном расписании трудозатраты указаны в условных единицах, по ним можно понять, насколько относительно занят сотрудник во время выполнения определённой задачи.
+
+<table>
+<tr><td>
+
+**Название задачи**
+</td><td>
+
+**Трудозатраты Software developer**
+</td><td>
+
+**Трудозатраты Software developer-manager**
+</td><td>
+
+**Трудозатраты Software architect-manager**
+</td><td>
+
+**Общие трудозатраты**
+</td><td>
+
+**Стоимость реализации**
+
+</td></tr>
+
+</table>
+
+
 #### 4.2.5 Project Resourcing (Ресурсы проекта)
 
 ##### 4.2.5.1 Staffing Plan (План по сотрудникам)
@@ -622,7 +709,7 @@ x.0.0
 
 ## 4.3 Project Monitoring and Control (Мониторинг и контроль проекта)
 
-### 4.3.1          Requirements Management Plan (План управления требованиями)
+### 4.3.1 Requirements Management Plan (План управления требованиями)
 *[Определите, каким образом будет контролироваться процесс работы с требованиями проекта.]*
 
 ### 4.3.2 Schedule Control Plan (План управления расписанием)
