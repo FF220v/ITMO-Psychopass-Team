@@ -56,5 +56,6 @@
    
  ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-
+![UI1](https://github.com/FF220v/ITMO-Psychopass-Team/blob/use-case_1/docs/UI1.png)
+   
 
