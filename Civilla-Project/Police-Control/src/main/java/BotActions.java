@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.Random;
 
-interface BotAction{
+interface BotAction {
     String execute(BotSession session, String input);
 }
 
-class AdminProfileStatus implements BotAction{
+class AdminProfileStatus implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         switch (input) {
@@ -13,12 +12,12 @@ class AdminProfileStatus implements BotAction{
                 session.isPoliceman = true;
                 session.baseCommand = CommandTrees.policeTree;
                 session.currentCommand = session.baseCommand;
-                return "Now you are policeman";
+                return "Now you are a policeman.";
             case "Citizen":
                 session.isPoliceman = false;
                 session.baseCommand = CommandTrees.basicTree;
                 session.currentCommand = session.baseCommand;
-                return "Now you are citizen";
+                return "Now you are a citizen.";
             default:
                 return "Unsupported input";
         }
@@ -26,7 +25,7 @@ class AdminProfileStatus implements BotAction{
     }
 }
 
-class GoToLabel implements BotAction{
+class GoToLabel implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         BotCommand newBotCommand = session.currentCommand.getCommandByLabel(input);
@@ -35,17 +34,17 @@ class GoToLabel implements BotAction{
         } else if (!input.equals("back"))
             return "Unsupported input";
         return "";
-        }
     }
+}
 
 
-class PutFnameToDatabase implements BotAction{
+class PutFnameToDatabase implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         CivillaDatabaseItem item;
         if (!session.tempItems.isEmpty()) {
             item = session.tempItems.get(0);
-        }else{
+        } else {
             item = new CivillaDatabaseItem(null, null, null, 0, false);
             session.tempItems.add(0, item);
         }
@@ -58,7 +57,7 @@ class PutFnameToDatabase implements BotAction{
     }
 }
 
-class PutSnameToDatabase implements BotAction{
+class PutSnameToDatabase implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         CivillaDatabaseItem item = session.tempItems.get(0);
@@ -69,13 +68,13 @@ class PutSnameToDatabase implements BotAction{
     }
 }
 
-class PutBeerToDatabase implements BotAction{
+class PutBeerToDatabase implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         CivillaDatabaseItem item = session.tempItems.get(0);
         input = input.toLowerCase();
 
-        if (!(input.equals("yes") || input.equals("no"))){
+        if (!(input.equals("yes") || input.equals("no"))) {
             return "Incorrect input. Should answer yes or no";
         }
 
@@ -88,12 +87,12 @@ class PutBeerToDatabase implements BotAction{
 }
 
 
-class IsItCorrect implements BotAction{
+class IsItCorrect implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         CivillaDatabaseItem item = session.tempItems.get(0);
         session.setCurrentCommand(session.baseCommand);
-        switch (input.toLowerCase()){
+        switch (input.toLowerCase()) {
             case "yes":
                 ICivillaDatabase databaseClient = new CivillaDatabaseDummyConnector();
                 ICivillaAnalisys analisysClient = new CivillaAnalisysDummyConnector();
@@ -106,7 +105,7 @@ class IsItCorrect implements BotAction{
                 if (response.status == 200)
                     res = "Data was submitted.";
                 else
-                    res = String.join(" ","Data was not submitted. Error:", response.response);
+                    res = String.join(" ", "Data was not submitted. Error:", response.response);
                 session.setCurrentCommand(session.baseCommand);
                 return res;
             case "no":
@@ -118,7 +117,7 @@ class IsItCorrect implements BotAction{
     }
 }
 
-class ShowProfileData implements  BotAction{
+class ShowProfileData implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         ICivillaDatabase client = new CivillaDatabaseDummyConnector();
@@ -127,7 +126,7 @@ class ShowProfileData implements  BotAction{
             return "Your data still not in database. Try adding it. It is free.";
         if (response.status != 200)
             return "Something wrong happened with us, please try again";
-        else{
+        else {
             CivillaDatabaseItem item = response.content.get(0);
             switch (input) {
                 case "Profile data":
@@ -142,31 +141,38 @@ class ShowProfileData implements  BotAction{
     }
 }
 
-class ShowCitizensData implements BotAction{
+class ShowCitizensData implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         ICivillaDatabase client = new CivillaDatabaseDummyConnector();
         CivillaDatabaseResponse response;
+        String result;
 
-        if (input.equals("Full list"))
+        if (input.equals("Full list")) {
             response = client.query("some filter)))");
-        else
-            response = client.get(input);
-        if (response.status == 404)
-            return "Data cannot be found.";
-        else if (response.status != 200)
-            return String.format("Something went wrong. Error: %s", response.response);
+            ArrayList<String> arr = new ArrayList<>();
+            for (CivillaDatabaseItem item : response.content) {
+                arr.add(String.format("%s %s %s %s", item.id, item.firstName, item.secondName, item.coefficient));
+            }
+            result = String.join("\n", arr);
 
-        ArrayList<String> arr = new ArrayList<>();
-        for (CivillaDatabaseItem item : response.content){
-            arr.add(String.format("Citizen profile info:\nId: %s\nFirst Name: %s\nSecond name: %s\nLikes beer: %s\nCrime coefficient: %s",
-                    item.id, item.firstName, item.secondName, item.likesBeer, item.coefficient));
+        } else {
+            response = client.get(input);
+            if (response.status == 404)
+                return "Data cannot be found.";
+            else if (response.status != 200)
+                return String.format("Something went wrong. Error: %s", response.response);
+
+            ArrayList<String> arr = new ArrayList<>();
+            CivillaDatabaseItem item = response.content.get(0);
+            result = String.format("Citizen profile info:\nId: %s\nFirst Name: %s\nSecond name: %s\nLikes beer: %s\nCrime coefficient: %s",
+                    item.id, item.firstName, item.secondName, item.likesBeer, item.coefficient);
         }
-        return String.join("\n", arr);
+        return result;
     }
 }
 
-class UseDominator implements BotAction{
+class UseDominator implements BotAction {
     @Override
     public String execute(BotSession session, String input) {
         ICivillaAnalisys analisysClient = new CivillaAnalisysDummyConnector();
