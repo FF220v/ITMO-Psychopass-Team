@@ -6,11 +6,11 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.Hashtable;
 import java.util.List;
 
-public class PoliceControlBot extends TelegramLongPollingBot {
+public class CivillaBot extends TelegramLongPollingBot {
 
     Hashtable<String, BotSession> sessionsTable;
 
-    PoliceControlBot(){
+    CivillaBot(){
         this.sessionsTable = new Hashtable<>();
     }
 

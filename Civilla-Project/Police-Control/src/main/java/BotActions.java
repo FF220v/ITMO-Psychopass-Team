@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Random;
+
 interface BotAction{
     String execute(BotSession session, String input);
 }
@@ -79,7 +82,8 @@ class PutBeerToDatabase implements BotAction{
         item.likesBeer = input.toLowerCase().equals("yes");
 
         session.setCurrentCommand(session.currentCommand.getCommandByLabel("next"));
-        return String.format("Beer info saved.\nFollowing info acquired: \nFirst Name: %s\nSecond name: %s\nLikes beer: %s", item.firstName, item.secondName, item.likesBeer);
+        return String.format("Beer info saved.\nFollowing info acquired: \nFirst Name: %s\nSecond name: %s\nLikes beer: %s",
+                item.firstName, item.secondName, item.likesBeer);
     }
 }
 
@@ -114,7 +118,6 @@ class IsItCorrect implements BotAction{
     }
 }
 
-
 class ShowProfileData implements  BotAction{
     @Override
     public String execute(BotSession session, String input) {
@@ -128,12 +131,50 @@ class ShowProfileData implements  BotAction{
             CivillaDatabaseItem item = response.content.get(0);
             switch (input) {
                 case "Profile data":
-                    return String.format("Your profile info:\nFirst Name: %s\nSecond name: %s\nLikes beer: %s", item.firstName, item.secondName, item.likesBeer);
+                    return String.format("Your profile info:\nFirst Name: %s\nSecond name: %s\nLikes beer: %s",
+                            item.firstName, item.secondName, item.likesBeer);
                 case "Psychopass":
                     return String.format("Your crime coefficient: %s", item.coefficient);
                 default:
                     return "Unsupported input";
             }
         }
+    }
+}
+
+class ShowCitizensData implements BotAction{
+    @Override
+    public String execute(BotSession session, String input) {
+        ICivillaDatabase client = new CivillaDatabaseDummyConnector();
+        CivillaDatabaseResponse response;
+
+        if (input.equals("Full list"))
+            response = client.query("some filter)))");
+        else
+            response = client.get(input);
+        if (response.status == 404)
+            return "Data cannot be found.";
+        else if (response.status != 200)
+            return String.format("Something went wrong. Error: %s", response.response);
+
+        ArrayList<String> arr = new ArrayList<>();
+        for (CivillaDatabaseItem item : response.content){
+            arr.add(String.format("Citizen profile info:\nId: %s\nFirst Name: %s\nSecond name: %s\nLikes beer: %s\nCrime coefficient: %s",
+                    item.id, item.firstName, item.secondName, item.likesBeer, item.coefficient));
+        }
+        return String.join("\n", arr);
+    }
+}
+
+class UseDominator implements BotAction{
+    @Override
+    public String execute(BotSession session, String input) {
+        ICivillaAnalisys analisysClient = new CivillaAnalisysDummyConnector();
+        CivillaAnalisysResponse response = analisysClient.analyse("immediate_analysis", input);
+        float result = response.content.get("immediate_analysis");
+        if (result > 0.5)
+            return String.format("Subject %s\n Coefficient of crime %s\n Potentially dangerous.\n Use of dominator allowed.", input, result);
+        else
+            return String.format("Subject %s\n Coefficient of crime %s\n Not dangerous.\n Use of dominator restricted.", input, result);
     }
 }

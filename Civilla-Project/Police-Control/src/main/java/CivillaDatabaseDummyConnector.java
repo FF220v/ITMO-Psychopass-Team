@@ -31,6 +31,8 @@ public class CivillaDatabaseDummyConnector implements ICivillaDatabase {
 
     @Override
     public CivillaDatabaseResponse query(String filter) {
-        throw new NotImplementedException();
+        if (databaseItems.isEmpty())
+            return new CivillaDatabaseResponse(404, "not_found", new ArrayList<CivillaDatabaseItem>(databaseItems.values()));
+        return new CivillaDatabaseResponse(200, "ok", new ArrayList<CivillaDatabaseItem>(databaseItems.values()));
     }
 }

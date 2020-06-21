@@ -11,7 +11,7 @@ public class Main {
         Logging.log.info("Police Control bot initialized");
 
         try {
-            botsApi.registerBot(new PoliceControlBot());
+            botsApi.registerBot(new CivillaBot());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
