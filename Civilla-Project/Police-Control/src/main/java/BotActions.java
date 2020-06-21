@@ -82,7 +82,7 @@ class PutBeerToDatabase implements BotAction{
         item.likesBeer = input.toLowerCase().equals("yes");
 
         session.setCurrentCommand(session.currentCommand.getCommandByLabel("next"));
-        return String.format("Beer info saved.\nFollowing info acquired: \nFirst Name: %s\nSecond name: %s\nLikes beer: %s",
+        return String.format("Beer info saved.\n\nFollowing info acquired: \nFirst Name: %s\nSecond name: %s\nLikes beer: %s",
                 item.firstName, item.secondName, item.likesBeer);
     }
 }

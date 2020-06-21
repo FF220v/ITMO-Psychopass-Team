@@ -35,7 +35,7 @@ public class CivillaBot extends TelegramLongPollingBot {
             else if (session.currentCommand.action != null)
                 response = session.currentCommand.action.execute(session, message_text);
 
-                message.setText(String.join("\n", response, session.currentCommand.outputText));
+                message.setText(String.join("\n\n", response, session.currentCommand.outputText));
                 message.setReplyMarkup(session.currentCommand.commandKeyboard);
 
                 Logging.log.info(String.join(" ", "Sending response:", message.getText()));
