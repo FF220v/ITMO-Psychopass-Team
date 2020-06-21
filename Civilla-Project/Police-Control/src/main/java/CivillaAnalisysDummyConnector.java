@@ -6,9 +6,9 @@ public class CivillaAnalisysDummyConnector implements ICivillaAnalisys {
 
     @Override
     public CivillaAnalisysResponse analyse(String id, String data) {
-        Hashtable<String, Float> ret = new Hashtable<String, Float>();
+        Hashtable<String, Float> ret = new Hashtable<>();
         ret.put(id, new Random().nextFloat());
-        return new CivillaAnalisysResponse(200, "ok", new Hashtable<String, Float>());
+        return new CivillaAnalisysResponse(200, "ok", ret);
     }
 
     @Override

@@ -3,41 +3,58 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.util.Hashtable;
 import java.util.List;
 
 public class PoliceControlBot extends TelegramLongPollingBot {
 
+    Hashtable<String, BotSession> sessionsTable;
+
+    PoliceControlBot(){
+        this.sessionsTable = new Hashtable<>();
+    }
+
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
+
             String message_text = update.getMessage().getText();
-            Logging.log.info(String.join(" ", "Incoming message:", message_text));
-
             long chat_id = update.getMessage().getChatId();
-            String response = null;
 
-            switch (message_text){
-                case "/start":
-                    response = "/start!";
-                    break;
-                case "/end":
-                    response = "/end!";
-                    break;
-                default:
-                    response = "default";
-            }
+            Logging.log.info(String.join(" ", "Incoming message:", message_text,
+                    "From chat_id:", Long.toString(chat_id)));
 
+            BotSession session = getBotSession(chat_id);
 
-            Logging.log.info(String.join(" ", "Sending response:", response));
-            SendMessage message = new SendMessage() // Create a message object object
-                    .setChatId(chat_id)
-                    .setText(response);
-            try {
-                execute(message); // Sending our message object to user
-            } catch (TelegramApiException e) {
-                e.printStackTrace();
+            SendMessage message = new SendMessage().setChatId(chat_id);
+            String response = "";
+
+            boolean canGoBack = message_text.equals("back") && (session.currentCommand.options != null && Helpers.inArrayLower(message_text, session.currentCommand.options));
+            if (canGoBack)
+                session.setCurrentCommand(session.currentCommand.prevCmd);
+            else if (session.currentCommand.action != null)
+                response = session.currentCommand.action.execute(session, message_text);
+
+                message.setText(String.join("\n", response, session.currentCommand.outputText));
+                message.setReplyMarkup(session.currentCommand.commandKeyboard);
+
+                Logging.log.info(String.join(" ", "Sending response:", message.getText()));
+
+                try {
+                    execute(message); // Sending our message object to user
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
+    public BotSession getBotSession(long chat_id){
+        BotSession session = sessionsTable.getOrDefault(Long.toString(chat_id), null);
+        if (session == null){
+            session = new BotSession(Long.toString(chat_id), CommandTrees.basicTree);
+            sessionsTable.put(Long.toString(chat_id), session);
+        }
+        return session;
     }
 
     @Override

@@ -6,16 +6,16 @@ import java.util.Hashtable;
 public class CivillaDatabaseDummyConnector implements ICivillaDatabase {
 
     private static final Hashtable<String, CivillaDatabaseItem> databaseItems =
-            new Hashtable<String, CivillaDatabaseItem>();
+            new Hashtable<>();
 
     @Override
     public CivillaDatabaseResponse get(String id) {
         if (databaseItems.getOrDefault(id, null) != null){
-            ArrayList<CivillaDatabaseItem> ret = new ArrayList<CivillaDatabaseItem>();
+            ArrayList<CivillaDatabaseItem> ret = new ArrayList<>();
             ret.add(databaseItems.get(id));
             return new CivillaDatabaseResponse(200, "ok", ret);
         }
-        return new CivillaDatabaseResponse(404, "not found", new ArrayList<CivillaDatabaseItem>());
+        return new CivillaDatabaseResponse(404, "not found", new ArrayList<>());
     }
 
     @Override
@@ -25,7 +25,7 @@ public class CivillaDatabaseDummyConnector implements ICivillaDatabase {
     }
 
     @Override
-    public CivillaDatabaseResponse delete() {
+    public CivillaDatabaseResponse delete(String id) {
         throw new NotImplementedException();
     }
 
