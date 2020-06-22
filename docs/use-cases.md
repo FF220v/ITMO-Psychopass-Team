@@ -197,4 +197,50 @@
 ![UseDominator)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0278.png)
 ![FirstSubject)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0279.png)
 ![Restricted)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0280.png)
-![Allowed)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0281.png)
+![Allowed)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0281.png)  
+  
+# Use Case Speciﬁcation (Описание прецедента)  
+  
+## 1. Use-Case 5 Name (Мониторинг данных)
+*[Укажите название прецедента.]*  
+
+Мониторинг данных
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Аналитик
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Аналитик просматривает данные всех граждан и мониторит город для выявления особо опасных районов.
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Просмотреть данные граждан.
+2) Получить список данных всех граждан.
+3) Визуализировать данные на карте города.
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+1)	Получить роль аналитика. .
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]* 
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-5.png)  
+
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*  
+![VisualData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/visualData.jpg)
