@@ -189,7 +189,7 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-4.png) 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-44.png) 
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
