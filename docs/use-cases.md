@@ -1,6 +1,6 @@
 # Use Case Speciﬁcation (Описание прецедента)  
   
-## 1. Use-Case Name (Регистрация гражданина)
+## 1. Use-Case 1 Name (Регистрация гражданина)
 *[Укажите название прецедента.]*  
 
 Регистрация гражданина
@@ -53,7 +53,7 @@
 ![CorrectData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0252.png)
 ![DataSubmited)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0253.png)  
   
-  ## 1. Use-Case Name (Просмотр личных данных)
+  ## 1. Use-Case 2 Name (Просмотр личных данных)
 *[Укажите название прецедента.]*  
 
 Просмотр личных данных
@@ -100,7 +100,7 @@
 ![ViewPsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0269.png)
 ![ViewProfileData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0270.png)  
   
-  ## 1. Use-Case Name (Полицеский просматривает данные граждан)
+  ## 1. Use-Case 3 Name (Полицеский просматривает данные граждан)
 *[Укажите название прецедента.]*  
 
 Полицеский просматривает данные граждан
@@ -146,4 +146,55 @@
 ![MainPolice)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0272.png)
 ![ViewCitizensData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0273.png)
 ![ViewFullList)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0275.png)
-![ViewIDCitizen)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0276.png)
+![ViewIDCitizen)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0276.png)  
+  
+  ## 1. Use-Case 4 Name (Полицейский получает доступ к доминатору)
+*[Укажите название прецедента.]*  
+
+Полицейский получает доступ к доминатору
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Полицейский получает доступ к доминатору для его использования.
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Запросить доступ на использование доминатора.
+2) Ввести имя и фамилию подозреваемого на которого надо использовать оружие доминатор.
+3) Получить резрешение или отказ на использование оружия доминатор на подозреваемого.
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+1)	Получить роль полицеского.
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+* Если коэффициент преступления подозреваемого высок, то система разрешает использование оружия доминатор.
+* Если коэффициент преступлиния подозреваемого низок, то система запрещает использование оружия доминатор.  
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-4.png) 
+  
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![MainPolice)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0277.png)
+![UseDominator)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0278.png)
+![FirstSubject)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0279.png)
+![Restricted)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0280.png)
+![Allowed)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0281.png)
