@@ -10,7 +10,7 @@ public class CivillaBot extends TelegramLongPollingBot {
 
     Hashtable<String, BotSession> sessionsTable;
 
-    CivillaBot(){
+    CivillaBot() {
         this.sessionsTable = new Hashtable<>();
     }
 
@@ -29,28 +29,30 @@ public class CivillaBot extends TelegramLongPollingBot {
             SendMessage message = new SendMessage().setChatId(chat_id);
             String response = "";
 
-            boolean canGoBack = message_text.equals("back") && (session.currentCommand.options != null && Helpers.inArrayLower(message_text, session.currentCommand.options));
+            boolean canGoBack = message_text.equals("back") && (session.currentCommand.options != null &&
+                    Helpers.inArrayLower(message_text, session.currentCommand.options));
+
             if (canGoBack)
                 session.setCurrentCommand(session.currentCommand.prevCmd);
             else if (session.currentCommand.action != null)
                 response = session.currentCommand.action.execute(session, message_text);
 
-                message.setText(String.join("\n\n", response, session.currentCommand.outputText));
-                message.setReplyMarkup(session.currentCommand.commandKeyboard);
+            message.setText(String.join("\n\n", response, session.currentCommand.outputText));
+            message.setReplyMarkup(session.currentCommand.commandKeyboard);
 
-                Logging.log.info(String.join(" ", "Sending response:", message.getText()));
+            Logging.log.info(String.join(" ", "Sending response:", message.getText()));
 
-                try {
-                    execute(message); // Sending our message object to user
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
+            try {
+                execute(message); // Sending our message object to user
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
             }
         }
+    }
 
-    public BotSession getBotSession(long chat_id){
+    public BotSession getBotSession(long chat_id) {
         BotSession session = sessionsTable.getOrDefault(Long.toString(chat_id), null);
-        if (session == null){
+        if (session == null) {
             session = new BotSession(Long.toString(chat_id), CommandTrees.basicTree);
             sessionsTable.put(Long.toString(chat_id), session);
         }
@@ -59,7 +61,7 @@ public class CivillaBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdatesReceived(List<Update> updates) {
-        for (Update update:updates){
+        for (Update update : updates) {
             onUpdateReceived(update);
         }
     }

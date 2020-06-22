@@ -8,7 +8,7 @@ import java.util.Hashtable;
 public class BotCommand {
     String label;
     String outputText;
-    BotAction action;
+    IBotAction action;
     BotCommand[] commands;
     Hashtable <String, BotCommand> _commands;
     ReplyKeyboardMarkup commandKeyboard;
@@ -17,7 +17,7 @@ public class BotCommand {
 
     BotCommand(String label,
                String outputText,
-               BotAction action,
+               IBotAction action,
                String[] options,
                BotCommand[] commands){
 

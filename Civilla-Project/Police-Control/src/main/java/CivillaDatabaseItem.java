@@ -13,4 +13,12 @@ public class CivillaDatabaseItem {
         this.coefficient = coefficient;
     }
 
+    CivillaDatabaseItem(){
+        this.id = null;
+        this.firstName = null;
+        this.secondName = null;
+        this.likesBeer = false;
+        this.coefficient = 0;
+    }
+
 }

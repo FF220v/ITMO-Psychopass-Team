@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-interface BotAction {
+interface IBotAction {
     String execute(BotSession session, String input);
 }
 
-class AdminProfileStatus implements BotAction {
+class AdminProfileStatus implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         switch (input) {
@@ -25,7 +25,7 @@ class AdminProfileStatus implements BotAction {
     }
 }
 
-class GoToLabel implements BotAction {
+class GoToLabel implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         BotCommand newBotCommand = session.currentCommand.getCommandByLabel(input);
@@ -38,14 +38,14 @@ class GoToLabel implements BotAction {
 }
 
 
-class PutFnameToDatabase implements BotAction {
+class PutFnameToDatabase implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         CivillaDatabaseItem item;
         if (!session.tempItems.isEmpty()) {
             item = session.tempItems.get(0);
         } else {
-            item = new CivillaDatabaseItem(null, null, null, 0, false);
+            item = new CivillaDatabaseItem();
             session.tempItems.add(0, item);
         }
         item.id = session.chat_id;
@@ -57,7 +57,7 @@ class PutFnameToDatabase implements BotAction {
     }
 }
 
-class PutSnameToDatabase implements BotAction {
+class PutSnameToDatabase implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         CivillaDatabaseItem item = session.tempItems.get(0);
@@ -68,7 +68,7 @@ class PutSnameToDatabase implements BotAction {
     }
 }
 
-class PutBeerToDatabase implements BotAction {
+class PutBeerToDatabase implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         CivillaDatabaseItem item = session.tempItems.get(0);
@@ -87,11 +87,10 @@ class PutBeerToDatabase implements BotAction {
 }
 
 
-class IsItCorrect implements BotAction {
+class IsItCorrect implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         CivillaDatabaseItem item = session.tempItems.get(0);
-        session.setCurrentCommand(session.baseCommand);
         switch (input.toLowerCase()) {
             case "yes":
                 ICivillaDatabase databaseClient = new CivillaDatabaseDummyConnector();
@@ -117,7 +116,7 @@ class IsItCorrect implements BotAction {
     }
 }
 
-class ShowProfileData implements BotAction {
+class ShowProfileData implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         ICivillaDatabase client = new CivillaDatabaseDummyConnector();
@@ -141,7 +140,7 @@ class ShowProfileData implements BotAction {
     }
 }
 
-class ShowCitizensData implements BotAction {
+class ShowCitizensData implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         ICivillaDatabase client = new CivillaDatabaseDummyConnector();
@@ -172,7 +171,7 @@ class ShowCitizensData implements BotAction {
     }
 }
 
-class UseDominator implements BotAction {
+class UseDominator implements IBotAction {
     @Override
     public String execute(BotSession session, String input) {
         ICivillaAnalisys analisysClient = new CivillaAnalisysDummyConnector();
