@@ -199,8 +199,6 @@ Use case 6 Name (Узнать о системе Civilla)
 ![Restricted)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0280.png)
 ![Allowed)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0281.png)  
   
-# Use Case Speciﬁcation (Описание прецедента)  
-  
 ## 1. Use-Case 5 Мониторинг данных
 *[Укажите название прецедента.]*  
 
@@ -245,8 +243,7 @@ Use case 6 Name (Узнать о системе Civilla)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*  
 ![VisualData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/visualData.jpg)
   
-# Use Case Speciﬁcation (Описание прецедента)  
-  
+
 ## 1. Use-Case 6 Узнать о системе Civilla
 *[Укажите название прецедента.]*  
 
