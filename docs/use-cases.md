@@ -241,7 +241,7 @@ Use case 6 Name (Узнать о системе Civilla)
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*  
-![VisualData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/visualData.jpg)
+![VisualData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/visualData2.jpg)
   
 
 ## 1. Use-Case 6 Узнать о системе Civilla
