@@ -1,6 +1,6 @@
 # Use Case Speciﬁcation (Описание прецедента)  
   
-## 1. Use-Case 1 Name (Регистрация гражданина)
+## 1. Use-Case 1 Регистрация гражданина
 *[Укажите название прецедента.]*  
 
 Регистрация гражданина
@@ -52,7 +52,7 @@ Use case 6 Name (Узнать о системе Civilla)
 ![CorrectData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0252.png)
 ![DataSubmited)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0253.png)  
   
-  ## 1. Use-Case 2 Name (Просмотр личных данных)
+  ## 1. Use-Case 2 Просмотр личных данных
 *[Укажите название прецедента.]*  
 
 Просмотр личных данных
@@ -100,7 +100,7 @@ Use case 6 Name (Узнать о системе Civilla)
 ![ViewPsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0269.png)
 ![ViewProfileData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0270.png)  
   
-  ## 1. Use-Case 3 Name (Полицеский просматривает данные граждан)
+  ## 1. Use-Case 3 Полицеский просматривает данные граждан
 *[Укажите название прецедента.]*  
 
 Полицеский просматривает данные граждан
@@ -148,7 +148,7 @@ Use case 6 Name (Узнать о системе Civilla)
 ![ViewFullList)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0275.png)
 ![ViewIDCitizen)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0276.png)  
   
-  ## 1. Use-Case 4 Name (Полицейский получает доступ к доминатору)
+  ## 1. Use-Case 4 Полицейский получает доступ к доминатору
 *[Укажите название прецедента.]*  
 
 Полицейский получает доступ к доминатору
@@ -201,7 +201,7 @@ Use case 6 Name (Узнать о системе Civilla)
   
 # Use Case Speciﬁcation (Описание прецедента)  
   
-## 1. Use-Case 5 Name (Мониторинг данных)
+## 1. Use-Case 5 Мониторинг данных
 *[Укажите название прецедента.]*  
 
 Мониторинг данных
