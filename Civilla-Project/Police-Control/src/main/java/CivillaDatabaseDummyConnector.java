@@ -1,5 +1,3 @@
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -25,7 +23,7 @@ public class CivillaDatabaseDummyConnector implements ICivillaDatabase {
     }
 
     @Override
-    public CivillaDatabaseResponse delete(String id) {
+    public CivillaDatabaseResponse delete(String id) throws NotImplementedException {
         throw new NotImplementedException();
     }
 
