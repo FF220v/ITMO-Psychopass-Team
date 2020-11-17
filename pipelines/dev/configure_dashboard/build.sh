@@ -1,1 +1,1 @@
-docker build -t devtools/configure_dashboard .
+docker build -t civilladev/configure_dashboard .
