@@ -5,3 +5,5 @@
 3. run ./pipelines/dev/init.sh
 4. copy and use RSA private key with your ssh client
 5. relogin in order to apply changes
+6. do `docker login -u civilla -p PASSWORD` to access container registry
+7. do `./build.sh && ./deploy.sh` to deploy product to kubernetes on your (development) stage
