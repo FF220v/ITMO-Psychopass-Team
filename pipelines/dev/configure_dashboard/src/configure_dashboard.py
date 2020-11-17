@@ -8,3 +8,4 @@ if __name__ == "__main__":
     config["spec"]["template"]["spec"]["containers"][0]["args"] = list(args)
     with open("./work_dir/kubernetes_dashboard.yaml", "w+") as f:
         f.write(yaml.dump(config))
+    print("dashboard configured successfully")

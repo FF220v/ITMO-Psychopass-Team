@@ -9,10 +9,12 @@ pushd $HOME
     cat .kube/config
     echo ""
 
-    kubectl get deployment -nkube-system kubernetes-dashboard -o yaml > /tmp/kubernetes-dashboard.yaml
-    cat /tmp/kubernetes-dashboard.yaml | yq -j | jq '.spec.template.spec.args = ["--auto-generate-certificates", "--namespace=kube-system", "--enable-skip-login"]' > /tmp/kubernetes-dashboard.yaml
-    kubectl apply -f /tmp/kubernetes-dashboard.yaml
-    rm /tmp/kubernetes-dashboard.yaml
+    kubectl get deployment -nkube-system kubernetes-dashboard -o yaml > /tmp/kubernetes_dashboard.yaml
+    pushd ITMO-Psychopass-Team/pipelines/dev/configure_dashboard
+        sudo ./configure.sh
+    popd
+    kubectl apply -f /tmp/kubernetes_dashboard.yaml
+    rm /tmp/kubernetes_dashboard.yaml
 
     ssh-keygen -t rsa -f $HOME/.ssh/id_rsa -q -P "" <<< y >> /dev/null
     cat .ssh/id_rsa.pub > authorized_keys
