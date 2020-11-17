@@ -4,3 +4,4 @@
 2. git clone psychopass repo, ensure to clone to $HOME directory without overriding directory name 
 3. run ./pipelines/dev/init.sh
 4. copy and use RSA private key with your ssh client
+5. relogin in order to apply changes
