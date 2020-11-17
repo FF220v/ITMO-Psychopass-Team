@@ -12,7 +12,7 @@ pushd $HOME
     kubectl get deployment -nkube-system kubernetes-dashboard -o yaml > /tmp/kubernetes_dashboard.yaml
     pushd ITMO-Psychopass-Team/pipelines/dev/configure_dashboard
         sudo ./configure.sh
-    popd
+    popd > /dev/null
     kubectl apply -f /tmp/kubernetes_dashboard.yaml
     rm /tmp/kubernetes_dashboard.yaml
 
@@ -21,4 +21,4 @@ pushd $HOME
     echo -e "\nUse the following key to access dev machine through ssh"
     cat  .ssh/id_rsa
     echo ""
-popd
+popd > /dev/null
