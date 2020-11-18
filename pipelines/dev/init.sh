@@ -9,11 +9,13 @@ cat /home/ubuntu/.kube/config
 echo ""
 
 kubectl get deployment -nkube-system kubernetes-dashboard -o yaml > /tmp/kubernetes_dashboard.yaml
-sudo ./configure_dashboard/configure.sh
+pushd configure_dashboard > /dev/null
+    sudo ./configure.sh
+popd > /dev/null
 kubectl apply -f /tmp/kubernetes_dashboard.yaml
 rm /tmp/kubernetes_dashboard.yaml
 
-ssh-keygen -t rsa -f $HOME/.ssh/id_rsa -q -P "" <<< y >> /dev/null
+ssh-keygen -t rsa -f /home/ubuntu/.ssh/id_rsa -q -P "" <<< y >> /dev/null
 cat .ssh/id_rsa.pub > authorized_keys
 echo -e "\nUse the following key to access dev machine through ssh"
 cat  .ssh/id_rsa
