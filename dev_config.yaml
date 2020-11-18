@@ -1,3 +1,4 @@
 runcmd:
  - git clone https://github.com/FF220v/ITMO-Psychopass-Team.git /home/ubuntu/ITMO-Psychopass-Team --branch ak-dev-deploy
  - cd /home/ubuntu/ITMO-Psychopass-Team/pipelines/dev && ./init.sh
+ - chown -R ubuntu /home/ubuntu
