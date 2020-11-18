@@ -1,7 +1,7 @@
 ## This manual is dedicated to help setting up a civilla dev machine
 
 1. install multipass (usage of Hyper-V is preferable), use this link https://multipass.run/docs/installing-on-windows
-2. copy `dev_config.yaml` and put there your git info
+2. copy `dev_config.yaml` somethere and put your git info in there
 3. use `multipass launch 20.04 --name civilladev --mem 5G --cpus 2 --disk 50G --cloud-init dev_config.yaml`
 4. ask another developer to provide you with an RSA private key, use the key with your ssh client to connect to dev machine
 5. copy and paste configs to your `$HOME/.kube/config` in order to use kubectl from host machine
