@@ -4,5 +4,5 @@ iptables -P FORWARD ACCEPT
 snap install kubectl --classic
 
 apt update
-apt install docker -y
+apt install docker.io -y
 apt install jq -y
