@@ -1,4 +1,7 @@
 sudo ./packages_install.sh
+sudo groupadd docker
+sudo usermod -aG docker ubuntu
+iptables -P FORWARD ACCEPT
 
 microk8s enable dashboard dns
 
