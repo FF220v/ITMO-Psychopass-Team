@@ -1,3 +1,3 @@
 runcmd:
- - sudo -u ubuntu bash -c "cd $HOME && git clone https://github.com/FF220v/ITMO-Psychopass-Team.git --branch ak-dev-deploy && $HOME/ITMO-Psychopass-Team/pipelines/dev/init.sh"
+ - sudo -u ubuntu bash -c "cd $HOME && git clone https://github.com/FF220v/ITMO-Psychopass-Team.git --branch ak-dev-deploy"
  - sudo -u ubuntu bash -c "$HOME/ITMO-Psychopass-Team/pipelines/dev/init.sh"
