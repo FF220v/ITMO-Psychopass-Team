@@ -1,8 +1,4 @@
-snap install microk8s --classic --channel=1.18/stable
-iptables -P FORWARD ACCEPT
-
-snap install kubectl --classic
-
-apt update
-apt install docker.io -y
-apt install jq -y
+ssh-keygen -t rsa -f $HOME/.ssh/id_rsa -q -P "" <<< y >> /dev/null
+cat .ssh/id_rsa.pub > authorized_keys
+echo -e "\nUse the following key to access dev machine through ssh"
+cat  .ssh/id_rsa

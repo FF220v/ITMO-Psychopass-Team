@@ -6,7 +6,8 @@ pushd $HOME > /dev/null
     sudo usermod -aG microk8s $USER
     sudo chown -f -R $USER ~/.kube
     sudo chown $USER /tmp
-    iptables -P FORWARD ACCEPT
+    sudo chown $USER /run
+    sudo iptables -P FORWARD ACCEPT
 
     microk8s enable dashboard dns
 
@@ -16,7 +17,7 @@ pushd $HOME > /dev/null
 
     kubectl get deployment -nkube-system kubernetes-dashboard -o yaml > /tmp/kubernetes_dashboard.yaml
     pushd ITMO-Psychopass-Team/pipelines/dev/configure_dashboard > /dev/null
-        sudo ./configure.sh
+        ./configure.sh
     popd > /dev/null
     kubectl apply -f /tmp/kubernetes_dashboard.yaml
     rm /tmp/kubernetes_dashboard.yaml
