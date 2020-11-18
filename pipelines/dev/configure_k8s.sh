@@ -1,14 +1,6 @@
 pushd $HOME > /dev/null
-    sudo ITMO-Psychopass-Team/pipelines/dev/packages_install.sh
     
-    sudo groupadd docker
-    sudo usermod -aG docker $USER
-    sudo usermod -aG microk8s $USER
-    sudo chown -f -R $USER ~/.kube
-    sudo chown $USER /tmp
-    sudo chown $USER /run
     sudo iptables -P FORWARD ACCEPT
-
     microk8s enable dashboard dns
 
     mkdir .kube
