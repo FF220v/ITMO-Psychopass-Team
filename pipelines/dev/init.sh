@@ -5,7 +5,7 @@ pushd $HOME > /dev/null
     sudo usermod -aG docker $USER
     sudo usermod -aG microk8s $USER
     sudo chown -f -R $USER ~/.kube
-    sudo chown -f -R $USER ~/tmp
+    sudo chown $USER /tmp
     iptables -P FORWARD ACCEPT
 
     microk8s enable dashboard dns
