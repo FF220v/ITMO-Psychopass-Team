@@ -9,9 +9,9 @@ cat /home/ubuntu/.kube/config
 echo ""
 
 kubectl get deployment -nkube-system kubernetes-dashboard -o yaml > /tmp/kubernetes_dashboard.yaml
-pushd configure_dashboard > /dev/null
+cd configure_dashboard > /dev/null
     sudo ./configure.sh
-popd > /dev/null
+cd .. > /dev/null
 kubectl apply -f /tmp/kubernetes_dashboard.yaml
 rm /tmp/kubernetes_dashboard.yaml
 
