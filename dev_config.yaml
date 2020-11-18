@@ -1,6 +1,5 @@
 runcmd:
  - sudo -u ubuntu bash -c "cd ~ && git clone https://github.com/FF220v/ITMO-Psychopass-Team.git --branch ak-dev-deploy"
- - sudo -u ubuntu bash -c "sudo ~/ITMO-Psychopass-Team/pipelines/dev/packages_install.sh"
- - sudo -u ubuntu bash -c "~/ITMO-Psychopass-Team/pipelines/dev/snaps_install.sh"
- - sudo -u ubuntu bash -c "sudo ~/ITMO-Psychopass-Team/pipelines/dev/configure_perms.sh"
+ - bash -c "/home/ubuntu/ITMO-Psychopass-Team/pipelines/dev/packages_install.sh"
+ - bash -c "/home/ubuntu/ITMO-Psychopass-Team/pipelines/dev/configure_perms.sh"
  - sudo -u ubuntu bash -c "~/ITMO-Psychopass-Team/pipelines/dev/configure_k8s.sh"
