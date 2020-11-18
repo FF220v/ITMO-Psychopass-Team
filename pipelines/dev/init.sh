@@ -1,4 +1,4 @@
-pushd $HOME > dev/null
+pushd $HOME > /dev/null
     sudo ITMO-Psychopass-Team/pipelines/dev/packages_install.sh
     
     sudo groupadd docker
