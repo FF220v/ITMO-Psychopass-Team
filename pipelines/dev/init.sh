@@ -8,6 +8,7 @@ microk8s enable dashboard dns
 
 mkdir /home/ubuntu/.kube
 microk8s config > /home/ubuntu/.kube/config
+mkdir /.kube
 microk8s config > /.kube/config
 cat /home/ubuntu/.kube/config
 
