@@ -4,7 +4,7 @@ users:
    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0y7IeLrIYvz8+JyqVlAbYOnIi+mrLPK9x7j7eNu5BB3hSqaePorOsQ0x7ouoGLs9mLayiSSZASJ5wW1uhBGtlP6zV7EFS2Y+i3Z3SET8vj3QuvxB9ZPjoJ4jPPgKdagXUPjQarGAZdThXL8+49HyWx27zjTUH0fnnBAHNyoA/LoNYAZdhsHWgtWRvPwAIDX9KLUKZ2LNlQ2HGfXHbZ+rZLbLNHvHKAj5YT4U/xpo4NNv8/GnPcHWB6K2hb32/TkGkbmMQ0AYtgq57G1VdVtO+h5wVS/RTSFYRMfgzd5jcgSCYZ+XJik8Q/V2uUeGAER3K3Nc6HvX3LzRVc3Y9KYutdHkIS1BN7qq5RK08H2jUks3HJLlWEPrVDVv+ic3vxGAtxMtu3tiFGI/CrG5+nIRfG70j0AUDjrE2QijYG3i6tuq9S+AP9frLIt8RuQaQh6lTdRChA1R81RZJKLki7VjVhiSj1pj0VhSHXVxDQUTcP7wO8f7/lfzrtB6ymaONIjs= ubuntu@civilladev
 
 runcmd:
- - bash -c "STAGE=stage >> /etc/environment"
+ - bash -c "echo \"STAGE=stage\" >> /etc/environment"
  - sudo -u ubuntu bash -c "cd ~ && git clone https://github.com/FF220v/ITMO-Psychopass-Team.git --branch ak-dev-deploy"
  - sudo -u ubuntu bash -c "GIT_KEY=\"key\" GIT_LOGIN=\"login\" GIT_EMAIL=\"mail@mail\" GIT_USERNAME=\"username\" ~/ITMO-Psychopass-Team/scripts/dev/configure_git.sh"
  - bash -c "/home/ubuntu/ITMO-Psychopass-Team/scripts/dev/packages_install.sh"
