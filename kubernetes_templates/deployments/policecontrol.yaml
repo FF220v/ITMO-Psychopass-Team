@@ -4,12 +4,12 @@ metadata:
   namespace: {{ namespace }}
   name: civilla-policecontrol
   labels:
-    run: {{ namespace }}-civilla-policecontrol
+    run: civilla-policecontrol
 spec:
   replicas: 1
   selector:
     matchLabels:
-      run: {{ namespace }}-civilla-policecontrol
+      run: civilla-policecontrol
   template:
     metadata:
       labels:
