@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: civilla-ak
+  name: civilla-policecontrol
+  labels:
+    run: civilla-ak-civilla-policecontrol
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: civilla-ak-civilla-policecontrol
+  template:
+    metadata:
+      labels:
+        run: civilla-policecontrol
+    spec:
+      containers:
+      - name: civilla-policecontrol
+        image: IMAGE_HERE
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: civilla-ak
+
+---
