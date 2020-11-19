@@ -1,1 +1,1 @@
-docker build -t civilladev/kube_deploy .
+docker build -t civilladev/kube_config_tool .

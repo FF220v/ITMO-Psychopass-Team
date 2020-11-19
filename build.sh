@@ -1,4 +1,4 @@
-pushd $HOME/ITMO-Psychopass-Team/pipelines/builder > /dev/null
+pushd $HOME/ITMO-Psychopass-Team/scripts/builder > /dev/null
     ./build.sh
 popd > /dev/null
 

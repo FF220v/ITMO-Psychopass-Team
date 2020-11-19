@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: civilla-stage
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: civilla-stage
+  name: civilla-policecontrol
+  labels:
+    run: civilla-stage-civilla-policecontrol
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: civilla-stage-civilla-policecontrol
+  template:
+    metadata:
+      labels:
+        run: civilla-policecontrol
+    spec:
+      containers:
+      - name: civilla-policecontrol
+        image: civilla/policecontrol@sha256:b8235664dd018f220fc883a6937606ddada0b2ce058cda77a6d29f6bc95f9f5a
+
+---
