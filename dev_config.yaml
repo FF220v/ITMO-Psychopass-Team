@@ -5,8 +5,8 @@ users:
 
 runcmd:
  - sudo -u ubuntu bash -c "cd ~ && git clone https://github.com/FF220v/ITMO-Psychopass-Team.git --branch ak-dev-deploy"
- - sudo -u ubuntu bash -c "GIT_KEY=\"key\" GIT_LOGIN=\"login\" GIT_EMAIL=\"mail@mail\" GIT_USERNAME=\"username\" ~/ITMO-Psychopass-Team/pipelines/dev/configure_git.sh"
- - bash -c "/home/ubuntu/ITMO-Psychopass-Team/pipelines/dev/packages_install.sh"
- - bash -c "/home/ubuntu/ITMO-Psychopass-Team/pipelines/dev/configure_perms.sh"
- - sudo -u ubuntu bash -c "/home/ubuntu/ITMO-Psychopass-Team/pipelines/dev/install_sops_keys.sh"
- - sudo -u ubuntu bash -c "~/ITMO-Psychopass-Team/pipelines/dev/configure_k8s.sh"
+ - sudo -u ubuntu bash -c "GIT_KEY=\"key\" GIT_LOGIN=\"login\" GIT_EMAIL=\"mail@mail\" GIT_USERNAME=\"username\" ~/ITMO-Psychopass-Team/scripts/dev/configure_git.sh"
+ - bash -c "/home/ubuntu/ITMO-Psychopass-Team/scripts/dev/packages_install.sh"
+ - bash -c "/home/ubuntu/ITMO-Psychopass-Team/scripts/dev/configure_perms.sh"
+ - sudo -u ubuntu bash -c "/home/ubuntu/ITMO-Psychopass-Team/scripts/dev/install_sops_keys.sh"
+ - sudo -u ubuntu bash -c "~/ITMO-Psychopass-Team/scripts/dev/configure_k8s.sh"
