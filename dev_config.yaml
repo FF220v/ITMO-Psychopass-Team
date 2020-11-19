@@ -8,4 +8,5 @@ runcmd:
  - sudo -u ubuntu bash -c "cd ~ && git clone https://github.com/FF220v/ITMO-Psychopass-Team.git --branch ak-dev-deploy"
  - bash -c "/home/ubuntu/ITMO-Psychopass-Team/pipelines/dev/packages_install.sh"
  - bash -c "/home/ubuntu/ITMO-Psychopass-Team/pipelines/dev/configure_perms.sh"
+ - bash -c "/home/ubuntu/ITMO-Psychopass-Team/pipelines/dev/install_sops_keys.sh"
  - sudo -u ubuntu bash -c "~/ITMO-Psychopass-Team/pipelines/dev/configure_k8s.sh"
