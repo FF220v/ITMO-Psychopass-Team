@@ -1,2 +1,6 @@
 *.idea
 *target
+*.save
+*.key
+*~$
+*/deploy_tmp
