@@ -1,6 +1,6 @@
+package common;
+
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
-import java.lang.invoke.MethodHandles.Lookup;
 
 public class Logging {
     public static Logger log = Logging.initialize_logger();
