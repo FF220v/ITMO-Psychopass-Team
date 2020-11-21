@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 ssh-keygen -t rsa -f $HOME/.ssh/id_rsa -q -P "" <<< y >> /dev/null
 cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys

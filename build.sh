@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 pushd $HOME/ITMO-Psychopass-Team/scripts/builder > /dev/null
     ./build.sh
 popd > /dev/null

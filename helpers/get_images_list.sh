@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 get_image(){
    docker inspect --format='{{index .RepoDigests 0}}' $IMAGE
