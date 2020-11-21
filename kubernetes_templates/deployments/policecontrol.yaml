@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: {{ namespace }}
-  name: civilla-policecontrol
+  name: civilla-policecontrolproxy
   labels:
-    run: civilla-policecontrol
+    run: civilla-policecontrolproxy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      run: civilla-policecontrol
+      run: civilla-policecontrolproxy
   template:
     metadata:
       labels:
-        run: civilla-policecontrol
+        run: civilla-policecontrolproxy
     spec:
       containers:
-      - name: civilla-policecontrol
-        image: {{ civilla_policecontrol_image }}
+      - name: civilla-policecontrolproxy
+        image: {{ civilla_policecontrolproxy_image }}
 

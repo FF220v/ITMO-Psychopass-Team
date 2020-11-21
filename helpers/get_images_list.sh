@@ -6,6 +6,6 @@ get_image(){
 
 cat <<EOF
 {
-    "civilla_policecontrol_image": "`IMAGE=civilla/policecontrol get_image`"
+    "civilla_policecontrolproxy_image": "`IMAGE=civilla/policecontrolproxy get_image`"
 }
 EOF
