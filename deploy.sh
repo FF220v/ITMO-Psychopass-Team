@@ -1,4 +1,4 @@
-pushd ~/ITMO-Psychopass-Team/Civilla-Project > /dev/null
+pushd ~/ITMO-Psychopass-Team/sources/projects > /dev/null
     ../helpers/docker_login.sh
     for DIR in */; do
         echo "Pushing images for project $DIR"
