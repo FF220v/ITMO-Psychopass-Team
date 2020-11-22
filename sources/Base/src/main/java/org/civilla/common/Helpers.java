@@ -1,3 +1,5 @@
+package org.civilla.common;
+
 public class Helpers {
     public static boolean inArrayLower(String str, String[] arr){
         for (String s: arr)

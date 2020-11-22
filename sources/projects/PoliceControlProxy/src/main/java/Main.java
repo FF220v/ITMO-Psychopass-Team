@@ -1,7 +1,7 @@
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import common.Logging;
+import org.civilla.common.Logging;
 
 public class Main {
 
@@ -12,7 +12,7 @@ public class Main {
         Logging.log.info("Police Control bot initialized");
 
         try {
-            botsApi.registerBot(new CivillaBot());
+            botsApi.registerBot(new LongPollHandler());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
