@@ -1,5 +1,7 @@
+import com.nurkiewicz.asyncretry.RetryContext;
 import org.asynchttpclient.Response;
 import org.civilla.requests.AsyncHttpRequests;
+import org.civilla.requests.AsyncHttpRequestsWithRetries;
 import org.civilla.requests.RetryWrapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,8 +35,8 @@ public class LongPollHandler extends TelegramLongPollingBot {
             updateJson.put("message", message_text);
             updatesJson.put(updateJson);
 
-            Logging.log.info(String.join(" ", "Incoming message:", message_text,
-                    "From chat_id:", Long.toString(chat_id), restricted ? "Message was restricted!" : ""));
+            Logging.log.info(String.join(" ", "Incoming message: [", message_text,
+                    "] chat_id:", Long.toString(chat_id), restricted ? "Message was restricted!" : ""));
         }
         JSONObject result = new JSONObject();
         result.put("values", updatesJson);
@@ -50,17 +52,7 @@ public class LongPollHandler extends TelegramLongPollingBot {
     @Override
     public void onUpdatesReceived(List<Update> updates) {
         JSONObject body = processUpdates(updates);
-        RetryWrapper retriedRequest = new RetryWrapper(1000, 1, 5) {
-            @Override
-            public CompletableFuture<Response> action() {
-                return AsyncHttpRequests.post(getBotServerUrl(), new HashMap<>(), body.toString());
-            }
-            @Override
-            public boolean retryOnResult(CompletableFuture<Response> future) throws ExecutionException, InterruptedException {
-                return future.get().getStatusCode() > 500;
-            }
-        };
-        CompletableFuture<Response> future = retriedRequest.execute();
+        AsyncHttpRequestsWithRetries.post(getBotServerUrl(), new HashMap<>(), body.toString());
     }
 
     @Override

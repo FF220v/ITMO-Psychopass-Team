@@ -1,5 +1,6 @@
 package org.civilla.requests;
 import com.nurkiewicz.asyncretry.AsyncRetryExecutor;
+import com.nurkiewicz.asyncretry.RetryContext;
 import com.nurkiewicz.asyncretry.RetryExecutor;
 import org.asynchttpclient.Response;
 import java.util.concurrent.CompletableFuture;
@@ -13,8 +14,8 @@ public abstract class RetryWrapper {
     int multiplier;
     int retriesCount;
 
-    public abstract CompletableFuture<Response> action();
-    public abstract boolean retryOnResult(CompletableFuture<Response> future) throws ExecutionException, InterruptedException;
+    public abstract CompletableFuture<Response> action(RetryContext retryContext);
+    public abstract boolean retryOnResult(CompletableFuture<Response> future, RetryContext retryContext) throws ExecutionException, InterruptedException;
 
     public RetryWrapper(int initialDelay, int multiplier, int retriesCount){
         this.initialDelay = initialDelay;
@@ -32,8 +33,8 @@ public abstract class RetryWrapper {
                 withUniformJitter();
 
         return retryExecutor.getFutureWithRetry(retryContext -> {
-            CompletableFuture<Response> future = action();
-            if (retryContext.getRetryCount() <= retriesCount && retryOnResult(future)) {
+            CompletableFuture<Response> future = action(retryContext);
+            if (retryContext.getRetryCount() < retriesCount && retryOnResult(future, retryContext)) {
                 throw new RetryIsNeeded();
             }
             return future;
