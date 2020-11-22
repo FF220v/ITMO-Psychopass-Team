@@ -1,79 +1,39 @@
 package org.civilla.requests;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.async.Callback;
-import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mashape.unirest.request.GetRequest;
-import com.mashape.unirest.request.HttpRequestWithBody;
-import org.civilla.common.Logging;
-import org.json.JSONObject;
-import java.util.Iterator;
-import java.util.concurrent.Future;
+import org.asynchttpclient.*;
+import org.asynchttpclient.util.HttpConstants;
+import java.util.HashMap;
+import java.util.concurrent.CompletableFuture;
 
+public class AsyncHttpRequests{
 
-class asyncRequestsConfig{
-    public static boolean configured;
-    public static void configure() {
-        if (!configured)
-            Unirest.setConcurrency(200, 200);
-            Unirest.setTimeouts(10000, 60000);
-        asyncRequestsConfig.configured = true;
-    }
-}
+    protected static AsyncHttpClient client = Dsl.asyncHttpClient();
 
-
-public class AsyncHttpRequests implements AsyncHttpRequestsInterface {
-
-    public AsyncHttpRequests(){
-        asyncRequestsConfig.configure();
+    public static CompletableFuture<Response> get(String url, HashMap<String, String> headers) {
+        return makeRequestFuture(url, headers, "", HttpConstants.Methods.GET);
     }
 
-    protected Callback<JsonNode> getCallback(String url, String body){
-        return new DummyCallback();
+    public static CompletableFuture<Response> post(String url, HashMap<String, String> headers, String body) {
+        return makeRequestFuture(url, headers, body, HttpConstants.Methods.POST);
     }
 
-    public Future<HttpResponse<JsonNode>> get(String url, JSONObject headers){
-        GetRequest request = Unirest.get(url);
-        request = RequestHelper.prepareHeaders(request, headers);
-        return request.asJsonAsync(getCallback(url, ""));
+    public static CompletableFuture<Response> patch(String url, HashMap<String, String> headers, String body) {
+        return makeRequestFuture(url, headers, body, HttpConstants.Methods.PATCH);
     }
 
-    public Future<HttpResponse<JsonNode>> post(String url, JSONObject headers, String body){
-        HttpRequestWithBody request = Unirest.post(url);
-        request = RequestHelper.prepareHeaders(request, headers);
-        return request.body(body).asJsonAsync(getCallback(url, body));
-    }
-
-    public Future<HttpResponse<JsonNode>> patch(String url, JSONObject headers, String body){
-        HttpRequestWithBody request = Unirest.patch(url);
-        request = RequestHelper.prepareHeaders(request, headers);
-        return request.body(body).asJsonAsync(getCallback(url, body));
+    protected static CompletableFuture<Response> makeRequestFuture(String url, HashMap<String, String> headers,
+                                                                   String body, String method){
+        RequestBuilder requestBuilder = new RequestBuilder(method).setUrl(url).setBody(body);
+        requestBuilder = RequestHelper.prepareHeaders(requestBuilder, headers);
+        Request request = requestBuilder.build();
+        return client.executeRequest(request).toCompletableFuture();
     }
 }
 
 class RequestHelper {
-    public static HttpRequestWithBody prepareHeaders(HttpRequestWithBody request, JSONObject headers){
-        for (Iterator<String> it = headers.keys(); it.hasNext(); ) {
-            String key = it.next();
-            request = request.header(key, headers.get(key).toString());
+    public static RequestBuilder prepareHeaders(RequestBuilder requestBuilder, HashMap<String, String> headers) {
+        for (String key : headers.keySet()) {
+            requestBuilder = requestBuilder.setHeader(key, headers.get(key));
         }
-        return request;
-    }
-
-    public static GetRequest prepareHeaders(GetRequest request, JSONObject headers){
-        for (Iterator<String> it = headers.keys(); it.hasNext(); ) {
-            String key = it.next();
-            request = request.header(key, headers.get(key).toString());
-        }
-        return request;
+        return requestBuilder;
     }
 }
-
-class DummyCallback implements Callback<JsonNode>{
-    public void failed(UnirestException e) {}
-    public void completed(HttpResponse response) {}
-    public void cancelled() {}
-}
-
-

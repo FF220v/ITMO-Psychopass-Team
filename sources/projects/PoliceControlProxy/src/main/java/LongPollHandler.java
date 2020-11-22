@@ -1,13 +1,15 @@
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import org.civilla.requests.LoggingAsyncHttpRequests;
+import org.asynchttpclient.Response;
+import org.civilla.requests.AsyncHttpRequests;
+import org.civilla.requests.RetryWrapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.civilla.common.Logging;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.Future;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class LongPollHandler extends TelegramLongPollingBot {
 
@@ -48,8 +50,17 @@ public class LongPollHandler extends TelegramLongPollingBot {
     @Override
     public void onUpdatesReceived(List<Update> updates) {
         JSONObject body = processUpdates(updates);
-        LoggingAsyncHttpRequests req = new LoggingAsyncHttpRequests();
-        Future<HttpResponse<JsonNode>> request = req.post(getBotServerUrl(), new JSONObject(), body.toString());
+        RetryWrapper retriedRequest = new RetryWrapper(1000, 1, 5) {
+            @Override
+            public CompletableFuture<Response> action() {
+                return AsyncHttpRequests.post(getBotServerUrl(), new HashMap<>(), body.toString());
+            }
+            @Override
+            public boolean retryOnResult(CompletableFuture<Response> future) throws ExecutionException, InterruptedException {
+                return future.get().getStatusCode() > 500;
+            }
+        };
+        CompletableFuture<Response> future = retriedRequest.execute();
     }
 
     @Override
