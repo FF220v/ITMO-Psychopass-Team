@@ -1,13 +1,12 @@
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
+import org.civilla.requests.LoggingAsyncHttpRequests;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.civilla.common.Logging;
-import org.civilla.common.AsyncHttpRequests;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class LongPollHandler extends TelegramLongPollingBot {
@@ -49,7 +48,7 @@ public class LongPollHandler extends TelegramLongPollingBot {
     @Override
     public void onUpdatesReceived(List<Update> updates) {
         JSONObject body = processUpdates(updates);
-        AsyncHttpRequests req = new AsyncHttpRequests(true);
+        LoggingAsyncHttpRequests req = new LoggingAsyncHttpRequests();
         Future<HttpResponse<JsonNode>> request = req.post(getBotServerUrl(), new JSONObject(), body.toString());
     }
 

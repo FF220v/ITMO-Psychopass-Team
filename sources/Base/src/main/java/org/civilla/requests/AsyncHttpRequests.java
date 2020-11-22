@@ -1,4 +1,4 @@
-package org.civilla.common;
+package org.civilla.requests;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -6,26 +6,30 @@ import com.mashape.unirest.http.async.Callback;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
 import com.mashape.unirest.request.HttpRequestWithBody;
+import org.civilla.common.Logging;
 import org.json.JSONObject;
 import java.util.Iterator;
 import java.util.concurrent.Future;
 
-public class AsyncHttpRequests {
 
-    boolean log = false;
+class asyncRequestsConfig{
+    public static boolean configured;
+    public static void configure() {
+        if (!configured)
+            Unirest.setConcurrency(200, 200);
+            Unirest.setTimeouts(10000, 60000);
+        asyncRequestsConfig.configured = true;
+    }
+}
+
+
+public class AsyncHttpRequests implements AsyncHttpRequestsInterface {
 
     public AsyncHttpRequests(){
         asyncRequestsConfig.configure();
     }
 
-    public AsyncHttpRequests(boolean log){
-        asyncRequestsConfig.configure();
-        this.log = log;
-    }
-
-    public Callback<JsonNode> getCallback(String url, String body){
-        if (log)
-             return new LoggingCallback(url, body);
+    protected Callback<JsonNode> getCallback(String url, String body){
         return new DummyCallback();
     }
 
@@ -50,51 +54,19 @@ public class AsyncHttpRequests {
 
 class RequestHelper {
     public static HttpRequestWithBody prepareHeaders(HttpRequestWithBody request, JSONObject headers){
-        Iterator<String> keys = headers.keys();
-        while(keys.hasNext()) {
-            String key = keys.next();
+        for (Iterator<String> it = headers.keys(); it.hasNext(); ) {
+            String key = it.next();
             request = request.header(key, headers.get(key).toString());
         }
         return request;
     }
 
     public static GetRequest prepareHeaders(GetRequest request, JSONObject headers){
-        Iterator<String> keys = headers.keys();
-        while(keys.hasNext()) {
-            String key = keys.next();
+        for (Iterator<String> it = headers.keys(); it.hasNext(); ) {
+            String key = it.next();
             request = request.header(key, headers.get(key).toString());
         }
         return request;
-    }
-}
-
-class asyncRequestsConfig{
-    public static boolean configured;
-    public static void configure() {
-        if (!configured)
-            Unirest.setConcurrency(100, 20);
-        asyncRequestsConfig.configured = true;
-    }
-}
-
-class LoggingCallback implements Callback<JsonNode>{
-    String url;
-    String body;
-    LoggingCallback(String url, String body){
-        this.url = url;
-        this.body = body;
-    }
-    public void failed(UnirestException e) {
-        Logging.log.severe(String.join(" ","Request failed: ", url, body));
-        e.printStackTrace();
-    }
-    public void completed(HttpResponse response) {
-        Logging.log.info(String.join(" ", "Request completed: ", url, body,
-                "status:", Integer.toString(response.getStatus()),
-                "response:", response.getBody().toString()));
-    }
-    public void cancelled() {
-        Logging.log.severe(String.join(" ", "Request was cancelled", url, body));
     }
 }
 
@@ -103,4 +75,5 @@ class DummyCallback implements Callback<JsonNode>{
     public void completed(HttpResponse response) {}
     public void cancelled() {}
 }
+
 
