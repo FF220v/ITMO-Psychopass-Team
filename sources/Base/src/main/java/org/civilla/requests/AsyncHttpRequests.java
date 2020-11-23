@@ -6,13 +6,13 @@ import org.civilla.common.Logging;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class AsyncHttpRequests{
 
     protected static AsyncHttpClient client = Dsl.asyncHttpClient();
+    protected static ExecutorService listenersPool = Executors.newCachedThreadPool();
 
     public static CompletableFuture<Response> get(String url, HashMap<String, String> headers) {
         return makeRequestFuture(url, headers, "", HttpConstants.Methods.GET);
@@ -44,11 +44,10 @@ public class AsyncHttpRequests{
                 Logging.log.info(String.join(" ", "Response", requestId, method, url,
                         Integer.toString(listenableFuture.get().getStatusCode()),
                         listenableFuture.get().getResponseBody()));
-                Logging.log.info("");
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }, Executors.newCachedThreadPool()).toCompletableFuture();
+        }, listenersPool).toCompletableFuture();
     }
 }
 

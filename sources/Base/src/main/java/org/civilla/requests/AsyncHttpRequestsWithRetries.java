@@ -2,6 +2,7 @@ package org.civilla.requests;
 import com.nurkiewicz.asyncretry.RetryContext;
 import org.asynchttpclient.Response;
 import org.asynchttpclient.util.HttpConstants;
+import org.civilla.common.Logging;
 
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
@@ -9,16 +10,20 @@ import java.util.concurrent.ExecutionException;
 
 public class AsyncHttpRequestsWithRetries extends AsyncHttpRequests{
 
-    protected static boolean IsBadStatus(CompletableFuture<Response> future) throws ExecutionException, InterruptedException {
-        boolean isBadStatus = future.get().getStatusCode() >= 500;
-
-        return future.get().getStatusCode() >= 500;
+    protected static boolean IsBadStatus(CompletableFuture<Response> future) {
+        boolean isBadStatus = true;
+        try {
+            isBadStatus = future.get().getStatusCode() >= 500;
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return isBadStatus;
     }
 
     // This provides ~10 seconds of retries
     protected static int initialDelay = 200;
     protected static int multiplier = 2;
-    protected static int retriesCount = 5;
+    protected static int retriesCount = 6;
 
 
     public static CompletableFuture<Response> get(String url, HashMap<String, String> headers) {
@@ -66,7 +71,7 @@ public class AsyncHttpRequestsWithRetries extends AsyncHttpRequests{
                 return AsyncHttpRequests.makeRequestFuture(url, headers, body, method);
             }
             @Override
-            public boolean retryOnResult(CompletableFuture<Response> future, RetryContext retryContext) throws ExecutionException, InterruptedException {
+            public boolean retryOnResult(CompletableFuture<Response> future, RetryContext retryContext) {
                 return IsBadStatus(future);
             }
         };
