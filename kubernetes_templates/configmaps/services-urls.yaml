@@ -6,5 +6,5 @@ metadata:
 data:
   services_urls.json: |
     {
-        "policecontrolserver": "policecontrolserver.service.{{ namespace }}"
+        "policecontrolserver": "civilla-policecontrolserver-service.{{ namespace }}"
     }
