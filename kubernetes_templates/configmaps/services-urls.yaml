@@ -4,4 +4,7 @@ metadata:
   name: services-urls
   namespace: {{ namespace }}
 data:
-  policecontrolserver: policecontrolserver.service.{{ namespace }}
+  services_urls.json: |
+    {
+        "policecontrolserver": "policecontrolserver.service.{{ namespace }}"
+    }
