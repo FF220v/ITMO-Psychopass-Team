@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-docker volume rm civilla-maven-repo
+# docker volume rm civilla-maven-repo
 docker volume create --name civilla-maven-repo
 
 pushd $HOME/ITMO-Psychopass-Team/scripts/builder > /dev/null

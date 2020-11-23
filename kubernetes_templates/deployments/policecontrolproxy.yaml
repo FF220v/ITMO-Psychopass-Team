@@ -23,12 +23,14 @@ spec:
             mountPath: "/project/kubernetes/bot_credentials"
             readOnly: true
           - name: services-urls
-            mountPath: "/project/kubernetes/services_urls.json"
+            mountPath: "/project/kubernetes/services_urls"
       volumes:
         - name: bot-credentials
           secret:
             secretName: bot-credentials
         - name: services-urls
+          configMap:
+            name: services-urls
           
 
 
