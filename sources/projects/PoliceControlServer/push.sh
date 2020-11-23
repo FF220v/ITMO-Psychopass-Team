@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker push civilla/policecontrolproxy
+docker push civilla/policecontrolserver

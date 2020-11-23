@@ -1,5 +1,6 @@
 import json
 import os
+import base64
 from jinja2 import Template
 
 if __name__ == "__main__":

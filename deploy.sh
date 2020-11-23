@@ -20,5 +20,5 @@ pushd ~/ITMO-Psychopass-Team > /dev/null
         ./gen_config.sh ~/ITMO-Psychopass-Team/deploy_tmp
     popd > /dev/null
     kubectl apply -f deploy_tmp/kube_config.yaml
-    rm -rf deploy_tmp
+#    rm -rf deploy_tmp
 popd > /dev/null
