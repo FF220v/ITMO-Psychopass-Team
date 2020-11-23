@@ -65,7 +65,7 @@ public class LongPollHandler extends TelegramLongPollingBot {
     public String getBotServerUrl() {
         return String.join("", "http://",
                 KubeConfigLoader.servicesUrls().get(KubeConfigLoader.POLICE_CONTROL_SERVER).toString(),
-                "/messageHandler");
+                "/message");
     }
 
     public int getMaxMessageSize() { return 50; }

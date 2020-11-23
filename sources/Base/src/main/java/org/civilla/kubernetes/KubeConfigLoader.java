@@ -15,5 +15,4 @@ public class KubeConfigLoader {
     public static JSONObject servicesUrls() {
         return Helpers.readJson("mounted_volumes/services_urls/services_urls.json");
     }
-
 }

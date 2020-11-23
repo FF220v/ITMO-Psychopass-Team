@@ -42,4 +42,16 @@ public class Helpers {
         }
         return (JSONObject) obj;
     }
+
+    public static JSONObject stringToJson(String jsonString) {
+        JSONParser parser = new JSONParser();
+        Object obj = null;
+        try {
+            obj = parser.parse(jsonString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return (JSONObject) obj;
+    }
+
 }
