@@ -1,8 +1,4 @@
-import com.nurkiewicz.asyncretry.RetryContext;
-import org.asynchttpclient.Response;
-import org.civilla.requests.AsyncHttpRequests;
 import org.civilla.requests.AsyncHttpRequestsWithRetries;
-import org.civilla.requests.RetryWrapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -10,8 +6,6 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.civilla.common.Logging;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 public class LongPollHandler extends TelegramLongPollingBot {
 

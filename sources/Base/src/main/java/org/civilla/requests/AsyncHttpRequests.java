@@ -26,6 +26,10 @@ public class AsyncHttpRequests{
         return makeRequestFuture(url, headers, body, HttpConstants.Methods.PATCH);
     }
 
+    public static CompletableFuture<Response> put(String url, HashMap<String, String> headers, String body) {
+        return makeRequestFuture(url, headers, body, HttpConstants.Methods.PUT);
+    }
+
     protected static CompletableFuture<Response> makeRequestFuture(String url, HashMap<String, String> headers,
                                                                    String body, String method){
         RequestBuilder requestBuilder = new RequestBuilder(method).setUrl(url).setBody(body);
@@ -40,6 +44,7 @@ public class AsyncHttpRequests{
                 Logging.log.info(String.join(" ", "Response", requestId, method, url,
                         Integer.toString(listenableFuture.get().getStatusCode()),
                         listenableFuture.get().getResponseBody()));
+                Logging.log.info("");
             } catch (Exception e) {
                 e.printStackTrace();
             }
