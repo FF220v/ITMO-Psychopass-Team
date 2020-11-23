@@ -33,16 +33,6 @@ public class Helpers {
     }
 
     public static JSONObject readJson(String filepath) {
-        String current = null;
-        try {
-            current = new java.io.File( "." ).getCanonicalPath();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Current dir:"+current);
-        String currentDir = System.getProperty("user.dir");
-        System.out.println("Current dir using System:" +currentDir);
-
         JSONParser parser = new JSONParser();
         Object obj = null;
         try {
