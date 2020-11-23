@@ -16,7 +16,7 @@ public class KubeConfigLoader {
     public static String POLICE_CONTROL_SERVER = "policecontrolserver";
 
     public static JSONObject getBotSecrets() {
-        return Helpers.readJson("kubernetes/bot_credentials.json");
+        return Helpers.readJson("kubernetes/bot_credentials/bot_credentials.json");
     }
 
     public static JSONObject servicesUrls() {
