@@ -1,3 +1,4 @@
+import org.civilla.kubernetes.KubeConfigLoader;
 import org.civilla.requests.AsyncHttpRequestsWithRetries;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -51,16 +52,18 @@ public class LongPollHandler extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "Civilla_Bot";
+        return KubeConfigLoader.getBotSecrets().get("name").toString();
     }
 
     @Override
     public String getBotToken() {
-        return "1018032526:AAGvccDnJcHYl-jxbW_H1RWKuQQpmxY3gzQ";
+        return KubeConfigLoader.getBotSecrets().get("token").toString();
     }
 
     public String getBotServerUrl() {
-        return "http://127.0.0.1:8000/";
+        return String.join("", "http://",
+                KubeConfigLoader.servicesUrls().get(KubeConfigLoader.POLICE_CONTROL_SERVER).toString(),
+                "/messageHandler");
     }
 
     public int getMaxMessageSize() { return 50; }

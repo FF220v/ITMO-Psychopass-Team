@@ -2,8 +2,6 @@ package org.civilla.requests;
 import com.nurkiewicz.asyncretry.RetryContext;
 import org.asynchttpclient.Response;
 import org.asynchttpclient.util.HttpConstants;
-import org.civilla.common.Logging;
-
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
