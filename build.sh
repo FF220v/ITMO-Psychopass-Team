@@ -2,7 +2,6 @@
 
 docker volume rm civilla-maven-repo
 docker volume create --name civilla-maven-repo
-docker run -it -v civilla-maven-repo:/root/.m2 civilladev/builder mvn archetype:generate
 
 pushd $HOME/ITMO-Psychopass-Team/scripts/builder > /dev/null
     ./build.sh
