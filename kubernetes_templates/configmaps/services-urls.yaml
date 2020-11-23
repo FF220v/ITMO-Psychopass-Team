@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: game-demo
+  name: services-urls
   namespace: {{ namespace }}
 data:
   services_urls.json: |

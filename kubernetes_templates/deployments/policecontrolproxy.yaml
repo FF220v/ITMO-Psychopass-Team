@@ -20,16 +20,15 @@ spec:
         image: {{ civilla_policecontrolproxy_image }}
         volumeMounts:
           - name: bot-credentials
-            mountPath: "/project/kubernetes"
+            mountPath: "/project/kubernetes/bot_credentials.json"
             readOnly: true
           - name: services-urls
-            mountPath: "/project/kubernetes"
+            mountPath: "/project/kubernetes/services_urls.json"
       volumes:
         - name: bot-credentials
           secret:
             secretName: bot-credentials
         - name: services-urls
-          secret:
-            secretName: bot-credentials
+          
 
 

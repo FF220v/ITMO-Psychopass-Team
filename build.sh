@@ -7,7 +7,7 @@ pushd $HOME/ITMO-Psychopass-Team/scripts/builder > /dev/null
     ./build.sh
 popd > /dev/null
 
-pushd ~/ITMO-Psychopass-Team/sources/projects/Base > /dev/null
+pushd ~/ITMO-Psychopass-Team/sources/Base > /dev/null
     ./add_to_repo.sh
 popd > /dev/null
 
