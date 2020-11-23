@@ -20,7 +20,7 @@ public class KubeConfigLoader {
     }
 
     public static JSONObject servicesUrls() {
-        return Helpers.readJson("kubernetes/service_urls/services_urls.json");
+        return Helpers.readJson("kubernetes/services_urls/services_urls.json");
     }
 
 }
