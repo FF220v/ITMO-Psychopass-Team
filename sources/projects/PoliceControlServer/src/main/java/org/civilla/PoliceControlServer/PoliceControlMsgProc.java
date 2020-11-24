@@ -1,11 +1,17 @@
 package org.civilla.PoliceControlServer;
-
+import org.civilla.kubernetes.KubeConfigLoader;
+import org.civilla.storage.DummyBotSessionConnector;
+import org.civilla.storage.IStorageConnector;
+import org.telegram.telegrambots.bots.DefaultAbsSender;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import org.civilla.storage.BotSession;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class PoliceControlMsgProc {
     protected static HashMap<String, BotCmd> cmdMap = CmdMap.initCmdMap();
@@ -17,13 +23,48 @@ public class PoliceControlMsgProc {
         this.requestId = requestId;
     }
     public String processMessage(){
+        long chat_id = message.chat_id;
+        IStorageConnector<BotSession> sessionsConnector = new DummyBotSessionConnector();
+        BotSession session = sessionsConnector.get(Long.toString(chat_id));
+
+        if (session == null) {
+            session = new BotSession();
+            session.chat_id = Long.toString(message.chat_id);
+            session.msgId = CmdMap.START;
+        }
+        BotCmd cmd = cmdMap.get(session.msgId);
+        CallbackResp callbackResp = cmd.callback(message.text, session);
+        callbackResp.botSession.msgId = callbackResp.next_id;
+
+        BotCmd newCmd = cmdMap.get(callbackResp.next_id);
+        InitResp initResp = newCmd.init(callbackResp.botSession);
+
+        sessionsConnector.update(initResp.botSession);
+
+        SendMessage telegramMessage = new SendMessage().setChatId(message.chat_id);
+        telegramMessage.
+                setText((callbackResp.response == null ? "" : (callbackResp.response + "\n\n")) +
+                        (initResp.response == null ? "" : initResp.response));
+        telegramMessage.setReplyMarkup(initResp.keyboard);
+
+        DefaultAbsSender sender = new DefaultAbsSender(new DefaultBotOptions()) {
+            @Override
+            public String getBotToken() {
+                return KubeConfigLoader.getBotSecrets().get("token").toString();
+            }
+        };
+        try {
+            sender.execute(telegramMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+
         return "ok";
     }
 }
 
 class CmdMap{
     public static String START = "start";
-    public static String EDIT_DATA = "edit_data";
     public static String VIEW_DATA = "view_data";
     public static String ABOUT_US = "about_us";
     public static String FIRST_NAME = "first_name";
@@ -37,14 +78,13 @@ class CmdMap{
 
     public static HashMap<String, BotCmd> initCmdMap(){
         HashMap<String, BotCmd> cmdMap = new HashMap<>();
-        cmdMap.put("start", new Start());
-        cmdMap.put("about_us", new AboutUs());
-        cmdMap.put("first_name", new FirstName());
-        cmdMap.put("second_name", new SecondName());
-        cmdMap.put("beer", new Beer());
-        cmdMap.put("is_correct", new IsCorrect());
-        cmdMap.put("choose_role", new ChooseRole());
-
+        cmdMap.put(START, new Start());
+        cmdMap.put(ABOUT_US, new AboutUs());
+        cmdMap.put(FIRST_NAME, new FirstName());
+        cmdMap.put(SECOND_NAME, new SecondName());
+        cmdMap.put(BEER, new Beer());
+        cmdMap.put(IS_CORRECT, new IsCorrect());
+        cmdMap.put(CHOOSE_ROLE, new ChooseRole());
         //cmdMap.put("view_data", new ViewData());
         //cmdMap.put("others_data", new OthersData());
         //cmdMap.put("dominator", new Dominator());
@@ -52,43 +92,27 @@ class CmdMap{
     }
 }
 
-class SessionState{
-    String chat_id;
-    String msgId;
-    String firstName;
-    String lastName;
-    boolean likesBeer;
-    String firstNameBuf;
-    String lastNameBuf;
-    boolean likesBeerBuf;
-    boolean isPersonalDataFilled;
-    boolean isPoliceman;
-    boolean isAdmin;
-
-    SessionState(String msgId,
-                 boolean isPoliceman){
-        this.msgId = msgId;
-        this.isPoliceman = isPoliceman;
-    }
-}
 
 class CallbackResp{
-    String new_id;
+    String next_id;
     String response;
-    SessionState sessionState;
-    CallbackResp(String new_id, String response, SessionState sessionState){
-        this.new_id = new_id;
+    BotSession botSession;
+    CallbackResp(String next_id, String response, BotSession botSession){
+        this.next_id = next_id;
         this.response = response;
-        this.sessionState = sessionState;
+        this.botSession = botSession;
     }
 }
 
 class InitResp{
     String response;
     ReplyKeyboardMarkup keyboard;
-    InitResp(String response, ReplyKeyboardMarkup keyboard){
+    BotSession botSession;
+
+    InitResp(String response, ReplyKeyboardMarkup keyboard, BotSession botSession){
         this.keyboard = keyboard;
         this.response = response;
+        this.botSession = botSession;
     }
 }
 
@@ -96,8 +120,8 @@ abstract class BotCmd {
     protected static final String WRONG_MESSAGE = "Wrong command. Please use allowed commands only.";
     protected static final String BACK = "Back";
 
-    abstract public InitResp init(SessionState sessionState);
-    abstract public CallbackResp callback(String msg, SessionState sessionState);
+    abstract public InitResp init(BotSession botSession);
+    abstract public CallbackResp callback(String msg, BotSession botSession);
     protected ReplyKeyboardMarkup generateKeyboard(String[] options){
         ArrayList<KeyboardRow> keyboardRows = new ArrayList<>();
 
@@ -127,23 +151,23 @@ class Start extends BotCmd {
     protected static final String USE_DOMINATOR = "Use Dominator";
     protected static final String ABOUT_US = "About us";
     @Override
-    public InitResp init(SessionState session) {
+    public InitResp init(BotSession session) {
         return new InitResp(
-                session.isPoliceman ? INIT_MSG_CITIZEN : INIT_MSG_COP,
+                session.isPoliceman ? INIT_MSG_COP : INIT_MSG_CITIZEN,
                 generateKeyboard(new String[]{
                         session.isPersonalDataFilled ? EDIT_MY_DATA : FILL_MY_DATA,
                         VIEW_MY_DATA,
                         session.isPoliceman ? VIEW_ALL_DATA : null,
                         session.isPoliceman ? USE_DOMINATOR : null,
                         ABOUT_US
-                }));
+                }), session);
     }
     @Override
-    public CallbackResp callback(String msg, SessionState session) {
+    public CallbackResp callback(String msg, BotSession session) {
         String next_id = session.msgId;
         String response = null;
         switch (msg){
-            case EDIT_MY_DATA: case FILL_MY_DATA: next_id = CmdMap.EDIT_DATA; break;
+            case EDIT_MY_DATA: case FILL_MY_DATA: next_id = CmdMap.FIRST_NAME; break;
             case VIEW_MY_DATA: next_id = CmdMap.VIEW_DATA; break;
             case VIEW_ALL_DATA: if(session.isPoliceman) { next_id = CmdMap.OTHERS_DATA; } else { response = WRONG_MESSAGE; } break;
             case USE_DOMINATOR: if(session.isPoliceman) { next_id = CmdMap.DOMINATOR; } else { response = WRONG_MESSAGE; } break;
@@ -158,15 +182,15 @@ class Start extends BotCmd {
 class FirstName extends BotCmd {
     protected static final String INIT_MSG = "Please, input your first name.";
     @Override
-    public InitResp init(SessionState sessionState) {
-        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}));
+    public InitResp init(BotSession session) {
+        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}), session);
     }
     @Override
-    public CallbackResp callback(String msg, SessionState session) {
+    public CallbackResp callback(String msg, BotSession session) {
         String next_id;
         String response = null;
         if (BACK.equals(msg)) {
-            next_id = CmdMap.FIRST_NAME;
+            next_id = CmdMap.START;
         } else {
             session.firstNameBuf = msg;
             response = String.join(" ", "Your first name is", msg);
@@ -180,15 +204,15 @@ class FirstName extends BotCmd {
 class SecondName extends BotCmd {
     protected static final String INIT_MSG = "Please, input your second name.";
     @Override
-    public InitResp init(SessionState sessionState) {
-        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}));
+    public InitResp init(BotSession session) {
+        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}), session);
     }
     @Override
-    public CallbackResp callback(String msg, SessionState session) {
+    public CallbackResp callback(String msg, BotSession session) {
         String next_id;
         String response = null;
         if (BACK.equals(msg)) {
-            next_id = CmdMap.START;
+            next_id = CmdMap.FIRST_NAME;
         } else {
             session.lastNameBuf = msg;
             response = String.join(" ", "Your last name is", msg);
@@ -204,11 +228,11 @@ class Beer extends BotCmd {
     protected static final String NO = "No";
 
     @Override
-    public InitResp init(SessionState sessionState) {
-        return new InitResp(INIT_MSG, generateKeyboard(new String[]{YES, NO, BACK}));
+    public InitResp init(BotSession session) {
+        return new InitResp(INIT_MSG, generateKeyboard(new String[]{YES, NO, BACK}), session);
     }
     @Override
-    public CallbackResp callback(String msg, SessionState session) {
+    public CallbackResp callback(String msg, BotSession session) {
         String next_id = session.msgId;
         String response;
         switch (msg){
@@ -226,18 +250,18 @@ class IsCorrect extends BotCmd {
     protected static final String NO = "No";
 
     @Override
-    public InitResp init(SessionState sessionState) {
+    public InitResp init(BotSession session) {
         String initMsg = String.join("",
                 "Is this data correct? Answer Yes or No.\n",
-                "First name: ", sessionState.firstNameBuf, "\n",
-                "Last name: ", sessionState.lastNameBuf, "\n",
-                "You like beer: ", sessionState.likesBeerBuf ? "Yes" : "Well, no, but, actually yes"
+                "First name: ", session.firstNameBuf, "\n",
+                "Last name: ", session.lastNameBuf, "\n",
+                "You like beer: ", session.likesBeerBuf ? "Yes" : "Well, no, but, actually yes"
         );
-        return new InitResp(initMsg, generateKeyboard(new String[]{YES, NO, BACK}));
+        return new InitResp(initMsg, generateKeyboard(new String[]{YES, NO, BACK}), session);
     }
 
     @Override
-    public CallbackResp callback(String msg, SessionState session) {
+    public CallbackResp callback(String msg, BotSession session) {
         String next_id = session.msgId;
         String response;
         switch (msg) {
@@ -246,6 +270,7 @@ class IsCorrect extends BotCmd {
                 session.firstName = session.firstNameBuf;
                 session.lastName = session.lastNameBuf;
                 session.likesBeerBuf = session.likesBeer;
+                session.isPersonalDataFilled = true;
                 response = "Personal data saved!";
                 break;
             case NO:
@@ -266,11 +291,11 @@ class AboutUs extends BotCmd {
     protected static final String INIT_MSG_COP = "Demo version of civilla system.\nHelps you to kick citizens' asses.";
 
     @Override
-    public InitResp init(SessionState session) {
-        return new InitResp(session.isPoliceman ? INIT_MSG_COP : INIT_MSG_CIV, generateKeyboard(new String[]{BACK}));
+    public InitResp init(BotSession session) {
+        return new InitResp(session.isPoliceman ? INIT_MSG_COP : INIT_MSG_CIV, generateKeyboard(new String[]{BACK}), session);
     }
     @Override
-    public CallbackResp callback(String msg, SessionState session) {
+    public CallbackResp callback(String msg, BotSession session) {
         String next_id = session.msgId;
         String response = null;
         if (BACK.equals(msg))
@@ -287,11 +312,11 @@ class ChooseRole extends BotCmd {
     protected static final String CIVILIAN = "Civilian";
 
     @Override
-    public InitResp init(SessionState session) {
-        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}));
+    public InitResp init(BotSession session) {
+        return new InitResp(INIT_MSG, generateKeyboard(new String[]{CIVILIAN, COP, BACK}), session);
     }
     @Override
-    public CallbackResp callback(String msg, SessionState session) {
+    public CallbackResp callback(String msg, BotSession session) {
         String next_id = session.msgId;
         String response = null;
         switch (msg){

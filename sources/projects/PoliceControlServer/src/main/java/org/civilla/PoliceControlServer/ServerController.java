@@ -1,7 +1,7 @@
 package org.civilla.PoliceControlServer;
 
 import org.civilla.common.Helpers;
-import org.json.JSONArray;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ public class ServerController {
             resp.put("incoming_msg", telegMsg.text);
             resp.put("chat_id", telegMsg.chat_id);
             resp.put("result", result);
-            responses.put(resp);
+            responses.add(resp);
         }
         JSONObject response = new JSONObject();
         response.put("values", responses);
