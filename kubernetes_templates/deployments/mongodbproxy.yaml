@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ namespace }}
+  name: civilla-mongodbproxy
+  labels:
+    run: civilla-mongodbproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: civilla-mongodbproxy
+  template:
+    metadata:
+      labels:
+        run: civilla-mongodbproxy
+    spec:
+      containers:
+      - name: civilla-mongodbproxy
+        image: {{ civilla_mongodbproxy_image }}
+        volumeMounts:
+          - name: services-urls
+            mountPath: "/project/mounted_volumes/services_urls"
+      volumes:
+        - name: services-urls
+          configMap:
+            name: services-urls
