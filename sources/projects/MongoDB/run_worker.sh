@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-mongod --config /mongod.conf
-mongo CivillaDatabase
+mongod -f /mongod.cfg
+mongod --bind_ip_all
