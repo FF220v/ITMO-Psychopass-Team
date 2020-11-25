@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-mongod --config /etc/mongod.conf
+mongod --config /mongod.conf
 mongo CivillaDatabase
