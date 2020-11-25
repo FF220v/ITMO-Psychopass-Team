@@ -10,11 +10,21 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import java.util.ArrayList;
 import java.util.HashMap;
-import org.civilla.storage.BotSession;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.civilla.dataclasses.database.BotSession;
 
 public class PoliceControlMsgProc {
     protected static HashMap<String, BotCmd> cmdMap = CmdMap.initCmdMap();
+
+    protected DefaultAbsSender getSender(){
+        DefaultBotOptions options = new DefaultBotOptions();
+        options.setMaxThreads(100);
+        return new DefaultAbsSender(options) {
+            @Override
+            public String getBotToken() {
+                return KubeConfigLoader.getBotSecrets().get("token").toString();
+            }
+        };
+    }
 
     TelegramMessage message;
     String requestId;
@@ -22,44 +32,40 @@ public class PoliceControlMsgProc {
         this.message = message;
         this.requestId = requestId;
     }
-    public String processMessage(){
-        long chat_id = message.chat_id;
-        IStorageConnector<BotSession> sessionsConnector = new DummyBotSessionConnector();
-        BotSession session = sessionsConnector.get(Long.toString(chat_id));
-
-        if (session == null) {
-            session = new BotSession();
-            session.chat_id = Long.toString(message.chat_id);
-            session.msgId = CmdMap.START;
-        }
-        BotCmd cmd = cmdMap.get(session.msgId);
-        CallbackResp callbackResp = cmd.callback(message.text, session);
-        callbackResp.botSession.msgId = callbackResp.next_id;
-
-        BotCmd newCmd = cmdMap.get(callbackResp.next_id);
-        InitResp initResp = newCmd.init(callbackResp.botSession);
-
-        sessionsConnector.update(initResp.botSession);
-
-        SendMessage telegramMessage = new SendMessage().setChatId(message.chat_id);
-        telegramMessage.
-                setText((callbackResp.response == null ? "" : (callbackResp.response + "\n\n")) +
-                        (initResp.response == null ? "" : initResp.response));
-        telegramMessage.setReplyMarkup(initResp.keyboard);
-
-        DefaultAbsSender sender = new DefaultAbsSender(new DefaultBotOptions()) {
-            @Override
-            public String getBotToken() {
-                return KubeConfigLoader.getBotSecrets().get("token").toString();
-            }
-        };
+    public PoliceControlMsgProcResponse processMessage(){
         try {
-            sender.execute(telegramMessage);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
+            long objectId = message.objectId;
+            IStorageConnector<BotSession> sessionsConnector = new DummyBotSessionConnector();
+            BotSession session = sessionsConnector.get(Long.toString(objectId));
 
-        return "ok";
+            if (session == null) {
+                session = new BotSession();
+                session.objectId = Long.toString(message.objectId);
+                session.msgId = CmdMap.START;
+            }
+            BotCmd cmd = cmdMap.get(session.msgId);
+            CallbackResp callbackResp = cmd.callback(message.text, session);
+            callbackResp.botSession.msgId = callbackResp.next_id;
+
+            BotCmd newCmd = cmdMap.get(callbackResp.next_id);
+            InitResp initResp = newCmd.init(callbackResp.botSession);
+
+            sessionsConnector.update(initResp.botSession);
+
+            SendMessage telegramMessage = new SendMessage().setChatId(message.objectId);
+            telegramMessage.
+                    setText((callbackResp.response == null ? "" : (callbackResp.response + "\n\n")) +
+                            (initResp.response == null ? "" : initResp.response));
+            telegramMessage.setReplyMarkup(initResp.keyboard);
+
+            DefaultAbsSender sender = getSender();
+
+            sender.execute(telegramMessage);
+
+            return new PoliceControlMsgProcResponse("ok", "completed");
+        } catch (Exception e) {
+            return new PoliceControlMsgProcResponse("exception", e.getMessage());
+        }
     }
 }
 
@@ -269,7 +275,7 @@ class IsCorrect extends BotCmd {
                 next_id = CmdMap.START;
                 session.firstName = session.firstNameBuf;
                 session.lastName = session.lastNameBuf;
-                session.likesBeerBuf = session.likesBeer;
+                session.likesBeer = session.likesBeerBuf;
                 session.isPersonalDataFilled = true;
                 response = "Personal data saved!";
                 break;
@@ -317,11 +323,12 @@ class ChooseRole extends BotCmd {
     }
     @Override
     public CallbackResp callback(String msg, BotSession session) {
-        String next_id = session.msgId;
+        String next_id = CmdMap.START;
         String response = null;
         switch (msg){
             case COP: session.isPoliceman = true; break;
             case CIVILIAN: session.isPoliceman = false; break;
+            case BACK: break;
             default: response = WRONG_MESSAGE;
         }
         return new CallbackResp(next_id, response, session);

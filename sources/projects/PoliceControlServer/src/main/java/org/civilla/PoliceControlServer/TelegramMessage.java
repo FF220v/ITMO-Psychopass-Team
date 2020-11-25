@@ -1,10 +1,10 @@
 package org.civilla.PoliceControlServer;
 
 public class TelegramMessage {
-    long chat_id;
+    long objectId;
     String text;
-    TelegramMessage(long chat_id, String text){
-        this.chat_id = chat_id;
+    TelegramMessage(long objectId, String text){
+        this.objectId = objectId;
         this.text = text;
     }
 }

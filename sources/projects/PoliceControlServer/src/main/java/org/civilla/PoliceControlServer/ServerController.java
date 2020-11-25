@@ -1,8 +1,11 @@
 package org.civilla.PoliceControlServer;
 
-import org.civilla.common.Helpers;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.civilla.common.Logging;
+import org.civilla.dataclasses.communication.policecontrolserver.BotServerMessageRequest;
+import org.civilla.dataclasses.communication.policecontrolserver.BotServerMessageRequestItem;
+import org.civilla.dataclasses.communication.policecontrolserver.BotServerMessageResponse;
+import org.civilla.dataclasses.communication.policecontrolserver.BotServerMessageResponseItem;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,24 +17,27 @@ public class ServerController {
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> messageHandler(@RequestBody String payload,
                                                  @RequestHeader(value = "X-request-id", required = false) String requestId){
-        JSONArray responses = new JSONArray();
-        JSONArray messages = (JSONArray) Helpers.stringToJson(payload).get("values");
-        for (Object msg: messages) {
-            JSONObject msg_ = (JSONObject) msg;
-            TelegramMessage telegMsg = new TelegramMessage((long) msg_.get("chat_id"), (String) msg_.get("message"));
+        long startTime = System.currentTimeMillis();
+        Logging.log.info(String.join(" ", "Received message", requestId, payload));
+        BotServerMessageResponse response = new BotServerMessageResponse();
+        BotServerMessageRequest request = BotServerMessageRequest.fromJson(payload);
+        for (BotServerMessageRequestItem requestItem: request.values) {
+            TelegramMessage telegramMessage
+                    = new TelegramMessage(Long.parseLong(requestItem.objectId), requestItem.message);
 
-            PoliceControlMsgProc proc = new PoliceControlMsgProc(telegMsg, requestId);
-            String result = proc.processMessage();
+            PoliceControlMsgProc proc = new PoliceControlMsgProc(telegramMessage, requestId);
+            PoliceControlMsgProcResponse result = proc.processMessage();
 
-            JSONObject resp = new JSONObject();
-            resp.put("incoming_msg", telegMsg.text);
-            resp.put("chat_id", telegMsg.chat_id);
-            resp.put("result", result);
-            responses.add(resp);
+            BotServerMessageResponseItem responseItem = new BotServerMessageResponseItem();
+            responseItem.objectId = Long.toString(telegramMessage.objectId);
+            responseItem.status = result.status;
+            responseItem.reason = result.reason;
+            response.values.add(responseItem);
         }
-        JSONObject response = new JSONObject();
-        response.put("values", responses);
-
-        return new ResponseEntity<>(response.toJSONString(), HttpStatus.OK);
+        String stringResponse = response.toJson();
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("X-request-id", requestId);
+        Logging.log.info(String.join(" ", "Sending response", requestId, stringResponse, "time taken:", Long.toString(System.currentTimeMillis() - startTime), "ms"));
+        return new ResponseEntity<>(stringResponse, responseHeaders, HttpStatus.OK);
     }
 }

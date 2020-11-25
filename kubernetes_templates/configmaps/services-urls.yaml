@@ -6,5 +6,7 @@ metadata:
 data:
   services_urls.json: |
     {
-        "policecontrolserver": "civilla-policecontrolserver-service.{{ namespace }}"
+        "policecontrolserver": "civilla-policecontrolserver-service.{{ namespace }}",
+        "redissessionsstorage": "civilla-redissessionsstorage-service.{{ namespace }}",
+        "analysisserver": "civilla-analysisserver-service.{{ namespace }}"
     }

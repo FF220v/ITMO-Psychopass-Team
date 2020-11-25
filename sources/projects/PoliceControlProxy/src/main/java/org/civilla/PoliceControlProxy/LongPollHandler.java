@@ -1,25 +1,26 @@
 package org.civilla.PoliceControlProxy;
 
+import org.civilla.dataclasses.communication.policecontrolserver.BotServerMessageRequest;
+import org.civilla.dataclasses.communication.policecontrolserver.BotServerMessageRequestItem;
 import org.civilla.kubernetes.KubeConfigLoader;
 import org.civilla.requests.AsyncHttpRequestsWithRetries;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.civilla.common.Logging;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class LongPollHandler extends TelegramLongPollingBot {
 
-    public JSONObject processUpdates(List<Update> updates){
-        JSONArray updatesJson = new JSONArray();
+    public String processUpdates(List<Update> updates){
+        BotServerMessageRequest request = new BotServerMessageRequest();
         for (Update update : updates) {
             if (!update.hasMessage() || !update.getMessage().hasText())
                 continue;
-            JSONObject updateJson = new JSONObject();
+            BotServerMessageRequestItem requestItem = new BotServerMessageRequestItem();
             String message_text = update.getMessage().getText();
-            long chat_id = update.getMessage().getChatId();
+            long objectId = update.getMessage().getChatId();
 
             boolean restricted = false;
             if (message_text.length() > getMaxMessageSize()){
@@ -27,18 +28,15 @@ public class LongPollHandler extends TelegramLongPollingBot {
                 restricted = true;
             }
 
-            updateJson.put("restricted", restricted);
-            updateJson.put("chat_id", chat_id);
-            updateJson.put("message", message_text);
-            updatesJson.put(updateJson);
+            requestItem.restricted = restricted;
+            requestItem.objectId = Long.toString(objectId);
+            requestItem.message = message_text;
+            request.values.add(requestItem);
 
             Logging.log.info(String.join(" ", "Incoming message: [", message_text,
-                    "] chat_id:", Long.toString(chat_id), restricted ? "Message was restricted!" : ""));
+                    "] objectId:", Long.toString(objectId), restricted ? "Message was restricted!" : ""));
         }
-        JSONObject result = new JSONObject();
-        result.put("values", updatesJson);
-
-        return result;
+        return request.toJson();
     }
 
     @Override
@@ -48,8 +46,10 @@ public class LongPollHandler extends TelegramLongPollingBot {
 
     @Override
     public void onUpdatesReceived(List<Update> updates) {
-        JSONObject body = processUpdates(updates);
-        AsyncHttpRequestsWithRetries.post(getBotServerUrl(), new HashMap<>(), body.toString());
+        String body = processUpdates(updates);
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("X-request-id", UUID.randomUUID().toString());
+        AsyncHttpRequestsWithRetries.post(getBotServerUrl(), headers, body);
     }
 
     @Override

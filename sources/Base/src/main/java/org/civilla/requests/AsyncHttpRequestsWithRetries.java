@@ -12,7 +12,7 @@ public class AsyncHttpRequestsWithRetries extends AsyncHttpRequests{
         boolean isBadStatus = true;
         try {
             isBadStatus = future.get().getStatusCode() >= 500;
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return isBadStatus;
