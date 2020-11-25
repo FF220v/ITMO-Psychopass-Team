@@ -1,7 +1,6 @@
 package org.civilla.dataclasses.communication.policecontrolserver;
 
 import com.google.gson.Gson;
-import org.civilla.dataclasses.communication.BasicMessageItem;
 
 public class BotServerMessageRequestItem extends BasicMessageItem {
     public String objectId = null;

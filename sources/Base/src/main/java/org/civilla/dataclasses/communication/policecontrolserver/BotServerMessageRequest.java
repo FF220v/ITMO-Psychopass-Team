@@ -1,7 +1,6 @@
 package org.civilla.dataclasses.communication.policecontrolserver;
 
 import com.google.gson.Gson;
-import org.civilla.dataclasses.communication.BasicMessage;
 
 public class BotServerMessageRequest extends BasicMessage<BotServerMessageRequestItem> {
     public String dataType = "messageRequests";

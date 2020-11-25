@@ -1,4 +1,4 @@
-package org.civilla.dataclasses.communication;
+package org.civilla.dataclasses.communication.policecontrolserver;
 
 import com.google.gson.Gson;
 
