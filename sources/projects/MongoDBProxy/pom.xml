@@ -9,10 +9,10 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.civilla</groupId>
-	<artifactId>PoliceControlServer</artifactId>
+	<artifactId>MongoDBProxy</artifactId>
 	<version>1.0</version>
-	<name>PoliceControlServer</name>
-	<description>Police Control service server</description>
+	<name>MongoDBProxy</name>
+	<description>MongoDBProxy</description>
 	<properties>
 		<java.version>15</java.version>
 	</properties>
@@ -37,14 +37,9 @@
 			<version>1.0</version>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.telegram</groupId>
-			<artifactId>telegrambots</artifactId>
-			<version>4.9</version>
-		</dependency>
 	</dependencies>
 	<build>
-		<finalName>project/PoliceControlServer</finalName>
+		<finalName>project/MongoDBProxy</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -89,7 +84,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.civilla.PoliceControlServer.Main</mainClass>
+							<mainClass>org.civilla.MongoDBProxy.Main</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.</Class-Path>
@@ -99,5 +94,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
