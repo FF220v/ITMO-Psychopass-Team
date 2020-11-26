@@ -119,7 +119,7 @@ public class ServerController {
             MongoDBProxyQueryRequest request = MongoDBProxyQueryRequest.fromJson(payload);
 
             MongoDatabase database = MongoSingleSession.getDatabase();
-            MongoCollection<Document> collection = database.getCollection("Users");
+            MongoCollection<Document> collection = database.getCollection(collectionName);
 
             FindIterable<Document> results = collection.find(Filters.eq(request.field, request.value));
 

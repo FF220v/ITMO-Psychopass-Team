@@ -1,4 +1,5 @@
 package org.civilla.PoliceControlServer;
+import org.civilla.dataclasses.database.User;
 import org.civilla.kubernetes.KubeConfigLoader;
 import org.civilla.storage.DatabaseConnectorBotSessions;
 import org.telegram.telegrambots.bots.DefaultAbsSender;
@@ -49,7 +50,10 @@ public class PoliceControlMsgProc {
             BotCmd newCmd = cmdMap.get(callbackResp.next_id);
             InitResp initResp = newCmd.init(callbackResp.botSession);
 
-            sessionsConnector.update(initResp.botSession, requestId);
+            session = initResp.botSession;
+            session.msgId = callbackResp.next_id;
+
+            sessionsConnector.update(session, requestId);
 
             SendMessage telegramMessage = new SendMessage().setChatId(message.objectId);
             telegramMessage.
@@ -332,4 +336,9 @@ class ChooseRole extends BotCmd {
         }
         return new CallbackResp(next_id, response, session);
     }
+}
+
+class UserData{
+    public BotSession session;
+    public User user;
 }
