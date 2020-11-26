@@ -5,10 +5,10 @@ import org.civilla.dataclasses.database.Camera;
 import java.util.concurrent.ExecutionException;
 
 public class DatabaseConnectorCameras {
-    DatabaseConnectorBase<Camera> connector = new DatabaseConnectorBase<>();
+    DatabaseConnectorBase connector = new DatabaseConnectorBase();
 
     public Camera get(String objectId, String requestId) throws ExecutionException, InterruptedException {
-        MongoDBProxyQueryResponseCameras resp = MongoDBProxyQueryResponseCameras.fromJson(connector.get(objectId, requestId));
+        MongoDBProxyQueryResponseCameras resp = MongoDBProxyQueryResponseCameras.fromJson(connector.get(objectId, requestId, "cameras"));
         if(resp.values.size() > 0)
             return resp.values.get(0);
         return null;
@@ -17,6 +17,6 @@ public class DatabaseConnectorCameras {
     public MongoDBProxyPostResponse update(Camera item, String requestId) throws ExecutionException, InterruptedException {
         MongoDBProxyPostRequestCameras req = new MongoDBProxyPostRequestCameras();
         req.values.add(item);
-        return connector.update(req.toJson(), requestId);
+        return connector.update(req.toJson(), requestId, "cameras");
     }
 }
