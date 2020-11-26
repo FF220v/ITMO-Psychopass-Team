@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: civilla-analysisserver-service
+  namespace: {{ namespace }}
+spec:
+  selector:
+    run: civilla-analysisserver
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8081

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ namespace }}
+  name: civilla-mongodb
+  labels:
+    run: civilla-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: civilla-mongodb
+  template:
+    metadata:
+      labels:
+        run: civilla-mongodb
+    spec:
+      containers:
+      - name: civilla-mongodb
+        image: {{ civilla_mongodb_image }}
+        volumeMounts:
+          - mountPath: "/data/db"
+            name: mongodb-volume
+      volumes:
+        - name: mongodb-volume
+          persistentVolumeClaim:
+            claimName: mongodb-pvc

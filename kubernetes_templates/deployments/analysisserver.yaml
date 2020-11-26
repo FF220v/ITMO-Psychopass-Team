@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ namespace }}
+  name: civilla-analysisserver
+  labels:
+    run: civilla-analysisserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: civilla-analysisserver
+  template:
+    metadata:
+      labels:
+        run: civilla-analysisserver
+    spec:
+      containers:
+      - name: civilla-analysisserver
+        image: {{ civilla_analysisserver_image }}
+        volumeMounts:
+          - name: services-urls
+            mountPath: "/project/mounted_volumes/services_urls"
+      volumes:
+        - name: services-urls
+          configMap:
+            name: services-urls

@@ -3,4 +3,8 @@
 *.save
 *.key
 *~$
-*/deploy_tmp
+*deploy_tmp
+*out
+*.iml
+*.swp
+*mounted_volumes

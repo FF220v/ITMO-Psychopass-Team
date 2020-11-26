@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 pushd $HOME > /dev/null
     
     sudo iptables -P FORWARD ACCEPT

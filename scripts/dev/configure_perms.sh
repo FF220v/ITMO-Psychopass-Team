@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 groupadd docker
 usermod -aG docker ubuntu
 usermod -aG microk8s ubuntu

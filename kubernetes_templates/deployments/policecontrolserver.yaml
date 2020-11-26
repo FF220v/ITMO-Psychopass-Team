@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ namespace }}
+  name: civilla-policecontrolserver
+  labels:
+    run: civilla-policecontrolserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: civilla-policecontrolserver
+  template:
+    metadata:
+      labels:
+        run: civilla-policecontrolserver
+    spec:
+      containers:
+      - name: civilla-policecontrolserver
+        image: {{ civilla_policecontrolserver_image }}
+        volumeMounts:
+          - name: bot-credentials
+            mountPath: "/project/mounted_volumes/bot_credentials"
+            readOnly: true
+          - name: services-urls
+            mountPath: "/project/mounted_volumes/services_urls"
+      volumes:
+        - name: bot-credentials
+          secret:
+            secretName: bot-credentials
+        - name: services-urls
+          configMap:
+            name: services-urls
