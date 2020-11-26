@@ -7,6 +7,7 @@ data:
   services_urls.json: |
     {
         "policecontrolserver": "civilla-policecontrolserver-service.{{ namespace }}",
-        "redissessionsstorage": "civilla-redissessionsstorage-service.{{ namespace }}",
-        "analysisserver": "civilla-analysisserver-service.{{ namespace }}"
+        "mongodbproxyserver": "civilla-mongodbproxyserver-service.{{ namespace }}",
+        "analysisserver": "civilla-analysisserver-service.{{ namespace }}",
+        "mongodb": "civilla-mongodb-service.{{ namespace }}"
     }

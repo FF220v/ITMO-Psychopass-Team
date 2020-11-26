@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 
 public class BotSession extends DatabaseItem {
 
-    public String objectId = null;
     public String msgId = null;
     public String firstNameBuf = null;
     public String lastNameBuf = null;

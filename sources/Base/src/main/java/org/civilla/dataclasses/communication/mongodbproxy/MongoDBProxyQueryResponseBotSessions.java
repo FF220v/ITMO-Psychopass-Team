@@ -4,7 +4,7 @@ import org.civilla.dataclasses.database.BotSession;
 
 import java.util.ArrayList;
 
-public class MongoDBProxyQueryResponseBotSessions extends BasicMongoDBProxyObject{
+public class MongoDBProxyQueryResponseBotSessions extends MongoDBProxyQueryResponseBasic{
     public String dataType = null;
     public ArrayList<BotSession> values = new ArrayList<>();
 

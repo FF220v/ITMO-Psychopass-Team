@@ -4,7 +4,7 @@ import org.civilla.dataclasses.database.Camera;
 
 import java.util.ArrayList;
 
-public class MongoDBProxyQueryResponseCameras extends BasicMongoDBProxyObject {
+public class MongoDBProxyQueryResponseCameras extends MongoDBProxyQueryResponseBasic {
     public String dataType = null;
     public ArrayList<Camera> values = new ArrayList<>();
 

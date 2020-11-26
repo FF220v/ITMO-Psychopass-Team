@@ -5,7 +5,7 @@ import org.civilla.dataclasses.database.BotSession;
 import java.util.concurrent.ExecutionException;
 
 public class DatabaseConnectorBotSessions {
-    protected DatabaseConnectorBase connector = new DatabaseConnectorBase();
+    DatabaseConnectorBase connector = new DatabaseConnectorBase();
 
     public BotSession get(String objectId, String requestId) throws ExecutionException, InterruptedException {
         MongoDBProxyQueryResponseBotSessions resp = MongoDBProxyQueryResponseBotSessions.fromJson(connector.get(objectId, requestId, "botsessions"));

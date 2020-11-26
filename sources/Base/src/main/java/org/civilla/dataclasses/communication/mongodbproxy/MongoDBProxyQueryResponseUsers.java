@@ -4,7 +4,7 @@ import org.civilla.dataclasses.database.User;
 
 import java.util.ArrayList;
 
-public class MongoDBProxyQueryResponseUsers extends BasicMongoDBProxyObject {
+public class MongoDBProxyQueryResponseUsers extends MongoDBProxyQueryResponseBasic {
     public String dataType = null;
     public ArrayList<User> values = new ArrayList<>();
 

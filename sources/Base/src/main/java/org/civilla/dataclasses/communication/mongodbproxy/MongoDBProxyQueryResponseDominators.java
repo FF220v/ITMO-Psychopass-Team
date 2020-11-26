@@ -4,7 +4,7 @@ import org.civilla.dataclasses.database.Dominator;
 
 import java.util.ArrayList;
 
-public class MongoDBProxyQueryResponseDominators extends BasicMongoDBProxyObject {
+public class MongoDBProxyQueryResponseDominators extends MongoDBProxyQueryResponseBasic {
     public String dataType = null;
     public ArrayList<Dominator> values = new ArrayList<>();
 

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker push civilla/mongodbproxy
+docker push civilla/mongodbproxyserver

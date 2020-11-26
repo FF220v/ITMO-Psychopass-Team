@@ -89,10 +89,10 @@ public class ServerController {
         long startTime = System.currentTimeMillis();
 
         try {
-            Logging.log.info(String.join(" ", "Received request", requestId, payload));
+            Logging.log.info(String.join(" ", "Received request POST", requestId, payload));
 
             MongoDatabase database = MongoSingleSession.getDatabase();
-            MongoCollection<Document> collection = database.getCollection("Users");
+            MongoCollection<Document> collection = database.getCollection(collectionName);
 
             for (DatabaseItem object : items) {
                 BsonDocument doc = new BsonDocument("$set", BsonDocument.parse(object.toJson()));
@@ -103,7 +103,7 @@ public class ServerController {
             response.status = "exception";
             response.reason = e.getMessage();
         }
-        Logging.log.info(String.join(" ", "Sending response", response.toJson(), "stringResponse", "time taken:",
+        Logging.log.info(String.join(" ", "Sending response", requestId, response.toJson(), "stringResponse", "time taken:",
                 Long.toString(System.currentTimeMillis() - startTime), "ms"));
 
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -113,25 +113,33 @@ public class ServerController {
 
     public ResponseEntity<String> processPutRequest(String requestId, String payload, String collectionName){
         long startTime = System.currentTimeMillis();
-        Logging.log.info(String.join(" ", "Received request", requestId, payload));
+        Logging.log.info(String.join(" ", "Received request PUT", requestId, payload));
+        String jsonResult;
+        try {
+            MongoDBProxyQueryRequest request = MongoDBProxyQueryRequest.fromJson(payload);
 
-        MongoDBProxyQueryRequest request = MongoDBProxyQueryRequest.fromJson(payload);
+            MongoDatabase database = MongoSingleSession.getDatabase();
+            MongoCollection<Document> collection = database.getCollection("Users");
 
-        MongoDatabase database = MongoSingleSession.getDatabase();
-        MongoCollection<Document> collection = database.getCollection("Users");
+            FindIterable<Document> results = collection.find(Filters.eq(request.field, request.value));
 
-        FindIterable<Document> results = collection.find(Filters.eq(request.field, request.value));
+            ArrayList<String> docs = new ArrayList<>();
+            for (Document doc : collection.find(Filters.eq(request.field, request.value))) {
+                doc.remove("_id");
+                docs.add(doc.toJson());
+            }
+            jsonResult = "{\"status\":\"ok\", \"reason\":\"\", \"dataType\": \"" +
+                    collectionName + "\", \"values\": [" + String.join(", ", docs) + "]}";
 
-        ArrayList<String> docs = new ArrayList<>();
-        for (Document doc : collection.find(Filters.eq(request.field, request.value))){
-            doc.remove("_id");
-            docs.add(doc.toJson());
+            Logging.log.info(String.join(" ", "Sending response", requestId, jsonResult, "time taken:",
+                    Long.toString(System.currentTimeMillis() - startTime), "ms"));
+        } catch (Exception e){
+            e.printStackTrace();
+            MongoDBProxyQueryResponseBasic res = new MongoDBProxyQueryResponseBasic();
+            res.status = "exception";
+            res.reason = e.getMessage();
+            jsonResult = res.toJson();
         }
-        String jsonResult = "{\"dataType\": \"" + collectionName + "\", \"values\": [" + String.join(", ", docs) + "]}";
-
-        Logging.log.info(String.join(" ", "Sending response", requestId, jsonResult, "time taken:",
-                Long.toString(System.currentTimeMillis() - startTime), "ms"));
-
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("X-request-id", requestId);
         return new ResponseEntity<>(jsonResult, responseHeaders, HttpStatus.OK);

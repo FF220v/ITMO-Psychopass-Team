@@ -26,7 +26,7 @@ public class DatabaseConnectorBase {
     public MongoDBProxyPostResponse update(String requestBody, String requestId, String endpoint) throws ExecutionException, InterruptedException {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("X-request-id", requestId);
-        CompletableFuture<Response> resp = AsyncHttpRequestsWithRetries.put(
+        CompletableFuture<Response> resp = AsyncHttpRequestsWithRetries.post(
                 String.join("", "http://", databaseUrl, "/", endpoint), headers, requestBody);
         return MongoDBProxyPostResponse.fromJson(resp.get().getResponseBody());
     }
