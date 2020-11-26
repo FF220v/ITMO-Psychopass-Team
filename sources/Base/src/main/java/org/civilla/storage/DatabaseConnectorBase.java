@@ -1,0 +1,35 @@
+package org.civilla.storage;
+
+import org.asynchttpclient.Response;
+import org.civilla.dataclasses.communication.mongodbproxy.MongoDBProxyPostResponse;
+import org.civilla.dataclasses.communication.mongodbproxy.MongoDBProxyQueryRequest;
+import org.civilla.dataclasses.database.DatabaseItem;
+import org.civilla.kubernetes.KubeConfigLoader;
+import org.civilla.requests.AsyncHttpRequestsWithRetries;
+
+import java.util.HashMap;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
+public class DatabaseConnectorBase<DBItem extends DatabaseItem> {
+    protected static String databaseUrl = KubeConfigLoader.servicesUrls().get(KubeConfigLoader.DATABASE_PROXY_SERVER).toString();
+
+    public String get(String objectId, String requestId) throws ExecutionException, InterruptedException {
+        MongoDBProxyQueryRequest request = new MongoDBProxyQueryRequest();
+        request.field = "objectId";
+        request.value = objectId;
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("X-request-id", requestId);
+        CompletableFuture<Response> resp = AsyncHttpRequestsWithRetries.put(
+                String.join("", "http://", databaseUrl, "/", DBItem.endpoint), headers, request.toJson());
+        return resp.get().getResponseBody();
+    }
+
+    public MongoDBProxyPostResponse update(String requestBody, String requestId) throws ExecutionException, InterruptedException {
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("X-request-id", requestId);
+        CompletableFuture<Response> resp = AsyncHttpRequestsWithRetries.put(
+                String.join("", "http://", databaseUrl, "/", DBItem.endpoint), headers, requestBody);
+        return MongoDBProxyPostResponse.fromJson(resp.get().getResponseBody());
+    }
+}

@@ -1,7 +1,6 @@
 package org.civilla.PoliceControlServer;
 import org.civilla.kubernetes.KubeConfigLoader;
-import org.civilla.storage.DummyBotSessionConnector;
-import org.civilla.storage.IStorageConnector;
+import org.civilla.storage.DatabaseConnectorBotSessions;
 import org.telegram.telegrambots.bots.DefaultAbsSender;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -35,8 +34,8 @@ public class PoliceControlMsgProc {
     public PoliceControlMsgProcResponse processMessage(){
         try {
             long objectId = message.objectId;
-            IStorageConnector<BotSession> sessionsConnector = new DummyBotSessionConnector();
-            BotSession session = sessionsConnector.get(Long.toString(objectId));
+            DatabaseConnectorBotSessions sessionsConnector = new DatabaseConnectorBotSessions();
+            BotSession session = sessionsConnector.get(Long.toString(objectId), requestId);
 
             if (session == null) {
                 session = new BotSession();
@@ -50,7 +49,7 @@ public class PoliceControlMsgProc {
             BotCmd newCmd = cmdMap.get(callbackResp.next_id);
             InitResp initResp = newCmd.init(callbackResp.botSession);
 
-            sessionsConnector.update(initResp.botSession);
+            sessionsConnector.update(initResp.botSession, requestId);
 
             SendMessage telegramMessage = new SendMessage().setChatId(message.objectId);
             telegramMessage.
