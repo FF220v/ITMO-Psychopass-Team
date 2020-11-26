@@ -13,15 +13,20 @@ public class DatabaseConnectorBase {
     protected static String databaseUrl = KubeConfigLoader.servicesUrls().get(KubeConfigLoader.DATABASE_PROXY_SERVER).toString();
 
     public String get(String objectId, String requestId, String endpoint) throws ExecutionException, InterruptedException {
+        return getByField("objectId", objectId, requestId, endpoint);
+    }
+
+    public String getByField(String field, String value, String requestId, String endpoint) throws ExecutionException, InterruptedException {
         MongoDBProxyQueryRequest request = new MongoDBProxyQueryRequest();
-        request.field = "objectId";
-        request.value = objectId;
+        request.field = field;
+        request.value = value;
         HashMap<String, String> headers = new HashMap<>();
         headers.put("X-request-id", requestId);
         CompletableFuture<Response> resp = AsyncHttpRequestsWithRetries.put(
                 String.join("", "http://", databaseUrl, "/", endpoint), headers, request.toJson());
         return resp.get().getResponseBody();
     }
+
 
     public MongoDBProxyPostResponse update(String requestBody, String requestId, String endpoint) throws ExecutionException, InterruptedException {
         HashMap<String, String> headers = new HashMap<>();
