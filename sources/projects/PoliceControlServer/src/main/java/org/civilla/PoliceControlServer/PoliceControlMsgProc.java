@@ -1,4 +1,5 @@
 package org.civilla.PoliceControlServer;
+import org.civilla.analysis.AnalysisConnector;
 import org.civilla.common.StringUtils;
 import org.civilla.dataclasses.database.BotSession;
 import org.civilla.dataclasses.database.Camera;
@@ -353,7 +354,9 @@ class IsCorrect extends BotCmd {
                     DatabaseConnectorUsers conn = new DatabaseConnectorUsers();
                     conn.update(userData.user, userData.requestId);
                     userData.session.isPersonalDataFilled = true;
-                    response = "Personal data saved!";
+                    AnalysisConnector analysis = new AnalysisConnector();
+                    Double psychopassValue = analysis.analyse(userData.user.objectId, userData.requestId);
+                    response = "Personal data saved. Your psychopass value is " + psychopassValue.toString();
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();
                     response = "An error occured! Personal data was not saved.";
@@ -373,8 +376,8 @@ class IsCorrect extends BotCmd {
 }
 
 class AboutUs extends BotCmd {
-    protected static final String INIT_MSG_CIV = "Demo version of civilla system.\nHelps you to be safe and proud of your government.";
-    protected static final String INIT_MSG_COP = "Demo version of civilla system.\nHelps you to kick citizens' asses.";
+    protected static final String INIT_MSG_CIV = "Civilla system v0.9b.\nHelps you to be safe and proud of your government.";
+    protected static final String INIT_MSG_COP = "Civilla system v0.9b.\nHelps you to kick citizens' asses.";
 
     @Override
     public InitResp init(UserData userData) {
@@ -472,9 +475,11 @@ class ViewData extends BotCmd {
                     StringUtils.center("objectId", fieldsize),
                     StringUtils.center("First Name", fieldsize),
                     StringUtils.center("Last Name", fieldsize),
-                    StringUtils.center("Personal info", fieldsize)) + "|" + "\n";
+                    StringUtils.center("Personal info", fieldsize),
+                    StringUtils.center("Psychopass value", fieldsize)) + "|" + "\n";
             response = response + "|" + String.join(
                     "|",
+                    StringUtils.center("-----", fieldsize),
                     StringUtils.center("-----", fieldsize),
                     StringUtils.center("-----", fieldsize),
                     StringUtils.center("-----", fieldsize),
@@ -485,7 +490,8 @@ class ViewData extends BotCmd {
                         StringUtils.center(user.objectId, fieldsize),
                         StringUtils.center(user.firstName, fieldsize),
                         StringUtils.center(user.lastName, fieldsize),
-                        StringUtils.center((user.likesBeer ? "Likes beer": "Prob likes beer"),fieldsize)) + "|" + "\n";
+                        StringUtils.center((user.likesBeer ? "Likes beer": "Prob likes beer"), fieldsize),
+                        StringUtils.center(user.psychopassValue.toString(), fieldsize)) + "|" + "\n";
             }
             response = response + "</pre>";
         } catch (Exception e) {
