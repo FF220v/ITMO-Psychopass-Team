@@ -1,9 +1,13 @@
 package org.civilla.PoliceControlServer;
 import org.civilla.common.StringUtils;
 import org.civilla.dataclasses.database.BotSession;
+import org.civilla.dataclasses.database.Camera;
+import org.civilla.dataclasses.database.Dominator;
 import org.civilla.dataclasses.database.User;
 import org.civilla.kubernetes.KubeConfigLoader;
 import org.civilla.storage.DatabaseConnectorBotSessions;
+import org.civilla.storage.DatabaseConnectorCameras;
+import org.civilla.storage.DatabaseConnectorDominators;
 import org.civilla.storage.DatabaseConnectorUsers;
 import org.telegram.telegrambots.bots.DefaultAbsSender;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
@@ -13,6 +17,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 class UserData{
@@ -105,6 +110,13 @@ class CmdMap{
     public static String DEVICES = "devices";
     public static String SHOW_DEVICES = "show_devices";
     public static String REGISTER_DEVICES = "register_devices";
+    public static String REGISTER_CAMERA_X = "register_camera_x";
+    public static String REGISTER_CAMERA_Y = "register_camera_y";
+    public static String REGISTER_CAMERA_NAME = "register_camera_name";
+    public static String REGISTER_CAMERA_CORRECT = "register_camera_correct";
+    public static String REGISTER_DOMINATOR_NAME = "register_dominator_name";
+    public static String REGISTER_DOMINATOR_CORRECT = "register_dominator_correct";
+
 
     public static HashMap<String, BotCmd> initCmdMap(){
         HashMap<String, BotCmd> cmdMap = new HashMap<>();
@@ -119,6 +131,12 @@ class CmdMap{
         cmdMap.put(DEVICES, new Devices());
         cmdMap.put(SHOW_DEVICES, new ShowDevices());
         cmdMap.put(REGISTER_DEVICES, new RegisterDevices());
+        cmdMap.put(REGISTER_CAMERA_X, new RegisterCameraX());
+        cmdMap.put(REGISTER_CAMERA_Y, new RegisterCameraY());
+        cmdMap.put(REGISTER_CAMERA_NAME, new RegisterCameraName());
+        cmdMap.put(REGISTER_CAMERA_CORRECT, new RegisterCameraCorrect());
+        cmdMap.put(REGISTER_DOMINATOR_NAME, new RegisterDominatorName());
+        cmdMap.put(REGISTER_DOMINATOR_CORRECT, new RegisterDominatorCorrect());
 
         return cmdMap;
     }
@@ -515,19 +533,69 @@ class ShowDevices extends BotCmd {
     public CallbackResp callback(String msg, UserData userData) {
         String next_id = CmdMap.SHOW_DEVICES;
         String response = null;
-        try {
-            switch (msg) {
-                case CAMERAS:
-                    break;
-                case DOMINATORS:
-                    break;
-                case BACK: next_id = CmdMap.DEVICES; break;
-                default:
-                    response = WRONG_MESSAGE;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            response = "Could not load devices";
+        int fieldsize = 16;
+        switch (msg) {
+            case CAMERAS:
+                try {
+                    ArrayList<Camera> camerasToShow = new DatabaseConnectorCameras().getByField("type", "camera", userData.requestId);
+                    response = "Cameras: \n" + "<pre>" + "|" + String.join(
+                            "|",
+                            StringUtils.center("objectId", fieldsize),
+                            StringUtils.center("ownerId", fieldsize),
+                            StringUtils.center("Name", fieldsize),
+                            StringUtils.center("X", fieldsize),
+                            StringUtils.center("Y", fieldsize)) + "|" + "\n";
+                    response = response + "|" + String.join(
+                            "|",
+                            StringUtils.center("-----", fieldsize),
+                            StringUtils.center("-----", fieldsize),
+                            StringUtils.center("-----", fieldsize),
+                            StringUtils.center("-----", fieldsize),
+                            StringUtils.center("-----", fieldsize)) + "|" + "\n";
+                    for (Camera camera: camerasToShow) {
+                        response = response + "|" + String.join(
+                                "|",
+                                StringUtils.center(camera.objectId, fieldsize),
+                                StringUtils.center(camera.ownerId + (camera.ownerId.equals(userData.user.objectId) ? "(me)" : ""), fieldsize),
+                                StringUtils.center(camera.name, fieldsize),
+                                StringUtils.center(camera.xCoordinate.toString(), fieldsize),
+                                StringUtils.center(camera.yCoordinate.toString(),fieldsize)) + "|" + "\n";
+                    }
+                    response = response + "</pre>";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    response = "Could not acquire data.";
+                }
+                break;
+            case DOMINATORS:
+                try {
+                    ArrayList<Dominator> dominatorsToShow = new DatabaseConnectorDominators().getByField("type", "dominator", userData.requestId);
+                    response = "Dominators \n" + "<pre>" + "|" + String.join(
+                            "|",
+                            StringUtils.center("objectId", fieldsize),
+                            StringUtils.center("ownerId", fieldsize),
+                            StringUtils.center("Name", fieldsize)) + "|" + "\n";
+                    response = response + "|" + String.join(
+                            "|",
+                            StringUtils.center("-----", fieldsize),
+                            StringUtils.center("-----", fieldsize),
+                            StringUtils.center("-----", fieldsize)) + "|" + "\n";
+                    for (Dominator dominator: dominatorsToShow) {
+                        response = response + "|" + String.join(
+                                "|",
+                                StringUtils.center(dominator.objectId, fieldsize),
+                                StringUtils.center(dominator.ownerId + (dominator.ownerId.equals(userData.user.objectId) ? "(me)" : ""), fieldsize),
+                                StringUtils.center(dominator.name, fieldsize)) + "|" + "\n";
+                    }
+                    response = response + "</pre>";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    response = "Could not acquire data.";
+                }
+                break;
+            case BACK: next_id = CmdMap.DEVICES; break;
+            default:
+                response = WRONG_MESSAGE;
         }
         return new CallbackResp(next_id, response, userData);
     }
@@ -547,19 +615,206 @@ class RegisterDevices extends BotCmd {
     public CallbackResp callback(String msg, UserData userData) {
         String next_id = CmdMap.REGISTER_DEVICES;
         String response = null;
-        try {
-            switch (msg) {
-                case CAMERA:
-                    break;
-                case DOMINATOR:
-                    break;
-                case BACK: next_id = CmdMap.DEVICES; break;
-                default:
-                    response = WRONG_MESSAGE;
+        switch (msg) {
+            case CAMERA: next_id = CmdMap.REGISTER_CAMERA_X; break;
+            case DOMINATOR: next_id = CmdMap.REGISTER_DOMINATOR_NAME; break;
+            case BACK: next_id = CmdMap.DEVICES; break;
+            default:
+                response = WRONG_MESSAGE;
+        }
+        return new CallbackResp(next_id, response, userData);
+    }
+}
+
+class RegisterCameraX extends BotCmd {
+    protected static final String INIT_MSG = "Please, input camera x coordinate.";
+    @Override
+    public InitResp init(UserData userData) {
+        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}), userData);
+    }
+    @Override
+    public CallbackResp callback(String msg, UserData userData) {
+        String next_id;
+        String response = null;
+        if (BACK.equals(msg)) {
+            next_id = CmdMap.REGISTER_DEVICES;
+        } else {
+            try {
+                userData.session.xCoordinateBuf = Double.parseDouble(msg);
+            } catch (Exception e){
+                e.printStackTrace();
+                return new CallbackResp(CmdMap.REGISTER_CAMERA_X,
+                        "Couldn't read number. Please pass a number with point-separated decimal part.",
+                        userData);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            response = "Could register device";
+
+            response = String.join(" ", "X coordinate is", msg);
+            next_id = CmdMap.REGISTER_CAMERA_Y;
+        }
+        return new CallbackResp(next_id, response, userData);
+    }
+}
+
+class RegisterCameraY extends BotCmd {
+    protected static final String INIT_MSG = "Please, input camera y coordinate.";
+    @Override
+    public InitResp init(UserData userData) {
+        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}), userData);
+    }
+    @Override
+    public CallbackResp callback(String msg, UserData userData) {
+        String next_id;
+        String response = null;
+        if (BACK.equals(msg)) {
+            next_id = CmdMap.REGISTER_CAMERA_X;
+        } else {
+            try {
+                userData.session.yCoordinateBuf = Double.parseDouble(msg);
+            } catch (Exception e){
+                e.printStackTrace();
+                return new CallbackResp(CmdMap.REGISTER_CAMERA_Y,
+                        "Couldn't read number. Please pass a number with point-separated decimal part.",
+                        userData);
+            }
+            response = String.join(" ", "Y coordinate is", msg);
+            next_id = CmdMap.REGISTER_CAMERA_NAME;
+        }
+        return new CallbackResp(next_id, response, userData);
+    }
+}
+
+
+class RegisterCameraName extends BotCmd {
+    protected static final String INIT_MSG = "Please, input camera name.";
+    @Override
+    public InitResp init(UserData userData) {
+        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}), userData);
+    }
+    @Override
+    public CallbackResp callback(String msg, UserData userData) {
+        String next_id;
+        String response = null;
+        if (BACK.equals(msg)) {
+            next_id = CmdMap.REGISTER_CAMERA_Y;
+        } else {
+            userData.session.cameraNameBuf = msg;
+            response = String.join(" ", "Camera name is", msg);
+            next_id = CmdMap.REGISTER_CAMERA_CORRECT;
+        }
+        return new CallbackResp(next_id, response, userData);
+    }
+}
+
+class RegisterCameraCorrect extends BotCmd {
+    protected static final String YES = "Yes";
+    protected static final String NO = "No";
+
+    @Override
+    public InitResp init(UserData userData) {
+        String initMsg = String.join("",
+                "Is this data correct? Answer Yes or No.\n",
+                "X coordinate: ", userData.session.xCoordinateBuf.toString(), "\n",
+                "Y coordinate: ", userData.session.yCoordinateBuf.toString(), "\n",
+                "Camera name: ", userData.session.cameraNameBuf);
+        return new InitResp(initMsg, generateKeyboard(new String[]{YES, NO, BACK}), userData);
+    }
+
+    @Override
+    public CallbackResp callback(String msg, UserData userData) {
+        String next_id = userData.session.msgId;
+        String response = null;
+        switch (msg) {
+            case YES:
+                next_id = CmdMap.DEVICES;
+                try {
+                    DatabaseConnectorCameras conn = new DatabaseConnectorCameras();
+                    Camera camera = new Camera();
+                    camera.xCoordinate = userData.session.xCoordinateBuf;
+                    camera.yCoordinate = userData.session.yCoordinateBuf;
+                    camera.name = userData.session.cameraNameBuf;
+                    camera.ownerId = userData.user.objectId;
+                    camera.objectId = UUID.randomUUID().toString().substring(0, 8);
+                    conn.update(camera, userData.requestId);
+                    response = String.join(" ", "Camera", camera.name, "with objectId", camera.objectId, "added!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    response = "An error occured! Camera was not added.";
+                }
+                break;
+            case NO:
+                next_id = CmdMap.DEVICES;
+                response = "Camera was not added!";
+                break;
+            case BACK:
+                next_id = CmdMap.REGISTER_CAMERA_NAME; break;
+            default:
+                response = WRONG_MESSAGE;
+        }
+        return new CallbackResp(next_id, response, userData);
+    }
+}
+
+class RegisterDominatorName extends BotCmd {
+    protected static final String INIT_MSG = "Please, input dominator name.";
+    @Override
+    public InitResp init(UserData userData) {
+        return new InitResp(INIT_MSG, generateKeyboard(new String[]{BACK}), userData);
+    }
+    @Override
+    public CallbackResp callback(String msg, UserData userData) {
+        String next_id;
+        String response = null;
+        if (BACK.equals(msg)) {
+            next_id = CmdMap.REGISTER_DEVICES;
+        } else {
+            userData.session.dominatorNameBuf = msg;
+            response = String.join(" ", "Dominator name is", msg);
+            next_id = CmdMap.REGISTER_DOMINATOR_CORRECT;
+        }
+        return new CallbackResp(next_id, response, userData);
+    }
+}
+
+class RegisterDominatorCorrect extends BotCmd {
+    protected static final String YES = "Yes";
+    protected static final String NO = "No";
+
+    @Override
+    public InitResp init(UserData userData) {
+        String initMsg = String.join("",
+                "Is this data correct? Answer Yes or No.\n",
+                "Name: ", userData.session.dominatorNameBuf);
+        return new InitResp(initMsg, generateKeyboard(new String[]{YES, NO, BACK}), userData);
+    }
+
+    @Override
+    public CallbackResp callback(String msg, UserData userData) {
+        String next_id = userData.session.msgId;
+        String response = null;
+        switch (msg) {
+            case YES:
+                next_id = CmdMap.DEVICES;
+                try {
+                    DatabaseConnectorDominators conn = new DatabaseConnectorDominators();
+                    Dominator dominator = new Dominator();
+                    dominator.name = userData.session.dominatorNameBuf;
+                    dominator.ownerId = userData.user.objectId;
+                    dominator.objectId = UUID.randomUUID().toString().substring(0, 8);
+                    conn.update(dominator, userData.requestId);
+                    response = String.join(" ", "Dominator", dominator.name, "with objectId", dominator.objectId, "added!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    response = "An error occured! Dominator was not added.";
+                }
+                break;
+            case NO:
+                next_id = CmdMap.DEVICES;
+                response = "Dominator was not added!";
+                break;
+            case BACK:
+                next_id = CmdMap.REGISTER_CAMERA_NAME; break;
+            default:
+                response = WRONG_MESSAGE;
         }
         return new CallbackResp(next_id, response, userData);
     }
