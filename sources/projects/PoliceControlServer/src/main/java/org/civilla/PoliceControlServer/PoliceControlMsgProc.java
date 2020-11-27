@@ -246,7 +246,7 @@ class Start extends BotCmd {
                 case ANALYSE_PSYCHOPASS:
                     try {
                         AnalysisConnector conn = new AnalysisConnector();
-                        Double psychopassValue = conn.analyse(userData.user.objectId, userData.requestId);
+                        Double psychopassValue = conn.analyse(userData.user.objectId, "Police Control", userData.requestId);
                         response = "Your psychopass value is " + psychopassValue.toString();
                         if(psychopassValue > 0.5)
                             response = response + "\nIt is really high rate. Consider killing yourself to save the society.";
@@ -369,7 +369,7 @@ class IsCorrect extends BotCmd {
                     conn.update(userData.user, userData.requestId);
                     userData.session.isPersonalDataFilled = true;
                     AnalysisConnector analysis = new AnalysisConnector();
-                    Double psychopassValue = analysis.analyse(userData.user.objectId, userData.requestId);
+                    Double psychopassValue = analysis.analyse(userData.user.objectId, "Police Control", userData.requestId);
                     response = "Personal data saved. Your psychopass value is " + psychopassValue.toString();
                 } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();

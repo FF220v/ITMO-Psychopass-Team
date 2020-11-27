@@ -10,6 +10,7 @@ cat <<EOF
     "civilla_policecontrolserver_image": "`IMAGE=civilla/policecontrolserver get_image`",
     "civilla_analysisserver_image": "`IMAGE=civilla/analysisserver get_image`",
     "civilla_mongodb_image": "`IMAGE=civilla/mongodb get_image`",
-    "civilla_mongodbproxyserver_image": "`IMAGE=civilla/mongodbproxyserver get_image`"
+    "civilla_mongodbproxyserver_image": "`IMAGE=civilla/mongodbproxyserver get_image`",
+    "civilla_notificationserver_image": "`IMAGE=civilla/notificationserver get_image`"
 }
 EOF

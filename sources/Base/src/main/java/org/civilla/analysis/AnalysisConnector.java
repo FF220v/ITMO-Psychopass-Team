@@ -13,9 +13,10 @@ import java.util.concurrent.ExecutionException;
 public class AnalysisConnector {
     protected static String url = KubeConfigLoader.servicesUrls().get(KubeConfigLoader.ANALYSIS_SERVER).toString();
 
-    public Double analyse(String userId, String requestId) throws ExecutionException, InterruptedException {
+    public Double analyse(String userId, String serviceName, String requestId) throws ExecutionException, InterruptedException {
         AnalysisRequest request = new AnalysisRequest();
         request.userId = userId;
+        request.serviceName = serviceName;
         HashMap<String, String> headers = new HashMap<>();
         headers.put("X-request-id", requestId);
         CompletableFuture<Response> resp = AsyncHttpRequestsWithRetries.post(

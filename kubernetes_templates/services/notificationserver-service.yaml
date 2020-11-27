@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: civilla-notificationserver-service
+  namespace: {{ namespace }}
+spec:
+  selector:
+    run: civilla-notificationserver
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8083
