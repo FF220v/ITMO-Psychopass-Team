@@ -60,7 +60,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>org.civilla.PoliceControlProxy.Main</mainClass>
+                            <mainClass>org.civilla.PoliceControlProxy.PoliceControlProxy</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>.</Class-Path>

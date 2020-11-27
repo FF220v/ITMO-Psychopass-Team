@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 
 @SpringBootApplication
-public class Main {
+public class MongoDBProxy {
 	public static void main(String[] args) {
 		MongoDatabase database = MongoSingleSession.getDatabase();
 
@@ -22,6 +22,6 @@ public class Main {
 				database.createCollection(c);
 				Logging.log.info(String.join(" ","Created collection", c));
 			}
-		SpringApplication.run(Main.class, args);
+		SpringApplication.run(MongoDBProxy.class, args);
 	}
 }

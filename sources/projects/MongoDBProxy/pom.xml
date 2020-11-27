@@ -89,7 +89,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.civilla.MongoDBProxy.Main</mainClass>
+							<mainClass>org.civilla.MongoDBProxy.MongoDBProxy</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.</Class-Path>
