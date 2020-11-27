@@ -465,6 +465,7 @@ class ViewData extends BotCmd {
                     case MY_DATA:
                         usersToShow = new ArrayList<>();
                         usersToShow.add(userData.user);
+                        break;
                     case BACK: next_id = CmdMap.START; return new CallbackResp(next_id, response, userData);
                     default: response = WRONG_MESSAGE; return new CallbackResp(next_id, response, userData);
                 }

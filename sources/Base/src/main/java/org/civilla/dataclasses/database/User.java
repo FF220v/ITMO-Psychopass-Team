@@ -8,7 +8,7 @@ public class User extends DatabaseItem {
     public Boolean likesBeer = null;
     public Boolean isPoliceman = null;
     public String isPolicemanStr = null; //Kostili
-    public Double psychopassValue = null;
+    public Double psychopassValue = 0.0;
 
     public static User fromJson(String json){
         return new Gson().fromJson(json, User.class);
