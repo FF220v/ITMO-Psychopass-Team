@@ -35,9 +35,9 @@ public class ServerController {
 
             if(user == null){
                 sendNotification = true;
-                notificationMsg = String.format("[%s] Attention! Unknown user found.", request.serviceName);
+                notificationMsg = String.format("[Analysis] [%s] Attention! Unknown user found.", request.serviceName);
             } else {
-                notificationMsg = String.format(String.join(" ", "[%s]",
+                notificationMsg = String.format(String.join(" ", "[Analysis] [%s]",
                         user.isPoliceman ? "Policeman" : "Citizen",
                         user.objectId, user.firstName, user.lastName), request.serviceName) + ".";
                 user.psychopassValue = psychopassValue;

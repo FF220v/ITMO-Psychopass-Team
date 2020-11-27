@@ -7,7 +7,6 @@ import org.civilla.requests.AsyncHttpRequestsWithRetries;
 
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 public class NotificationConnector {
     protected static String url = KubeConfigLoader.servicesUrls().get(KubeConfigLoader.NOTIFICATION_SERVER).toString();
