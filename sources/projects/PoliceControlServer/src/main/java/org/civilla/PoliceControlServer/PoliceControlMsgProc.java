@@ -118,7 +118,6 @@ class CmdMap{
     public static String REGISTER_DOMINATOR_NAME = "register_dominator_name";
     public static String REGISTER_DOMINATOR_CORRECT = "register_dominator_correct";
 
-
     public static HashMap<String, BotCmd> initCmdMap(){
         HashMap<String, BotCmd> cmdMap = new HashMap<>();
         cmdMap.put(START, new Start());
@@ -138,7 +137,6 @@ class CmdMap{
         cmdMap.put(REGISTER_CAMERA_CORRECT, new RegisterCameraCorrect());
         cmdMap.put(REGISTER_DOMINATOR_NAME, new RegisterDominatorName());
         cmdMap.put(REGISTER_DOMINATOR_CORRECT, new RegisterDominatorCorrect());
-
         return cmdMap;
     }
 }
@@ -205,6 +203,8 @@ class Start extends BotCmd {
     protected static final String VIEW_DATA = "View data";
     protected static final String DEVICES = "Devices";
     protected static final String ABOUT_US = "About us";
+    protected static final String ANALYSE_PSYCHOPASS = "Analyse my psychopass";
+
     @Override
     public InitResp init(UserData userData) {
         ReplyKeyboardMarkup keyboard;
@@ -217,6 +217,7 @@ class Start extends BotCmd {
                     EDIT_MY_DATA,
                     VIEW_DATA,
                     userData.user.isPoliceman ? DEVICES : null,
+                    ANALYSE_PSYCHOPASS,
                     ABOUT_US});
 
         String msg;
@@ -242,6 +243,15 @@ class Start extends BotCmd {
                 case DEVICES: if(userData.user.isPoliceman) { next_id = CmdMap.DEVICES; } else { response = WRONG_MESSAGE; } break;
                 case ABOUT_US: next_id = CmdMap.ABOUT_US; break;
                 case "imapolice": next_id = CmdMap.CHOOSE_ROLE; break;
+                case ANALYSE_PSYCHOPASS:
+                    try {
+                        AnalysisConnector conn = new AnalysisConnector();
+                        Double psychopassValue = conn.analyse(userData.user.objectId, userData.requestId);
+                        response = "Your psychopass value is " + psychopassValue.toString();
+                    } catch (Exception e){
+                        response = "Failed to analyse psychopass";
+                    }
+                    break;
                 default: response = WRONG_MESSAGE;
             }
         else
