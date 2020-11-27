@@ -477,6 +477,7 @@ class ViewData extends BotCmd {
             else
                 switch (msg) {
                     case MY_DATA:
+                        response = "My data:\n";
                         usersToShow = new ArrayList<>();
                         usersToShow.add(userData.user);
                         break;
