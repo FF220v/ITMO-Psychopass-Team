@@ -248,6 +248,10 @@ class Start extends BotCmd {
                         AnalysisConnector conn = new AnalysisConnector();
                         Double psychopassValue = conn.analyse(userData.user.objectId, userData.requestId);
                         response = "Your psychopass value is " + psychopassValue.toString();
+                        if(psychopassValue > 0.5)
+                            response = response + "\nIt is really high rate. Consider killing yourself to save the society.";
+                        else
+                            response = response + "\nYour psychopass value is normal.";
                     } catch (Exception e){
                         response = "Failed to analyse psychopass";
                     }
