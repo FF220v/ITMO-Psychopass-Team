@@ -9,14 +9,10 @@ public class BotSession extends DatabaseItem {
     public String lastNameBuf = null;
     public Boolean likesBeerBuf = null;
     public Boolean isPersonalDataFilled = false;
-    public Boolean isPoliceman = false;
-    public Boolean isAdmin = false;
-
-    // Remove these three, duplication with database (or not remove? hm...)
-    public String firstName = null;
-    public String lastName = null;
-    public Boolean likesBeer = null;
-
+    public Double yCoordinateBuf = null;
+    public Double xCoordinateBuf = null;
+    public String cameraNameBuf = null;
+    public String dominatorNameBuf = null;
     public static BotSession fromJson(String json){
         return new Gson().fromJson(json, BotSession.class);
     }

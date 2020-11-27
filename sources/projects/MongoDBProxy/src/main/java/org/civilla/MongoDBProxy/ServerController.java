@@ -121,8 +121,6 @@ public class ServerController {
             MongoDatabase database = MongoSingleSession.getDatabase();
             MongoCollection<Document> collection = database.getCollection(collectionName);
 
-            FindIterable<Document> results = collection.find(Filters.eq(request.field, request.value));
-
             ArrayList<String> docs = new ArrayList<>();
             for (Document doc : collection.find(Filters.eq(request.field, request.value))) {
                 doc.remove("_id");

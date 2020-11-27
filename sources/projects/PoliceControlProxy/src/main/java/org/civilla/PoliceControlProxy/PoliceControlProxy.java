@@ -5,7 +5,7 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.civilla.common.Logging;
 
-public class Main {
+public class PoliceControlProxy {
 
     public static void main(String[] args) {
         ApiContextInitializer.init();

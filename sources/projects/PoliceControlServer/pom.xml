@@ -89,7 +89,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.civilla.PoliceControlServer.Main</mainClass>
+							<mainClass>org.civilla.PoliceControlServer.PoliceControlServer</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.</Class-Path>

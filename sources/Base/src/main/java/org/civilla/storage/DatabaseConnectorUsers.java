@@ -5,6 +5,7 @@ import org.civilla.dataclasses.communication.mongodbproxy.MongoDBProxyPostRespon
 import org.civilla.dataclasses.communication.mongodbproxy.MongoDBProxyQueryResponseUsers;
 import org.civilla.dataclasses.database.User;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 public class DatabaseConnectorUsers {
@@ -15,6 +16,10 @@ public class DatabaseConnectorUsers {
         if(resp.values.size() > 0)
             return resp.values.get(0);
         return null;
+    }
+    public ArrayList<User> getByField(String field, String value, String requestId) throws ExecutionException, InterruptedException {
+        MongoDBProxyQueryResponseUsers resp = MongoDBProxyQueryResponseUsers.fromJson(connector.getByField(field, value, requestId, "users"));
+        return resp.values;
     }
 
     public MongoDBProxyPostResponse update(User item, String requestId) throws ExecutionException, InterruptedException {
