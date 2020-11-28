@@ -84,7 +84,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.civilla.AnalysisServer.DevicesServer</mainClass>
+							<mainClass>org.civilla.DevicesServer.DevicesServer</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.</Class-Path>
