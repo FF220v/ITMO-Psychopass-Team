@@ -12,5 +12,6 @@ cat <<EOF
     "civilla_mongodb_image": "`IMAGE=civilla/mongodb get_image`",
     "civilla_mongodbproxyserver_image": "`IMAGE=civilla/mongodbproxyserver get_image`",
     "civilla_notificationserver_image": "`IMAGE=civilla/notificationserver get_image`"
+    "civilla_devicesserver_image": "`IMAGE=civilla/devicesserver get_image`"
 }
 EOF
