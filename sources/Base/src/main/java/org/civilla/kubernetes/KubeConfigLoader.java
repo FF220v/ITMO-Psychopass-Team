@@ -10,6 +10,8 @@ public class KubeConfigLoader {
     public static String DATABASE_PROXY_SERVER = "mongodbproxyserver";
     public static String ANALYSIS_SERVER = "analysisserver";
     public static String NOTIFICATION_SERVER = "notificationserver";
+    public static String DEVICES_SERVER = "devicesserver";
+
 
 
     public static JSONObject getBotSecrets() {

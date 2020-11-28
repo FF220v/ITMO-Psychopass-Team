@@ -8,6 +8,7 @@ data:
     {
         "policecontrolserver": "civilla-policecontrolserver-service.{{ namespace }}",
         "notificationserver": "civilla-notificationserver-service.{{ namespace }}",
+        "devicesserver": "civilla-devicesserver-service.{{ namespace }}",
         "mongodbproxyserver": "civilla-mongodbproxyserver-service.{{ namespace }}",
         "analysisserver": "civilla-analysisserver-service.{{ namespace }}",
         "mongodb": "civilla-mongodb-service.{{ namespace }}"
