@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ namespace }}
+  name: civilla-devicesserver
+  labels:
+    run: civilla-devicesserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: civilla-devicesserver
+  template:
+    metadata:
+      labels:
+        run: civilla-devicesserver
+    spec:
+      containers:
+      - name: civilla-devicesserver
+        image: {{ civilla_devicesserver_image }}
+        volumeMounts:
+          - name: services-urls
+            mountPath: "/project/mounted_volumes/services_urls"
+      volumes:
+        - name: services-urls
+          configMap:
+            name: services-urls
