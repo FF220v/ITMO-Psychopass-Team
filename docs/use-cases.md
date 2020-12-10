@@ -52,7 +52,7 @@ Use case 6 Name (Узнать о системе Civilla)
 ![CorrectData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0252.png)
 ![DataSubmited)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0253.png)  
   
-  ## 1. Use-Case 2 Просмотр личных данных
+  ## 1. Use-Case 2 Просмотр данных гражданина
 *[Укажите название прецедента.]*  
 
 Просмотр личных данных
@@ -72,13 +72,13 @@ Use case 6 Name (Узнать о системе Civilla)
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Просмотреть свои данные.
-2) Просмотреть психопаспорт или данные профиля.
+1) Просмотреть данные.
+2) Просмотреть свои данные.
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
 
-1)	Гражданин должен заполнить свои личные данные в систему Civilla. .
+1)	Гражданин должен зарегистрироваться в системе Civilla.
 
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]*
@@ -86,19 +86,17 @@ Use case 6 Name (Узнать о системе Civilla)
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
-Use case 6 Name (Узнать о системе Civilla)
 
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-22.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/view%20data.png)  
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Main)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0266.png)
-![ViewData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0267.png)
-![ViewPsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0269.png)
-![ViewProfileData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0270.png)  
+![ViewData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_1.png)
+![MyData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_2.png)
+![Result)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_3.png)
   
   ## 1. Use-Case 3 Полицеский просматривает данные граждан
 *[Укажите название прецедента.]*  
