@@ -274,20 +274,20 @@
 ![AboutUs)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/Screenshot_2.png)
 ![Result)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/Screenshot_1.png)
 
-## 1. Use-Case 7 Получить оповещение о повышающейся концентрации потенциальных преступников
+## 1. Use-Case 7 Получить оповещение о высоком уровне психопасспорта
 *[Укажите название прецедента.]*  
 
-Получить оповещение о повышающейся концентрации потенциальных преступников
+Получить оповещение о высоком уровне психопасспорта
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
 
-Полицейский
+Полицейский, гражданин
   
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Полицейский получает от системы Civilla оповещение о повышающейся концентрации потенциальных преступников в конкретном регионе.
+Получить оповещение о высоком уровне психопасспорта гражданина или полицейского
   
 ## 3. Flow of Events (Последовательность событий)
 
@@ -312,11 +312,11 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-7.png)  
+![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/notifications/notification.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0294.png)
+![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/notifications/Screenshot_1.png)
   
 ## 1. Use-Case 8 Получить оповещение о превышении порогового значения коэфициента преступности у индивидуальных граждан
 *[Укажите название прецедента.]*  
