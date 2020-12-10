@@ -143,10 +143,10 @@
 ![DataCitizens)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_3.png)
 ![DataCops)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_4.png)  
   
-  ## 1. Use-Case 4 Полицейский получает доступ к доминатору
+  ## 1. Use-Case 4 Контроль доступа доминатору
 *[Укажите название прецедента.]*  
 
-Полицейский получает доступ к доминатору
+Контроль доступа доминатору
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
@@ -163,9 +163,8 @@
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Запросить доступ на использование доминатора.
-2) Ввести имя и фамилию подозреваемого на которого надо использовать оружие доминатор.
-3) Получить резрешение или отказ на использование оружия доминатор на подозреваемого.
+1) Запросить доступ на использование конкретного доминатора.
+2) Получить резрешение или отказ на использование оружия доминатора.
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
@@ -175,8 +174,6 @@
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]*
 
-* Если коэффициент преступления подозреваемого высок, то система разрешает использование оружия доминатор.
-* Если коэффициент преступлиния подозреваемого низок, то система запрещает использование оружия доминатор.  
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
@@ -184,15 +181,12 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-44.png) 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/request%20access.png) 
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![MainPolice)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0277.png)
-![UseDominator)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0278.png)
-![FirstSubject)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0279.png)
-![Restricted)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0280.png)
-![Allowed)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0281.png)  
+![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_1.png)
+![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_2.png) 
   
 ## 1. Use-Case 5 Мониторинг данных
 *[Укажите название прецедента.]*  
