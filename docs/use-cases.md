@@ -35,22 +35,19 @@
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
-Use case 6 Name (Узнать о системе Civilla)
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-1.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/fill%20my%20data.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Connect_to_Civilla)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/connect.png)
-![Connected_to_Civilla)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0247.png)
-![AboutUs)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0249.png)
-![RegistrationFisrtName)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0250.png)
-![RegistrationSecondName)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0251.png)
-![RegistrationLikeBeer)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0265.png)
-![CorrectData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0252.png)
-![DataSubmited)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0253.png)  
+![Fill_data)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_1.png)
+![First_name)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_2.png)
+![Second_name)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_3.png)
+![Like_beer)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_4.png)
+![Сonfirm)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_5.png)
+![Data_saved)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_6.png)
   
   ## 1. Use-Case 2 Просмотр данных гражданина
 *[Укажите название прецедента.]*  
