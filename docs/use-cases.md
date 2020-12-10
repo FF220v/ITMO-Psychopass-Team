@@ -95,10 +95,10 @@
 ![MyData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_2.png)
 ![Result)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_3.png)
   
-  ## 1. Use-Case 3 Полицеский просматривает данные граждан
+  ## 1. Use-Case 3 Полицеский просматривает данные граждан и полицеских
 *[Укажите название прецедента.]*  
 
-Полицеский просматривает данные граждан
+Полицеский просматривает данные граждан и полицеских
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
@@ -108,16 +108,16 @@
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Полицейский просматривает данные подозреваемого или всех граждан.
+Полицейский просматривает данные всех граждан и полицейских.
   
 ## 3. Flow of Events (Последовательность событий)
 
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Просмотреть данные граждан.
-2) Просмотреть данные подозреваемого.
-3) Получить данные всех гражданских.
+1) Просмотреть данные.
+2) Получить данные граждан.
+3) Получить данные полицейских.
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
@@ -134,14 +134,14 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-3.png) 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/view_data_by_cop.png) 
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![MainPolice)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0272.png)
-![ViewCitizensData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0273.png)
-![ViewFullList)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0275.png)
-![ViewIDCitizen)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0276.png)  
+![ViewData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_1.png)
+![ViewCitizensCopData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_2.png)
+![DataCitizens)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_3.png)
+![DataCops)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_4.png)  
   
   ## 1. Use-Case 4 Полицейский получает доступ к доминатору
 *[Укажите название прецедента.]*  
