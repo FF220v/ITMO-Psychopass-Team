@@ -188,34 +188,31 @@
 ![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_1.png)
 ![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_2.png) 
   
-## 1. Use-Case 5 Мониторинг данных
+## 1. Use-Case 5 Анализ психопаспорта
 *[Укажите название прецедента.]*  
 
-Мониторинг данных
+Гражданин
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
 
-Аналитик
+Аналитик, полицейский
   
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Аналитик просматривает данные всех граждан и мониторит город для выявления особо опасных районов.
+Посмотреть свой психопаспорт
   
 ## 3. Flow of Events (Последовательность событий)
 
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Просмотреть данные граждан.
-2) Получить список данных всех граждан.
-3) Визуализировать данные на карте города.
+1) Просмотреть свой психопаспорт.
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
 
-1)	Получить роль аналитика. .
 
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]* 
@@ -226,11 +223,12 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-5.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_psyhopassport/view_psyhopasport.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*  
-![VisualData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/visualData2.jpg)
+![AnalysePsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_psyhopassport/Screenshot_1.png)
+![MyPsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_psyhopassport/Screenshot_2.png)
   
 
 ## 1. Use-Case 6 Узнать о системе Civilla
