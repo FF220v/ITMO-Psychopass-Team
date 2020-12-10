@@ -267,13 +267,12 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-6.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/about_us.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Citizen)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0291.png)
-![Policeman)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0292.png)
-![AboutUs)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0290.png)
+![AboutUs)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/Screenshot_2.png)
+![Result)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/Screenshot_1.png)
 
 ## 1. Use-Case 7 Получить оповещение о повышающейся концентрации потенциальных преступников
 *[Укажите название прецедента.]*  
