@@ -359,3 +359,53 @@
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
 ![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/device_notifications/Screenshot_1.png)
+
+
+## 1. Use-Case 9 Редактирование своих данных
+*[Укажите название прецедента.]*  
+
+Редактирование своих данных
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский, гражданин
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Изменить свои данные в системе Civilla
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Редактировать свои данные
+2) Подтвердить изменения
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![EditData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/edit_data.png)  
+
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![EditData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_1.png)
+![FirstName)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_2.png)
+![SecondName)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_3.png)
+![LoveBeer)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_4.png)
+![Confirm)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_5.png)
+![Edited)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_6.png)
+
