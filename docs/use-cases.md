@@ -497,3 +497,47 @@
 ![ChooseDevice)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_2.png)
 ![Cameras)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_3.png)
 ![Dominators)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_4.png)
+
+ ## 1. Use-Case 12 Доступ к камере
+*[Укажите название прецедента.]*  
+
+Доступ к камере
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Получить доступ к камере
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Запросить доступ на использование конкретной камеры.
+2) Получить резрешение или отказ на использование камеры.
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/access_cameras.png) 
+  
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/Screenshot_1.png)
+![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/Screenshot_2.png)
