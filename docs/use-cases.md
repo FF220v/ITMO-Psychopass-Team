@@ -1,6 +1,6 @@
 # Use Case Speciﬁcation (Описание прецедента)  
   
-## 1. Use-Case 1 Регистрация гражданина
+# 1. Use-Case 1 Регистрация гражданина
 *[Укажите название прецедента.]*  
 
 Регистрация гражданина
@@ -49,7 +49,7 @@
 ![Сonfirm)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_5.png)
 ![Data_saved)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_6.png)
   
-  ## 1. Use-Case 2 Просмотр данных гражданина
+# 1. Use-Case 2 Просмотр данных гражданина
 *[Укажите название прецедента.]*  
 
 Просмотр личных данных
@@ -95,7 +95,7 @@
 ![MyData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_2.png)
 ![Result)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_3.png)
   
-  ## 1. Use-Case 3 Полицеский просматривает данные граждан и полицеских
+  # 1. Use-Case 3 Полицеский просматривает данные граждан и полицеских
 *[Укажите название прецедента.]*  
 
 Полицеский просматривает данные граждан и полицеских
@@ -143,7 +143,7 @@
 ![DataCitizens)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_3.png)
 ![DataCops)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_4.png)  
   
-  ## 1. Use-Case 4 Контроль доступа доминатору
+  # 1. Use-Case 4 Контроль доступа доминатору
 *[Укажите название прецедента.]*  
 
 Контроль доступа доминатору
@@ -181,14 +181,14 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/request%20access.png) 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/request%20access_1.png) 
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
 ![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_1.png)
 ![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_2.png) 
   
-## 1. Use-Case 5 Анализ психопаспорта
+# 1. Use-Case 5 Анализ психопаспорта
 *[Укажите название прецедента.]*  
 
 Гражданин
@@ -231,7 +231,7 @@
 ![MyPsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_psyhopassport/Screenshot_2.png)
   
 
-## 1. Use-Case 6 Узнать о системе Civilla
+# 1. Use-Case 6 Узнать о системе Civilla
 *[Укажите название прецедента.]*  
 
 Узнать о системе Civilla
@@ -274,7 +274,7 @@
 ![AboutUs)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/Screenshot_2.png)
 ![Result)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/Screenshot_1.png)
 
-## 1. Use-Case 7 Получить оповещение о высоком уровне психопасспорта
+# 1. Use-Case 7 Получить оповещение о высоком уровне психопасспорта
 *[Укажите название прецедента.]*  
 
 Получить оповещение о высоком уровне психопасспорта
@@ -318,7 +318,7 @@
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
 ![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/notifications/Screenshot_1.png)
   
-## 1. Use-Case 8 Получить уведомление от устройств
+# 1. Use-Case 8 Получить уведомление от устройств
 *[Укажите название прецедента.]*  
 
 Получить уведомление от устройств
@@ -361,7 +361,7 @@
 ![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/device_notifications/Screenshot_1.png)
 
 
-## 1. Use-Case 9 Редактирование своих данных
+# 1. Use-Case 9 Редактирование своих данных
 *[Укажите название прецедента.]*  
 
 Редактирование своих данных
@@ -409,7 +409,7 @@
 ![Confirm)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_5.png)
 ![Edited)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_6.png)
 
-## 1. Use-Case 10 Панель управления полиции
+# 1. Use-Case 10 Панель управления полиции
 *[Укажите название прецедента.]*  
 
 Панель управления полиции
@@ -451,7 +451,7 @@
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
 ![ControlPanel)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/police_control_panel/Screenshot_1.png)
 
-## 1. Use-Case 11 Просмотр устройств
+# 1. Use-Case 11 Просмотр устройств
 *[Укажите название прецедента.]*  
 
 Просмотр устройств
@@ -498,7 +498,7 @@
 ![Cameras)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_3.png)
 ![Dominators)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_4.png)
 
- ## 1. Use-Case 12 Доступ к камере
+ # 1. Use-Case 12 Доступ к камере
 *[Укажите название прецедента.]*  
 
 Доступ к камере
@@ -535,14 +535,14 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/access_cameras.png) 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/access_cameras_1.png) 
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
 ![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/Screenshot_1.png)
 ![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/Screenshot_2.png)
 
-## 1. Use-Case 13 Регистрация устройства
+# 1. Use-Case 13 Регистрация устройства
 *[Укажите название прецедента.]*  
 
 Регистрация устройства
@@ -602,7 +602,7 @@
 ![step7)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step7.png)
 ![step8)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step8.png)
 
-## 1. Use-Case 14 На предыдущее окно
+# 1. Use-Case 14 На предыдущее окно
 *[Укажите название прецедента.]*  
 
 На предыдущее окно
