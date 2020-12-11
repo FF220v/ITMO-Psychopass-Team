@@ -87,7 +87,7 @@
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/view%20data.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/new%20View%20my%20data.png)  
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
@@ -142,11 +142,12 @@
 ![ViewCitizensCopData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_2.png)
 ![DataCitizens)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_3.png)
 ![DataCops)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_4.png)  
+
   
-  # 1. Use-Case 4 Контроль доступа доминатору
+# 1. Use-Case 4 Регистрация устройства
 *[Укажите название прецедента.]*  
 
-Контроль доступа доминатору
+Регистрация устройства
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
@@ -156,37 +157,52 @@
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Полицейский получает доступ к доминатору для его использования.
+Полицейский регистрирует новую камеру или доминатор к системе Civilla
   
 ## 3. Flow of Events (Последовательность событий)
 
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Запросить доступ на использование конкретного доминатора.
-2) Получить резрешение или отказ на использование оружия доминатора.
+1) Выбрать регистрацию устройства
+2) Выбрать устройство
+3) Заполнить специальную форму устройства
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
 
-1)	Получить роль полицеского.
 
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]*
 
+* Добавлен новое устройство в систему Civilla.  
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
-
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/request%20access_1.png) 
-  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/register_device.png)  
+
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_1.png)
-![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_2.png) 
+![s1)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_1.png)
+![s2)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_2.png)
+![s3)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_3.png)
+![s4)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_4.png)
+![s5)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_5.png)
+![s6)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_6.png)
+![s7)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_7.png)
+![s8)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_8.png)  
+  
+![step1)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step1.png)
+![step2)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step2.png)
+![step3)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step3.png)
+![step4)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step4.png)
+![step5)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step5.png)
+![step6)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step6.png)
+![step7)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step7.png)
+![step8)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step8.png)
   
 # 1. Use-Case 5 Анализ психопаспорта
 *[Укажите название прецедента.]*  
@@ -541,11 +557,12 @@
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
 ![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/Screenshot_1.png)
 ![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/Screenshot_2.png)
-
-# 1. Use-Case 13 Регистрация устройства
+ 
+  
+  # 1. Use-Case 13 Контроль доступа доминатору
 *[Укажите название прецедента.]*  
 
-Регистрация устройства
+Контроль доступа доминатору
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
@@ -555,52 +572,37 @@
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Полицейский регистрирует новую камеру или доминатор к системе Civilla
+Полицейский получает доступ к доминатору для его использования.
   
 ## 3. Flow of Events (Последовательность событий)
 
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Выбрать регистрацию устройства
-2) Выбрать устройство
-3) Заполнить специальную форму устройства
+1) Запросить доступ на использование конкретного доминатора.
+2) Получить резрешение или отказ на использование оружия доминатора.
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
 
+1)	Получить роль полицеского.
 
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]*
 
-* Добавлен новое устройство в систему Civilla.  
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/register_device.png)  
-
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/request%20access_1.png) 
+  
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![s1)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_1.png)
-![s2)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_2.png)
-![s3)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_3.png)
-![s4)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_4.png)
-![s5)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_5.png)
-![s6)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_6.png)
-![s7)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_7.png)
-![s8)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_8.png)  
-  
-![step1)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step1.png)
-![step2)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step2.png)
-![step3)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step3.png)
-![step4)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step4.png)
-![step5)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step5.png)
-![step6)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step6.png)
-![step7)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step7.png)
-![step8)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step8.png)
+![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_1.png)
+![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_2.png) 
 
 # 1. Use-Case 14 На предыдущее окно
 *[Укажите название прецедента.]*  
