@@ -1,8 +1,10 @@
 import asyncio
 import json
+import uuid
 from functools import lru_cache
 
 import pytest
+import requests
 from pyrogram import Client as BotClient
 from pyrogram.types import Message
 
@@ -175,6 +177,30 @@ async def fill_policeman_user_data(mongo_client, telegram_client):
     )
 
 
+def get_random_device_id():
+    return str(uuid.uuid4())[:8]
+
+
+@pytest.fixture()
+@pytest.mark.asyncio
+async def fill_random_camera_data(mongo_client, telegram_client):
+    device_id = get_random_device_id()
+    camera_data = {'objectId': device_id, 'name': 'test_c', 'ownerId': "12345",
+                   'type': 'camera', 'xCoordinate': 1.0, 'yCoordinate': 2.0}
+    mongo_client.update_camera(camera_data, object_id=device_id)
+    return camera_data
+
+
+@pytest.fixture()
+@pytest.mark.asyncio
+async def fill_random_dominator_data(mongo_client, telegram_client):
+    device_id = get_random_device_id()
+    dominator_data = {'objectId': device_id, 'name': 'test_d',
+                      'ownerId': "12345", 'type': 'dominator'}
+    mongo_client.update_dominator(dominator_data, object_id=device_id)
+    return dominator_data
+
+
 @pytest.fixture()
 @pytest.mark.asyncio
 async def set_session_to_start(mongo_client):
@@ -223,3 +249,11 @@ async def telegram_client() -> BotTestClient:
     await app.start()
     yield BotTestClient(app, get_bot_name())
     await app.stop()
+
+
+def trigger_camera_endpoint(data):
+    return requests.post(f"http://{load_setting('devices_server_host')}/camera", json=data)
+
+
+def trigger_dominator_endpoint(data):
+    return requests.post(f"http://{load_setting('devices_server_host')}/dominator", json=data)

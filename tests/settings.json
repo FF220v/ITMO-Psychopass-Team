@@ -2,5 +2,6 @@
   "bot_name": "Civilla_Bot",
   "app_id": 2020115,
   "app_hash": "815393fe9d5c6a2ff51d16475b0337d7",
-  "mongo_host": "192.168.209.20"
+  "mongo_host": "192.168.209.20:27017",
+  "devices_server_host": "192.168.209.20:30000"
 }

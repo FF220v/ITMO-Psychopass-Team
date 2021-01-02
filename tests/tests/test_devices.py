@@ -1,7 +1,8 @@
 import re
-
 import pytest
 import uuid
+
+from .conftest import trigger_camera_endpoint, trigger_dominator_endpoint
 
 device_id_regex = re.compile("objectId ([\da-z]+) added")
 
@@ -81,5 +82,96 @@ async def test_register_camera(telegram_client, mongo_client, fill_policeman_use
     #  Check final state of database
     device = mongo_client.get_camera(device_id)
     device.pop("_id")
-    assert device =={'objectId': device_id, 'name': 'test_c', 'ownerId': await telegram_client.get_chat_id(),
-                     'type': 'camera', 'xCoordinate': 1.0, 'yCoordinate': 2.0}
+    assert device == {'objectId': device_id, 'name': 'test_c', 'ownerId': await telegram_client.get_chat_id(),
+                      'type': 'camera', 'xCoordinate': 1.0, 'yCoordinate': 2.0}
+
+
+@pytest.mark.asyncio
+async def test_view_dominator(telegram_client, mongo_client, fill_policeman_user_data, fill_random_dominator_data):
+    device_id = fill_random_dominator_data.get("objectId")
+
+    #  Test flow
+    await telegram_client.send_message("Devices")
+    msg = await telegram_client.get_last_new_bot_message()
+    assert "What to do with devices?" in msg.text
+
+    await telegram_client.send_message("Show devices")
+    msg = await telegram_client.get_last_new_bot_message()
+    assert "What kind of devices to show?" in msg.text
+
+    await telegram_client.send_message("Dominators")
+    msg = await telegram_client.get_last_new_bot_message()
+    assert f"|    {device_id}    |     12345      |     test_d     |" in msg.text
+
+
+@pytest.mark.asyncio
+async def test_view_camera(telegram_client, mongo_client, fill_policeman_user_data, fill_random_camera_data):
+    device_id = fill_random_camera_data.get("objectId")
+
+    #  Test flow
+    await telegram_client.send_message("Devices")
+    msg = await telegram_client.get_last_new_bot_message()
+    assert "What to do with devices?" in msg.text
+
+    await telegram_client.send_message("Show devices")
+    msg = await telegram_client.get_last_new_bot_message()
+    assert "What kind of devices to show?" in msg.text
+
+    await telegram_client.send_message("Cameras")
+    msg = await telegram_client.get_last_new_bot_message()
+    assert f"|    {device_id}    |     12345      |     test_c     |      1.0       |      2.0       |" in msg.text
+
+
+@pytest.mark.asyncio
+async def test_use_camera_right_device_id(telegram_client, mongo_client, fill_random_camera_data):
+    device_id = fill_random_camera_data.get("objectId")
+
+    response = trigger_camera_endpoint({
+        "deviceId": device_id,
+    })
+
+    assert response.status_code == 200
+    assert response.json() == {'status': 'ok', 'reason': ''}
+
+
+@pytest.mark.asyncio
+async def test_use_camera_wrong_device_id(telegram_client, mongo_client):
+    response = trigger_camera_endpoint({
+        "deviceId": "11111111",
+        "userId": "11111111"
+    })
+
+    assert response.status_code == 200
+    assert response.json() == {'status': 'error', 'reason': 'unauthorized camera'}
+
+
+@pytest.mark.asyncio
+async def test_use_dominator_right_owner(telegram_client, mongo_client, fill_random_dominator_data):
+    device_id = fill_random_dominator_data.get("objectId")
+    owner_id = fill_random_dominator_data.get("ownerId")
+
+    response = trigger_dominator_endpoint({
+        "deviceId": device_id,
+        "userId": owner_id,
+        "targetId": "asdf"
+    })
+
+    assert response.status_code == 200
+    resp = response.json()
+    assert "usageAllowed" in resp
+    resp.pop("usageAllowed")
+    assert resp == {'reason': '', 'status': 'ok'}
+
+
+@pytest.mark.asyncio
+async def test_use_dominator_wrong_owner(telegram_client, mongo_client, fill_random_dominator_data):
+    device_id = fill_random_dominator_data.get("objectId")
+
+    response = trigger_dominator_endpoint({
+        "deviceId": device_id,
+        "userId": "wrong_owner_id",
+        "targetId": "asdf"
+    })
+
+    assert response.status_code == 200
+    assert response.json() == {'reason': 'insufficient permissions', 'status': 'error'}

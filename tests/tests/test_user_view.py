@@ -46,7 +46,8 @@ async def test_user_view_user_role(telegram_client, mongo_client, fill_user_data
     assert "My data:" in msg.text
 
     # We get only appropriate (our) data
-    assert await telegram_client.get_chat_id() in msg.text
+    assert f"|   {await telegram_client.get_chat_id()}    |test_first_name | test_last_name |" \
+           f"   Likes beer   |0.87125899618271|" in msg.text
     assert another_user_id_1 not in msg.text
     assert another_user_id_2 not in msg.text
 
