@@ -17,6 +17,7 @@ PySocks==1.7.1
 pytest==6.2.1
 pytest-asyncio==0.14.0
 requests==2.25.1
+TgCrypto==1.2.2
 toml==0.10.2
 urllib3==1.26.2
 wincertstore==0.2
