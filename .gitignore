@@ -8,3 +8,5 @@
 *.iml
 *.swp
 *mounted_volumes
+*.session
+*.session-journal
