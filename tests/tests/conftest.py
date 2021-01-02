@@ -15,6 +15,8 @@ SETTINGS_FILE = "settings.json"
 MONGO_DATABASE = "CivillaDatabase"
 SESSIONS_COLLECTION = "BotSessions"
 USERS_COLLECTION = "Users"
+DOMINATORS_COLLECTION = "Dominators"
+CAMERAS_COLLECTION = "Cameras"
 
 
 def load_setting(setting: str):
@@ -48,6 +50,8 @@ class MongoTestClient:
         self.db = mongo_client.get_database(MONGO_DATABASE)
         self.users_collection = self.db.get_collection(USERS_COLLECTION)
         self.sessions_collection = self.db.get_collection(SESSIONS_COLLECTION)
+        self.dominators_collection = self.db.get_collection(DOMINATORS_COLLECTION)
+        self.cameras_collection = self.db.get_collection(CAMERAS_COLLECTION)
         self.chat_id = chat_id
 
     def _get_object_id(self, object_id):
@@ -91,6 +95,24 @@ class MongoTestClient:
 
     def delete_session(self):
         return self.delete_entity(self.sessions_collection)
+
+    def get_camera(self, object_id):
+        return self.get_entity(self.cameras_collection, object_id)
+
+    def update_camera(self, data, object_id):
+        return self.update_entity(self.cameras_collection, data, object_id)
+
+    def delete_camera(self, object_id):
+        return self.delete_entity(self.cameras_collection, object_id)
+
+    def get_dominator(self, object_id):
+        return self.get_entity(self.dominators_collection, object_id)
+
+    def update_dominator(self, data, object_id):
+        return self.update_entity(self.dominators_collection, data, object_id)
+
+    def delete_dominator(self, object_id):
+        return self.delete_entity(self.dominators_collection, object_id)
 
 
 @pytest.fixture()
