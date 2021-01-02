@@ -1,0 +1,1 @@
+FROM civilladev/acceptance-tests
