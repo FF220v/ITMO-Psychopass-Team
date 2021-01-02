@@ -1,1 +1,1 @@
-docker run -it civilladev/session-generator -v ~/ITMO-Psychopass-Team/tests:/work_dir
+docker run -it -v ~/ITMO-Psychopass-Team/tests:/work_dir civilladev/session-generator
