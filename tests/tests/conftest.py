@@ -8,8 +8,9 @@ from pyrogram.types import Message
 
 from pymongo import MongoClient
 
-BOT_MAX_RETRIES = 20
-BOT_RETRY_SECONDS = 1
+BOT_MAX_RETRIES = 30
+BOT_RETRY_SECONDS = 0.3
+
 SETTINGS_FILE = "settings.json"
 MONGO_DATABASE = "CivillaDatabase"
 SESSIONS_COLLECTION = "BotSessions"
@@ -41,77 +42,124 @@ def get_mongo_conn_string():
     return f"mongodb://{load_setting('mongo_host')}"
 
 
-@pytest.fixture()
-def mongo_client() -> MongoClient:
-    return MongoClient(get_mongo_conn_string())
+class MongoTestClient:
+    def __init__(self, mongo_client: MongoClient, chat_id):
+        self.client = mongo_client
+        self.db = mongo_client.get_database(MONGO_DATABASE)
+        self.users_collection = self.db.get_collection(USERS_COLLECTION)
+        self.sessions_collection = self.db.get_collection(SESSIONS_COLLECTION)
+        self.chat_id = chat_id
+
+    def _get_object_id(self, object_id):
+        return self.chat_id if object_id is None else object_id
+
+    def get_entity(self, collection, object_id=None):
+        return collection.find_one(
+            filter={"objectId": self._get_object_id(object_id)}
+        )
+
+    def update_entity(self, collection, data, object_id=None):
+        data_ = {"objectId": self._get_object_id(object_id)}
+        data_.update(data)
+        return collection.find_one_and_update(
+            filter={"objectId": self._get_object_id(object_id)},
+            update={
+                "$set": data_
+            },
+            upsert=True
+        )
+
+    def delete_entity(self, collection, object_id=None):
+        return collection.find_one_and_delete(
+            filter={"objectId": self._get_object_id(object_id)}
+        )
+
+    def get_user(self):
+        return self.get_entity(self.users_collection)
+
+    def update_user(self, data, object_id=None):
+        return self.update_entity(self.users_collection, data, object_id=object_id)
+
+    def delete_user(self):
+        return self.delete_entity(self.users_collection)
+
+    def get_session(self):
+        return self.get_entity(self.sessions_collection)
+
+    def update_session(self, data):
+        return self.update_entity(self.sessions_collection, data)
+
+    def delete_session(self):
+        return self.delete_entity(self.sessions_collection)
 
 
 @pytest.fixture()
 @pytest.mark.asyncio
-async def clean_user_data(mongo_client, telegram_client):
-    chat_id = await telegram_client.get_chat_id()
-    db = mongo_client.get_database(MONGO_DATABASE)
-    db.get_collection(SESSIONS_COLLECTION).find_one_and_delete(
-        filter={"objectId": chat_id}
-    )
-    db.get_collection(USERS_COLLECTION).find_one_and_delete(
-        filter={"objectId": chat_id}
-    )
+async def mongo_client(telegram_client) -> MongoTestClient:
+    return MongoTestClient(MongoClient(get_mongo_conn_string()), await telegram_client.get_chat_id())
+
+
+@pytest.fixture()
+@pytest.mark.asyncio
+async def clean_user_data(mongo_client):
+    mongo_client.delete_user()
+    mongo_client.delete_session()
 
 
 @pytest.fixture()
 @pytest.mark.asyncio
 async def fill_user_data(mongo_client, telegram_client):
-    chat_id = await telegram_client.get_chat_id()
-    db = mongo_client.get_database(MONGO_DATABASE)
-    db.get_collection(SESSIONS_COLLECTION).find_one_and_update(
-        filter={"objectId": chat_id},
-        update={
-            "$set":
-                {
-                    "objectId": chat_id,
-                    "isPersonalDataFilled": True,
-                    "firstNameBuf": "test_first_name",
-                    "lastNameBuf": "test_last_name",
-                    "likesBeerBuf": True
-                }
-        },
-        upsert=True
+    mongo_client.update_session(
+        {
+            "isPersonalDataFilled": True,
+            "firstNameBuf": "test_first_name",
+            "lastNameBuf": "test_last_name",
+            "likesBeerBuf": True
+        }
     )
-    db.get_collection(USERS_COLLECTION).find_one_and_update(
-        filter={"objectId": chat_id},
-        update={
-            "$set":
-                {
-                    "objectId": chat_id,
-                    "firstName": "test_first_name",
-                    "isPoliceman": False,
-                    "isPolicemanStr": "no",
-                    "lastName": "test_last_name",
-                    "likesBeer": True,
-                    "psychopassValue": 0.8712589961827121
-                }
-        },
-        upsert=True
+
+    mongo_client.update_user(
+        {
+            "firstName": "test_first_name",
+            "isPoliceman": False,
+            "isPolicemanStr": "no",
+            "lastName": "test_last_name",
+            "likesBeer": True,
+            "psychopassValue": 0.8712589961827121
+        }
     )
 
 
 @pytest.fixture()
 @pytest.mark.asyncio
-async def set_session_to_start(mongo_client, telegram_client):
-    chat_id = await telegram_client.get_chat_id()
-    db = mongo_client.get_database(MONGO_DATABASE)
-    db.get_collection(SESSIONS_COLLECTION).find_one_and_update(
-        filter={"objectId": chat_id},
-        update=
+async def fill_policeman_user_data(mongo_client, telegram_client):
+    mongo_client.update_session(
         {
-            "$set":
-                {
-                    "objectId": chat_id,
-                    "msg": "start",
-                }
-        },
-        upsert=True
+            "isPersonalDataFilled": True,
+            "firstNameBuf": "test_first_name",
+            "lastNameBuf": "test_last_name",
+            "likesBeerBuf": True
+        }
+    )
+    mongo_client.update_user(
+        {
+            "firstName": "test_first_name",
+            "isPoliceman": True,
+            "isPolicemanStr": "yes",
+            "lastName": "test_last_name",
+            "likesBeer": True,
+            "psychopassValue": 0.8712589961827121
+        }
+    )
+
+
+@pytest.fixture()
+@pytest.mark.asyncio
+async def set_session_to_start(mongo_client):
+    mongo_client.update_session(
+        {
+            "msgId": "start",
+        }
     )
 
 
@@ -119,18 +167,18 @@ class RetriesLimitExceeded(Exception):
     pass
 
 
-class BotClientTest:
+class BotTestClient:
     def __init__(self, app: BotClient, bot_name):
         self.app = app
         self.name = bot_name
-        self.last_msg_date = None
+        self.last_msg_id = None
 
     async def get_last_new_bot_message(self) -> Message:
         retries = 0
         while True:
             message = (await self.app.get_history(self.name, limit=1))[0]
-            if message.from_user.username == get_bot_name() and message.date != self.last_msg_date:
-                self.last_msg_date = message.date
+            if message.from_user.username == get_bot_name() and message.message_id != self.last_msg_id:
+                self.last_msg_id = message.message_id
                 break
             if retries > BOT_MAX_RETRIES:
                 raise RetriesLimitExceeded
@@ -148,8 +196,8 @@ class BotClientTest:
 
 @pytest.fixture()
 @pytest.mark.asyncio
-async def telegram_client() -> BotClientTest:
+async def telegram_client() -> BotTestClient:
     app = BotClient("testing", get_app_id(), get_app_hash())
     await app.start()
-    yield BotClientTest(app, get_bot_name())
+    yield BotTestClient(app, get_bot_name())
     await app.stop()
