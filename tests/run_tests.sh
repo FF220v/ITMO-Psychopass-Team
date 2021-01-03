@@ -11,7 +11,7 @@ KUBECTL_PID=$!
 docker run -v ~/ITMO-Psychopass-Team/tests:/src \
            --network="host" \
       	   civilladev/acceptance-tests \
-           bash -c "cd /src && python -m pytest /src/tests $@"
+           bash -c "cd /src && python -m pytest /src/tests -vv $@"
 
 
 kill $KUBECTL_PID
