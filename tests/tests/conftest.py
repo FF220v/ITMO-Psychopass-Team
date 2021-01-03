@@ -30,6 +30,10 @@ def load_setting(setting: str):
 def get_bot_name():
     return load_setting("bot_name")
 
+@lru_cache()
+def get_conn_string():
+    return load_setting("connection_string")
+
 
 @lru_cache()
 def get_app_id():
@@ -245,7 +249,7 @@ class BotTestClient:
 @pytest.fixture()
 @pytest.mark.asyncio
 async def telegram_client() -> BotTestClient:
-    app = BotClient("testing", get_app_id(), get_app_hash())
+    app = BotClient(get_conn_string() or "testing", get_app_id(), get_app_hash())
     await app.start()
     yield BotTestClient(app, get_bot_name())
     await app.stop()

@@ -1,7 +1,8 @@
 {
+  "connection_string": "AgCBbMS3G5YVmnjvLHMyczW4pEHVYqTk-WkvpbOMYfYp5C8P6_NDSsvd18GEXBaEiExCKLMHdqtvNYKbqIQj804nxfhZ0wcciG6Kmx0AoeKq8jr_-FfB5Kgvp9-cv1kDhlnHDfdLllVdy2sG1QNjmkohTvPTVzFttdeCZ416kx_vrUepzEGdQmoQWdA0dQsjbGWpyxlhD_1hSo4aeCN6N4pFs9PrNy5TTCW-dkOxQkvTrGwRlHJUAaUevLi89k8T_-2DtS4OJjjB2L6uBG31rG7xAqw_8A9ptf67VdaSNYAJmktK--Yyg_Q9bmokxjHVV3JHNDoDiBTvlCL263uvszjJHFUnbAA",
   "bot_name": "Civilla_Bot",
   "app_id": 2020115,
   "app_hash": "815393fe9d5c6a2ff51d16475b0337d7",
-  "mongo_host": "192.168.209.20:27017",
-  "devices_server_host": "192.168.209.20:30000"
+  "mongo_host": "localhost:27017",
+  "devices_server_host": "localhost:30000"
 }

@@ -1,1 +1,0 @@
-cd /work_dir && python /src/generate_session.py
