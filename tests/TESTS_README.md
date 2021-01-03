@@ -5,7 +5,7 @@ This short readme should help you to work with acceptance tests.
 Basically tests require one file - settings.json. It is generated out of staging data
 and from secret files.  
 
-Before starting with tests, run `generate_session.sh` in order to connect testing
+Before starting with tests, run `./generate_session.sh` in order to connect testing
 session to your telegram account. 
 
 That's it. Now you can `./run_tests.sh`

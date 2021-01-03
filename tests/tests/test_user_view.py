@@ -53,7 +53,54 @@ async def test_user_view_user_role(telegram_client, mongo_client, fill_user_data
 
 
 @pytest.mark.asyncio
-async def test_user_view_policeman_role(telegram_client, mongo_client, fill_policeman_user_data):
+async def test_user_view_policeman_role_view_cops(telegram_client, mongo_client, fill_policeman_user_data):
+    # Setup: adding another one user
+    another_user_id = "rand_id_1"
+    another_policeman_id = "rand_id_2"
+
+    mongo_client.update_user(
+        {
+            "firstName": "another",
+            "isPoliceman": True,
+            "isPolicemanStr": "yes",
+            "lastName": "policeman",
+            "likesBeer": True,
+            "psychopassValue": 0.8712589961827121
+        },
+        object_id=another_policeman_id
+    )
+
+    mongo_client.update_user(
+        {
+            "firstName": "another",
+            "isPoliceman": False,
+            "isPolicemanStr": "no",
+            "lastName": "user",
+            "likesBeer": True,
+            "psychopassValue": 0.8712589961827121
+        },
+        object_id=another_user_id
+    )
+
+    #  Test flow
+    await telegram_client.send_message("View data")
+    msg = await telegram_client.get_last_new_bot_message()
+    assert "Which data do you want to see?" in msg.text
+
+    my_id = await telegram_client.get_chat_id()
+
+    await telegram_client.send_message("Cops")
+    msg = await telegram_client.get_last_new_bot_message()
+    # Cop is shown
+    assert another_policeman_id in msg.text
+    # Citizen is not shown
+    assert another_user_id not in msg.text
+    # I am a cop, so I should be in the list
+    assert my_id in msg.text
+
+
+@pytest.mark.asyncio
+async def test_user_view_policeman_role_view_citizens(telegram_client, mongo_client, fill_policeman_user_data):
     # Setup: adding another one user
     another_user_id = "rand_id_1"
     another_policeman_id = "rand_id_2"
@@ -91,18 +138,9 @@ async def test_user_view_policeman_role(telegram_client, mongo_client, fill_poli
 
     await telegram_client.send_message("Citizens")
     msg = await telegram_client.get_last_new_bot_message()
-    # This one is cop
+    # Cop is not shown
     assert another_policeman_id not in msg.text
-    # This one is citizen
-    assert another_user_id in msg.text
-    # Me is not a citizen, so Im not in the list
-    assert my_id not in msg.text
-
-    await telegram_client.send_message("Cops")
-    msg = await telegram_client.get_last_new_bot_message()
-    # Cop is shown
-    assert another_policeman_id in msg.text
     # Citizen is shown
-    assert another_user_id not in msg.text
-    # I am a cop, so I am shown here
-    assert my_id in msg.text
+    assert another_user_id in msg.text
+    # Me is not a citizen, so my id is not in the list
+    assert my_id not in msg.text
