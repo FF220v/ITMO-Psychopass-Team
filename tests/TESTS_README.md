@@ -5,8 +5,10 @@ This short readme should help you to work with acceptance tests.
 Basically tests require one file - settings.json. It is generated out of staging data
 and from secret files.  
 
-Before starting with tests, run `./generate_session.sh` in order to connect testing
-session to your telegram account. 
+Before starting with tests: 
+1. create an application on `https://my.telegram.org/apps`
+2. add your application data for your stage to secrets `sops secrets/test_app.json`. 
+3. run `./generate_session.sh` in order to connect testing session to your telegram account. 
 
 That's it. Now you can `./run_tests.sh`
 
