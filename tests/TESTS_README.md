@@ -14,7 +14,7 @@ Running tests on a local machine is easy as hell.
 1. install packages `pip install -r requirements.txt`
 2. `./run_tests.sh` once on remote machine to generate `settings.json`
 3. copy `settings.json` to your work directory
-4. change `localhost` addresses in `settings.json` to your cluster machine's once
+4. change `localhost` addresses in `settings.json` to your cluster machine's ones
 5. finally, run following stuff on a cluster machine:
 ```
 MONGO_POD=`kubectl get pods -ncivilla-stage --no-headers -o custom-columns=":metadata.name" | grep mongodb-`
