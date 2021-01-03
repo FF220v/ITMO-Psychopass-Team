@@ -10,3 +10,5 @@
 *mounted_volumes
 *.session
 *.session-journal
+*__pycache__
+*.sops.yaml

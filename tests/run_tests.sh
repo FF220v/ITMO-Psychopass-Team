@@ -1,5 +1,6 @@
 pushd ~/ITMO-Psychopass-Team/tests
-	./build.sh
+    ./build.sh
+    ./make_test_settings.sh
 popd
 
 
