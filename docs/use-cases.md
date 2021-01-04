@@ -1,6 +1,6 @@
 # Use Case Speciﬁcation (Описание прецедента)  
   
-## 1. Use-Case 1 Регистрация гражданина
+# 1. Use-Case 1 Регистрация гражданина
 *[Укажите название прецедента.]*  
 
 Регистрация гражданина
@@ -35,24 +35,21 @@
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
-Use case 6 Name (Узнать о системе Civilla)
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-1.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/fill%20my%20data.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Connect_to_Civilla)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/connect.png)
-![Connected_to_Civilla)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0247.png)
-![AboutUs)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0249.png)
-![RegistrationFisrtName)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0250.png)
-![RegistrationSecondName)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0251.png)
-![RegistrationLikeBeer)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0265.png)
-![CorrectData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0252.png)
-![DataSubmited)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0253.png)  
+![Fill_data)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_1.png)
+![First_name)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_2.png)
+![Second_name)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_3.png)
+![Like_beer)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_4.png)
+![Сonfirm)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_5.png)
+![Data_saved)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/new_step_6.png)
   
-  ## 1. Use-Case 2 Просмотр личных данных
+# 1. Use-Case 2 Просмотр данных гражданина
 *[Укажите название прецедента.]*  
 
 Просмотр личных данных
@@ -72,13 +69,13 @@ Use case 6 Name (Узнать о системе Civilla)
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Просмотреть свои данные.
-2) Просмотреть психопаспорт или данные профиля.
+1) Просмотреть данные.
+2) Просмотреть свои данные.
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
 
-1)	Гражданин должен заполнить свои личные данные в систему Civilla. .
+1)	Гражданин должен зарегистрироваться в системе Civilla.
 
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]*
@@ -86,24 +83,22 @@ Use case 6 Name (Узнать о системе Civilla)
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
-Use case 6 Name (Узнать о системе Civilla)
 
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-22.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/new%20View%20my%20data.png)  
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Main)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0266.png)
-![ViewData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0267.png)
-![ViewPsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0269.png)
-![ViewProfileData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0270.png)  
+![ViewData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_1.png)
+![MyData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_2.png)
+![Result)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_my_data/step_3.png)
   
-  ## 1. Use-Case 3 Полицеский просматривает данные граждан
+  # 1. Use-Case 3 Полицеский просматривает данные граждан и полицеских
 *[Укажите название прецедента.]*  
 
-Полицеский просматривает данные граждан
+Полицеский просматривает данные граждан и полицеских
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
@@ -113,16 +108,16 @@ Use case 6 Name (Узнать о системе Civilla)
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Полицейский просматривает данные подозреваемого или всех граждан.
+Полицейский просматривает данные всех граждан и полицейских.
   
 ## 3. Flow of Events (Последовательность событий)
 
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Просмотреть данные граждан.
-2) Просмотреть данные подозреваемого.
-3) Получить данные всех гражданских.
+1) Просмотреть данные.
+2) Получить данные граждан.
+3) Получить данные полицейских.
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
@@ -139,19 +134,20 @@ Use case 6 Name (Узнать о системе Civilla)
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-3.png) 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/view_data_by_cop.png) 
   
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![MainPolice)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0272.png)
-![ViewCitizensData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0273.png)
-![ViewFullList)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0275.png)
-![ViewIDCitizen)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0276.png)  
+![ViewData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_1.png)
+![ViewCitizensCopData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_2.png)
+![DataCitizens)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_3.png)
+![DataCops)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_data_by_cop/step_4.png)  
+
   
-  ## 1. Use-Case 4 Полицейский получает доступ к доминатору
+# 1. Use-Case 4 Регистрация устройства
 *[Укажите название прецедента.]*  
 
-Полицейский получает доступ к доминатору
+Регистрация устройства
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
@@ -161,72 +157,78 @@ Use case 6 Name (Узнать о системе Civilla)
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Полицейский получает доступ к доминатору для его использования.
+Полицейский регистрирует новую камеру или доминатор к системе Civilla
   
 ## 3. Flow of Events (Последовательность событий)
 
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Запросить доступ на использование доминатора.
-2) Ввести имя и фамилию подозреваемого на которого надо использовать оружие доминатор.
-3) Получить резрешение или отказ на использование оружия доминатор на подозреваемого.
+1) Выбрать регистрацию устройства
+2) Выбрать устройство
+3) Заполнить специальную форму устройства
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
 
-1)	Получить роль полицеского.
 
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]*
 
-* Если коэффициент преступления подозреваемого высок, то система разрешает использование оружия доминатор.
-* Если коэффициент преступлиния подозреваемого низок, то система запрещает использование оружия доминатор.  
+* Добавлено новое устройство в систему Civilla.  
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
-
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-44.png) 
-  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/register_device.png)  
+
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![MainPolice)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0277.png)
-![UseDominator)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0278.png)
-![FirstSubject)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0279.png)
-![Restricted)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0280.png)
-![Allowed)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0281.png)  
+![s1)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_1.png)
+![s2)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_2.png)
+![s3)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_3.png)
+![s4)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_4.png)
+![s5)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_5.png)
+![s6)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_6.png)
+![s7)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_7.png)
+![s8)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/Screenshot_8.png)  
   
-## 1. Use-Case 5 Мониторинг данных
+![step1)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step1.png)
+![step2)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step2.png)
+![step3)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step3.png)
+![step4)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step4.png)
+![step5)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step5.png)
+![step6)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step6.png)
+![step7)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step7.png)
+![step8)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/register_device/step8.png)
+  
+# 1. Use-Case 5 Анализ психопаспорта
 *[Укажите название прецедента.]*  
 
-Мониторинг данных
+Гражданин
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
 
-Аналитик
+Полицейский, гражданин
   
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Аналитик просматривает данные всех граждан и мониторит город для выявления особо опасных районов.
+Посмотреть свой психопаспорт
   
 ## 3. Flow of Events (Последовательность событий)
 
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Просмотреть данные граждан.
-2) Получить список данных всех граждан.
-3) Визуализировать данные на карте города.
+1) Просмотреть свой психопаспорт.
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
 
-1)	Получить роль аналитика. .
 
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]* 
@@ -237,14 +239,15 @@ Use case 6 Name (Узнать о системе Civilla)
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-5.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_psyhopassport/view_psyhopasport.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*  
-![VisualData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/visualData2.jpg)
+![AnalysePsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_psyhopassport/Screenshot_1.png)
+![MyPsyhopassport)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_psyhopassport/Screenshot_2.png)
   
 
-## 1. Use-Case 6 Узнать о системе Civilla
+# 1. Use-Case 6 Узнать о системе Civilla
 *[Укажите название прецедента.]*  
 
 Узнать о системе Civilla
@@ -280,28 +283,27 @@ Use case 6 Name (Узнать о системе Civilla)
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-6.png)  
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/about_us.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Citizen)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0291.png)
-![Policeman)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0292.png)
-![AboutUs)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0290.png)
+![AboutUs)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/Screenshot_2.png)
+![Result)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/about_us/Screenshot_1.png)
 
-## 1. Use-Case 7 Получить оповещение о повышающейся концентрации потенциальных преступников
+# 1. Use-Case 7 Получить оповещение о высоком уровне психопасспорта
 *[Укажите название прецедента.]*  
 
-Получить оповещение о повышающейся концентрации потенциальных преступников
+Получить оповещение о высоком уровне психопасспорта
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
 
-Полицейский
+Полицейский, гражданин
   
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Полицейский получает от системы Civilla оповещение о повышающейся концентрации потенциальных преступников в конкретном регионе.
+Получить оповещение о высоком уровне психопасспорта гражданина или полицейского
   
 ## 3. Flow of Events (Последовательность событий)
 
@@ -326,16 +328,108 @@ Use case 6 Name (Узнать о системе Civilla)
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-7.png)  
+![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/notifications/notification.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0294.png)
+![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/notifications/Screenshot_1.png)
   
-## 1. Use-Case 8 Получить оповещение о превышении порогового значения коэфициента преступности у индивидуальных граждан
+# 1. Use-Case 8 Получить уведомление от устройств
 *[Укажите название прецедента.]*  
 
-Получить оповещение о превышении порогового значения коэфициента преступности у индивидуальных граждан
+Получить уведомление от устройств
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский, гражданин
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Получить уведомление о высоком уровне психопаспорта неизвестного от устройств
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Получить уведомление о превышении порогового значения коэфициента преступности у неизвестного гражданина
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/device_notifications/notifications_device.png)  
+
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/device_notifications/Screenshot_1.png)
+
+
+# 1. Use-Case 9 Редактирование своих данных
+*[Укажите название прецедента.]*  
+
+Редактирование своих данных
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский, гражданин
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Изменить свои данные в системе Civilla
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Редактировать свои данные
+2) Подтвердить изменения
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+* Изменение данных гражданина или полицейского в базе данных  
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![EditData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/edit_data.png)  
+
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![EditData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_1.png)
+![FirstName)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_2.png)
+![SecondName)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_3.png)
+![LoveBeer)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_4.png)
+![Confirm)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_5.png)
+![Edited)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/edit_data/step_6.png)
+
+# 1. Use-Case 10 Панель управления полиции
+*[Укажите название прецедента.]*  
+
+Панель управления полиции
 
 ## 2. Actors (Акторы)
 *[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
@@ -345,14 +439,14 @@ Use case 6 Name (Узнать о системе Civilla)
 ### 2.1 Brief Description (Краткое описание)
 *[Кратко опишите прецедент, с чего он начинается.]*
   
-Полицейский получает от системы Civilla оповещение о превышении порогового значения коэфициента преступности у индивидуальных граждан
+Получить доступ ко всем функциям доступные полицескому
   
 ## 3. Flow of Events (Последовательность событий)
 
 ### 3.1 Basic Flow (Главная последовательность)
 *[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
 
-1) Получить оповещение о превышении порогового значения коэфициента преступности у индивидуальных граждан
+1) Получить панель управления полицейского
 
 ## 4. Preconditions (Предусловия)
 *[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
@@ -361,7 +455,6 @@ Use case 6 Name (Узнать о системе Civilla)
 ## 5. Postconditions (Постусловия)  
 *[Укажите, что изменится в системе после выполнения прецедента.]*
 
-Присоединиться к системе Civilla. .
 
 ## 6. Extension Points (Точки расширения)
 *[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
@@ -369,8 +462,187 @@ Use case 6 Name (Узнать о системе Civilla)
  
 ## 7. Use-case diagram (Диаграмма прецедента)
 *<UML диаграмма данного прецедента>* 
-![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/use-case-8.png)  
+![EditData)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/police_control_panel/police_control_panel.png)  
 
 ## 8. Interface example (Пример интерефейса)
 *<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
-![Notification)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-use-cases/docs/pics/IMG_0297.png)
+![ControlPanel)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/police_control_panel/Screenshot_1.png)
+
+# 1. Use-Case 11 Просмотр устройств
+*[Укажите название прецедента.]*  
+
+Просмотр устройств
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Просмотреть список зарегестрированных камер и доминаторов
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Просмотреть устройства
+2) Просмотреть список камер
+3) Просмотреть список доминаторов
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![ViewDevices)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/view_devices.png)  
+
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![ViewDevices)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_1.png)
+![ChooseDevice)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_2.png)
+![Cameras)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_3.png)
+![Dominators)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/view_devices/Screenshot_4.png)
+
+ # 1. Use-Case 12 Доступ к камере
+*[Укажите название прецедента.]*  
+
+Доступ к камере
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Получить доступ к камере
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Запросить доступ на использование конкретной камеры.
+2) Получить резрешение или отказ на использование камеры.
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/access_cameras_1.png) 
+  
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/Screenshot_1.png)
+![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_acces_cameras/Screenshot_2.png)
+ 
+  
+  # 1. Use-Case 13 Контроль доступа доминатору
+*[Укажите название прецедента.]*  
+
+Контроль доступа доминатору
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Полицейский получает доступ к доминатору для его использования.
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Запросить доступ на использование конкретного доминатора.
+2) Получить резрешение или отказ на использование оружия доминатора.
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+1)	Получить роль полицеского.
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/request%20access_1.png) 
+  
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![Error)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_1.png)
+![Ok)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/request_access/access_2.png) 
+
+# 1. Use-Case 14 На предыдущее окно
+*[Укажите название прецедента.]*  
+
+На предыдущее окно
+
+## 2. Actors (Акторы)
+*[Укажите основное действующее лицо прецедента и дополнительных (если они есть)]*
+
+Полицейский, гражданин
+  
+### 2.1 Brief Description (Краткое описание)
+*[Кратко опишите прецедент, с чего он начинается.]*
+  
+Перейти на предыдущее окно
+  
+## 3. Flow of Events (Последовательность событий)
+
+### 3.1 Basic Flow (Главная последовательность)
+*[Опишите последовательность шагов, которые выполняет пользователь. Описание должно быть максимально абстрактным, без привязки к элементам интерфейса и вводу определенных данных.]*  
+
+1) Нажать на кнопку back
+
+## 4. Preconditions (Предусловия)
+*[Укажите условия, которые должны выполняться, чтобы прецедент начался.]*
+
+
+## 5. Postconditions (Постусловия)  
+*[Укажите, что изменится в системе после выполнения прецедента.]*
+
+
+## 6. Extension Points (Точки расширения)
+*[Если прецедент содержит вложенные прецеденты, которые добавляют к нему новые шаги, укажите здесь ссылку на них, на каком шаге главной последовательности они включаются.]*
+ 
+## 7. Use-case diagram (Диаграмма прецедента)
+*<UML диаграмма данного прецедента>* 
+![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/button_back/button_back.png)  
+
+## 8. Interface example (Пример интерефейса)
+*<Макет пользовательского интерфейса, который будет использоваться для выполнения прецедента>*
+![ButtonBack)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/button_back/Screenshot_1.png)
+![PreviousWindow)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/button_back/Screenshot_2.png)
