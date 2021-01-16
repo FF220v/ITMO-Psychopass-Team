@@ -221,7 +221,7 @@ Civilla - Dominator Service - сервис разрешения доступа �
 #### 4.5.1 Регистрация гражданина в систему
   ![ДиаграммаПоследовательности)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/sequence%20diagram%201.png) 
   
-### 4.6 Sequence Diagram 
+### 4.6 Cooperative Diagram
   
 #### 4.6.1 Анализ психопаспорта
   ![ДиаграммаКоммуникации)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/cooperative%20diagram%201.png)
@@ -241,6 +241,11 @@ Civilla - Dominator Service - сервис разрешения доступа �
   
 #### 5.3.1 Регистрация устройства доминатор
   ![ДиаграммаCостояний)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/State%20machine%20diagram%202.png) 
+  
+### 5.4 Sequence Diagram 
+  
+#### 5.4.1 Регистрация гражданина в систему
+  ![ДиаграммаПоследовательности)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/sequence%20diagram%202.png) 
   
   
 ## 6. Process View
