@@ -12,7 +12,8 @@ For bug fixes and features following and above:
 - [ ] Acceptance tests cover happy and unhappy paths
 - [ ] No PII in logs
 - [ ] Deployment in dev environment is successful
-- [ ] A new feature/bug has a user story(see `user_stories/us_template.md`)
+- [ ] A new feature/bugfix has a user story (see `user_stories/us_template.md`)
+- [ ] A new feature/bugfix matches it's userstory
 - [ ] Exploratory tested (see checklist below)
 
 Exploratory testing checklist:
