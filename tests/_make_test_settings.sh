@@ -5,7 +5,8 @@ cat <<EOF
     "connection_string": "`cat tests/conn.json | jq -r .connection_string`",
     "bot_name": "`sops -d secrets/kube_secrets.json | jq -r .$STAGE.bot_name`",
     "mongo_host": "localhost:27017",
-    "devices_server_host": "localhost:30000"
-    "analysis_server_host": "localhost:8051"
+    "devices_server_host": "localhost:30000",
+    "analysis_server_host": "localhost:8051",
+    "kubectl_proxy": "localhost:8002"
 }
 EOF
