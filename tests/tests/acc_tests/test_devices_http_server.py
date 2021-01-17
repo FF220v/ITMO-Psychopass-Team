@@ -1,5 +1,5 @@
 import pytest
-from .conftest import trigger_camera_endpoint, trigger_dominator_endpoint
+from ..conftest import trigger_camera_endpoint, trigger_dominator_endpoint
 
 
 @pytest.mark.asyncio

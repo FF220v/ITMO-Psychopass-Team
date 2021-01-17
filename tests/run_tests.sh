@@ -1,4 +1,4 @@
-TESTS_DIR=${1:-"tests/tests"}
+TESTS_DIR=${1:-"tests/acc_tests"}
 
 pushd ~/ITMO-Psychopass-Team/tests
     ./build.sh

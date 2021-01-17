@@ -12,5 +12,7 @@
 *.session-journal
 *__pycache__
 *.sops.yaml
+*tests/*/settings.json
+*tests/*/conn.json
 *tests/settings.json
 *tests/conn.json
