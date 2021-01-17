@@ -13,7 +13,7 @@ from pymongo import MongoClient
 BOT_MAX_RETRIES = 30
 BOT_RETRY_SECONDS = 0.3
 
-SETTINGS_FILE = "acc_tests/settings.json"
+SETTINGS_FILE = "tests/settings.json"
 MONGO_DATABASE = "CivillaDatabase"
 SESSIONS_COLLECTION = "BotSessions"
 USERS_COLLECTION = "Users"
