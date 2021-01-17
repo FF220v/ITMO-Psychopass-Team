@@ -17,7 +17,7 @@ Running tests on a local machine is easy as hell.
 2. `./run_tests.sh` once on remote machine to generate `settings.json`
 3. copy `settings.json` to your work directory
 4. change `localhost` addresses in `settings.json` to your cluster machine's ones, change kubectl_proxy port to 8001
-5. finally, run port forwardings with 3 scripts in helpers directory `kubectl_analysis_server_port_forward.sh  kubectl_mongo_ports_forward.sh  kubectl_proxy.sh`
+5. finally, run port forwardings with scripts in helpers directory `run_tests_fwd.sh`
 
 this should start pods port forwarding and kubectl proxy.  
 
