@@ -64,4 +64,4 @@ async def test_high_load_response_hundreds_time_distributed(mongo_client, async_
 async def test_high_load_response_time_overload(mongo_client, async_http_client, analysis_test_data):
     average_elapsed = await measure_multiple_requests_time(async_http_client, analysis_test_data, 1000)
     print(f"Average response time: {average_elapsed}")
-    assert average_elapsed < 1
+    assert average_elapsed < 10
