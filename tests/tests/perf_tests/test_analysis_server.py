@@ -20,6 +20,15 @@ async def send_request_with_time_measurement(async_http_client: aiohttp.ClientSe
     return resp, time.time() - start
 
 
+async def measure_multiple_requests_time(async_http_client: aiohttp.ClientSession, data, n_requests):
+    results = await asyncio.gather(*[send_request_with_time_measurement(async_http_client, data)
+                                     for i in range(n_requests)])
+    elapsed_list = [elapsed for _, elapsed in results]
+    for resp, _ in results:
+        await resp.text()
+    return mean(elapsed_list)
+
+
 @pytest.fixture()
 def analysis_test_data(mongo_client):
     return {"userId": str(mongo_client.chat_id),
@@ -28,26 +37,31 @@ def analysis_test_data(mongo_client):
 
 @pytest.mark.asyncio
 async def test_response_time_single_request(mongo_client, async_http_client, analysis_test_data):
-    _, elapsed = await send_request_with_time_measurement(async_http_client, analysis_test_data)
-    print(f"Elapsed: {elapsed}")
+    elapsed = await measure_multiple_requests_time(async_http_client, analysis_test_data, 1)
+    print(f"Single response time: {elapsed}")
     assert elapsed < 1
 
 
 @pytest.mark.asyncio
 async def test_high_load_response_time_average(mongo_client, async_http_client, analysis_test_data):
-    results = await asyncio.gather(*[send_request_with_time_measurement(async_http_client, analysis_test_data)
-                                     for i in range(100)])
-    elapsed_list = [elapsed for _, elapsed in results]
-    average_elapsed = mean(elapsed_list)
-    print(f"Elapsed: {average_elapsed}")
+    average_elapsed = await measure_multiple_requests_time(async_http_client, analysis_test_data, 100)
+    print(f"Average response time: {average_elapsed}")
     assert average_elapsed < 10
 
 
 @pytest.mark.asyncio
+async def test_high_load_response_hundreds_time_distributed(mongo_client, async_http_client, analysis_test_data):
+    average_elapsed_list = []
+    for i in range(5):
+        average_elapsed_list.append(await measure_multiple_requests_time(async_http_client, analysis_test_data, 100))
+
+    average_elapsed = mean(average_elapsed_list)
+    print(f"Average response time: {average_elapsed}")
+    assert average_elapsed < 1
+
+
+@pytest.mark.asyncio
 async def test_high_load_response_time_overload(mongo_client, async_http_client, analysis_test_data):
-    results = await asyncio.gather(*[send_request_with_time_measurement(async_http_client, analysis_test_data)
-                                     for i in range(1000)])
-    elapsed_list = [elapsed for _, elapsed in results]
-    average_elapsed = mean(elapsed_list)
-    print(f"Elapsed: {average_elapsed}")
-    assert average_elapsed < 15
+    average_elapsed = await measure_multiple_requests_time(async_http_client, analysis_test_data, 1000)
+    print(f"Average response time: {average_elapsed}")
+    assert average_elapsed < 1
