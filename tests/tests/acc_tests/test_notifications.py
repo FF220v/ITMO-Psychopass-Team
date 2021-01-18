@@ -1,5 +1,5 @@
 import pytest
-from .conftest import trigger_dominator_endpoint, get_random_device_id
+from ..conftest import trigger_dominator_endpoint, get_random_device_id
 
 
 @pytest.fixture(scope="function", autouse=True)

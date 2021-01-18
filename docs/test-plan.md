@@ -403,6 +403,52 @@ Success Criteria:
 </td></tr>
 </table>
 
+#### 5.1.8 Performance Testing (Тестирование производительности)
+
+<table>
+<tr><td>
+
+Technique Objective:
+(Цель)
+</td><td>
+
+Обеспечение необходимой пропускной способности продукта.
+</td></tr><tr><td>
+
+Technique:
+(Описание процесса)
+</td><td>
+
+- Автоматические тесты запускаются с помощью скрипта в среде разработчика.
+- В тестах измеряется время между отправкой запроса и приёмом ответа от продукта в условиях локально развернутого продукта.
+</td></tr><tr><td>
+
+Oracles:
+(Источники)
+</td><td>
+
+- [Use-case document](https://github.com/FF220v/ITMO-Psychopass-Team/blob/master/docs/use-cases.md)
+- [Software Requirements Specification](https://github.com/FF220v/ITMO-Psychopass-Team/blob/master/docs/srs.md)
+</td></tr><tr><td>
+
+Required Tools:
+(Инструменты)
+</td><td>
+
+- Среда разработчика, включающая в себя продукт, развернутый в kubernetes локально.
+- Фреймворк для тестирования pytest, pyrogram-телеграм клиент, запускающиеся локально, в docker-контейнерах.
+</td></tr><tr><td>
+
+Success Criteria:
+(Критерий успеха)
+</td><td>
+
+- Все тесты проходят успешно.
+
+</td></tr>
+</table>
+
+
 ## Entry and Exit Criteria (Критерии старта и окончания)
 
 ### 6.1. Test Plan Entry Criteria (Критерий старта)

@@ -3,6 +3,7 @@ import json
 import uuid
 from functools import lru_cache
 
+import aiohttp as aiohttp
 import pytest
 import requests
 from pyrogram import Client as BotClient
@@ -27,8 +28,19 @@ def load_setting(setting: str):
 
 
 @lru_cache()
+def get_kube_proxy_host():
+    return load_setting("kubectl_proxy")
+
+
+@lru_cache()
+def get_stage():
+    return load_setting("stage")
+
+
+@lru_cache()
 def get_bot_name():
     return load_setting("bot_name")
+
 
 @lru_cache()
 def get_conn_string():
@@ -48,6 +60,12 @@ def get_app_hash():
 @lru_cache()
 def get_mongo_conn_string():
     return f"mongodb://{load_setting('mongo_host')}"
+
+
+@lru_cache()
+def get_analysis_server_url():
+    return f"http://{get_kube_proxy_host()}/api/v1/namespaces/civilla-{get_stage()}" \
+           f"/services/http:civilla-analysisserver-service:/proxy"
 
 
 class MongoTestClient:
@@ -119,6 +137,13 @@ class MongoTestClient:
 
     def delete_dominator(self, object_id):
         return self.delete_entity(self.dominators_collection, object_id)
+
+
+@pytest.fixture()
+@pytest.mark.asyncio
+async def async_http_client():
+    async with aiohttp.ClientSession() as client:
+        yield client
 
 
 @pytest.fixture()

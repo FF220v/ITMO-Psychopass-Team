@@ -1,6 +1,5 @@
 import re
 import pytest
-import uuid
 
 
 device_id_regex = re.compile("objectId ([\da-z]+) added")
