@@ -204,7 +204,8 @@ Civilla - Dominator Service - сервис разрешения доступа �
 Краткое описание:* Полицейский получает доступ к доминатору для его использования.  
 
   
-### 4.2 Class Diagramm
+### 4.2 Class Diagramm  
+  ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCmd.png)  
   
 ### 4.3 Activity Diagram  
   
