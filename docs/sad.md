@@ -133,12 +133,7 @@ Civilla - Dominator Service - сервис разрешения доступа �
 * Получить доступ к камере.  
 * Получить контроль к доминутору.  
 
-## 4.1 Architecturally-Significant Use Cases  
-  
-![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/use%20case.png)    
-  
- # OR  
-    
+## 4.1 Architecturally-Significant Use Cases    
     
 ![Диаграмма прецедента)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al_use_cases_new/docs/pics/fill_my_data/fill%20my%20data.png)  
 Рисунок 1 - Регистрация гражданина.  
@@ -231,7 +226,9 @@ Civilla - Dominator Service - сервис разрешения доступа �
 *[Данный раздел содержит описание слоев, на которые делится приложение, а также интерфейсов их взаимодействия. Приведите описание каждого из слоев, как они связаны между собой, их назначение. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*  
   
 ### 5.1 Class Diagram  
+  ![ПакаджДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/PackageDiagram.png)
   
+  ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCMD%202.png)  
   
 ### 5.2 Activity Diagram
   
