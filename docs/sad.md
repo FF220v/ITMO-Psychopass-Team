@@ -268,7 +268,12 @@ Civilla - Dominator Service - сервис разрешения доступа �
 #### Прецедент пользователь отправляет сообщение в чат (нажимает кнопку), чтобы посмотреть свои данные
   ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCMD%202.png) 
   ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/more_main_class_diagram_PoliceControlServer.png) 
-  ![ПолнаяКлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/classdiagramPoliceControlServer.png)
+  ![ПолнаяКлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/classdiagramPoliceControlServer.png)  
+  
+### 6.2 Activity Diagram
+  
+#### 6.2.1 Редактирование своих данных психопаспорта
+  ![АктивитиДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/activity%20diagram%203.png) 
   
 ## 7. Deployment View
 *[Данный раздел содержит описание конфигурации файлов, из которых состоит система, мест их расположения и описание взаимодействия их друг с другом. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*  
