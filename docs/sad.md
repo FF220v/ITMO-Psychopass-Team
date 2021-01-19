@@ -229,10 +229,15 @@ Civilla - Dominator Service - сервис разрешения доступа �
 ## 5. Logical View
 *[Данный раздел содержит описание слоев, на которые делится приложение, а также интерфейсов их взаимодействия. Приведите описание каждого из слоев, как они связаны между собой, их назначение. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*  
   
-### 5.1 Class Diagram  
+### 5.1 Package Diagram  
   ![ПакаджДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/PackageDiagram1.png)
+
+### 5.2 Class Diagram  
+
+#### Прецедент пользователь отправляет сообщение в чат (нажимает кнопку), чтобы посмотреть свои данные
   
-  ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCMD%202.png)  
+  ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCMD%202.png) 
+  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/more_main_class_diagram_PoliceControlServer.png) 
   
 ### 5.2 Activity Diagram
   
