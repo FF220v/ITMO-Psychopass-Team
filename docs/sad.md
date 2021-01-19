@@ -200,7 +200,11 @@ Civilla - Dominator Service - сервис разрешения доступа �
 
   
 ### 4.2 Class Diagramm  
+
+#### Прецедент пользователь отправляет сообщение в чат (нажимает кнопку), чтобы посмотреть свои данные
   ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCmd.png)  
+  
+  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/main_class_diagram_PoliceControlServer.png)  
   
 ### 4.3 Activity Diagram  
   
