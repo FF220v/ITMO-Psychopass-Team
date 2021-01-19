@@ -202,9 +202,9 @@ Civilla - Dominator Service - сервис разрешения доступа �
 ### 4.2 Class Diagramm  
 
 #### Прецедент пользователь отправляет сообщение в чат (нажимает кнопку), чтобы посмотреть свои данные
-  ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCmd.png)  
   
-  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/main_class_diagram_PoliceControlServer.png)  
+  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/main_class_diagram_PoliceControlServer.png) 
+  ![Диаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/main_class_diagram_PoliceControlServer.png)
   
 ### 4.3 Activity Diagram  
   
@@ -236,32 +236,34 @@ Civilla - Dominator Service - сервис разрешения доступа �
 
 #### Прецедент пользователь отправляет сообщение в чат (нажимает кнопку), чтобы посмотреть свои данные
   
-  ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCMD%202.png) 
-  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/more_main_class_diagram_PoliceControlServer.png) 
+  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/main_class_diagram_PoliceControlServer.png)  
   
-### 5.2 Activity Diagram
+### 5.3 Activity Diagram
   
-#### 5.2.1 Редактирование своих данных психопаспорта
+#### 5.3.1 Редактирование своих данных психопаспорта
   ![АктивитиДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/activity%20diagram%202.png) 
   
-### 5.3 State Machine Diagram  
+### 5.4 State Machine Diagram  
   
-#### 5.3.1 Регистрация устройства доминатор
+#### 5.4.1 Регистрация устройства доминатор
   ![ДиаграммаCостояний)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/State%20machine%20diagram%202.png) 
   
-### 5.4 Sequence Diagram 
+### 5.5 Sequence Diagram 
   
-#### 5.4.1 Регистрация гражданина в систему
+#### 5.5.1 Регистрация гражданина в систему
   ![ДиаграммаПоследовательности)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/sequence%20diagram%202.png) 
   
-### 5.5 Cooperative Diagram
+### 5.6 Cooperative Diagram
   
-#### 5.5.1 Анализ психопаспорта
+#### 5.6.1 Анализ психопаспорта
   ![ДиаграммаКоммуникации)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/cooperative%20diagram%202.png)
   
   
-## 6. Process View
-*[Данный раздел описывает систему как совокупность взаимодействующих процессов, привязанных к определенным моментам времени. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*  
+## 6. Implementation View
+*[Данный раздел содержит описание системы в уже реализованном виде. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*
+
+  ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCMD%202.png) 
+  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/more_main_class_diagram_PoliceControlServer.png) 
   
 ## 7. Deployment View
 *[Данный раздел содержит описание конфигурации файлов, из которых состоит система, мест их расположения и описание взаимодействия их друг с другом. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*  
