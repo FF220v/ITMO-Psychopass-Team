@@ -252,7 +252,7 @@ Civilla - Dominator Service - сервис разрешения доступа �
 ### 5.5 Sequence Diagram 
   
 #### 5.5.1 Регистрация гражданина в систему
-  ![ДиаграммаПоследовательности)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/sequence%20diagram%202.png) 
+  ![ДиаграммаПоследовательности)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/sequence%20diagram%204.png) 
   
 ### 5.6 Cooperative Diagram
   
@@ -278,10 +278,15 @@ Civilla - Dominator Service - сервис разрешения доступа �
 ### 6.3 Database Diagram  
   ![ДатабэйсДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/database%20diagram.png) 
   
-### 6.4 Sequence Diagram 
+### 6.4 State Machine Diagram  
   
-#### 6.4.1 Регистрация гражданина в систему
-  ![ДиаграммаПоследовательности)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/State%20machine%20diagram%203.png) 
+#### 6.4.1 Регистрация устройства доминатор
+  ![ДиаграммаСостояний)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/State%20machine%20diagram%203.png) 
+  
+### 6.5 Sequence Diagram 
+  
+#### 6.5.1 Регистрация гражданина в систему
+  ![ДиаграммаПоследовательности)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/sequence%20diagram%203.png)
   
 ## 7. Deployment View
 *[Данный раздел содержит описание конфигурации файлов, из которых состоит система, мест их расположения и описание взаимодействия их друг с другом. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*  
