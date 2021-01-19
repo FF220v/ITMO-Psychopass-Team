@@ -213,7 +213,7 @@ Civilla - Dominator Service - сервис разрешения доступа �
 ### 4.4 State Machine Diagram  
   
 #### 4.4.1 Регистрация устройства доминатор
-  ![Диаграмма состояний)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/state%20machine%20diagram.png) 
+  ![Диаграмма состояний)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/state%20machine%20diagram4.png) 
   
 ### 4.5 Sequence Diagram 
   
@@ -247,7 +247,7 @@ Civilla - Dominator Service - сервис разрешения доступа �
 ### 5.4 State Machine Diagram  
   
 #### 5.4.1 Регистрация устройства доминатор
-  ![ДиаграммаCостояний)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/State%20machine%20diagram%202.png) 
+  ![ДиаграммаCостояний)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/State%20machine%20diagram%205.png) 
   
 ### 5.5 Sequence Diagram 
   
