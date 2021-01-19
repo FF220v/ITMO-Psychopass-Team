@@ -203,7 +203,6 @@ Civilla - Dominator Service - сервис разрешения доступа �
 
 #### Прецедент пользователь отправляет сообщение в чат (нажимает кнопку), чтобы посмотреть свои данные
   
-  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/main_class_diagram_PoliceControlServer.png) 
   ![Диаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/main_class_diagram_PoliceControlServer.png)
   
 ### 4.3 Activity Diagram  
@@ -235,8 +234,10 @@ Civilla - Dominator Service - сервис разрешения доступа �
 ### 5.2 Class Diagram  
 
 #### Прецедент пользователь отправляет сообщение в чат (нажимает кнопку), чтобы посмотреть свои данные
-  
+    
+  ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCmd.png) 
   ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/main_class_diagram_PoliceControlServer.png)  
+  ![ПолнаяКлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/classdiagram_1_PoliceControlServer.png)
   
 ### 5.3 Activity Diagram
   
@@ -261,9 +262,13 @@ Civilla - Dominator Service - сервис разрешения доступа �
   
 ## 6. Implementation View
 *[Данный раздел содержит описание системы в уже реализованном виде. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*
+  
+  ### 6.1 Class Diagram  
 
+#### Прецедент пользователь отправляет сообщение в чат (нажимает кнопку), чтобы посмотреть свои данные
   ![КлассДиаграмма)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/BotCMD%202.png) 
   ![КлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/more_main_class_diagram_PoliceControlServer.png) 
+  ![ПолнаяКлассДиаграммаПолисКонтрольСервер)](https://github.com/FF220v/ITMO-Psychopass-Team/blob/al-software-architecture-document/docs/pics/classdiagramPoliceControlServer.png)
   
 ## 7. Deployment View
 *[Данный раздел содержит описание конфигурации файлов, из которых состоит система, мест их расположения и описание взаимодействия их друг с другом. Включите сюда необходимые диаграммы, указанные в п.2, приведите краткое описание каждой диаграммы.]*  
