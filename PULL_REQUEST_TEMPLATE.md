@@ -18,5 +18,5 @@ For bug fixes and features following and above:
 
 Exploratory testing checklist:
 - [ ] Happy and unhappy paths on changes are tested
-- [ ] Security check a: Citizen don't see devices.
-- [ ] Security check b: Citizen don't see info of another person. 
+- [ ] Manual checklist for new feature filled
+- [ ] Other person tested feature/bugfix using manual checklist successfully
